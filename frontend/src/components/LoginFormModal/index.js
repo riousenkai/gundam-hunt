@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Modal } from '../../context/Modal';
 import LoginForm from './LoginForm';
+import { useShowModal } from '../../context/ShowModal'
 
 function LoginFormModal() {
-  const [showModal, setShowModal] = useState(false);
+  const { showModal, setShowModal, num, setNum } = useShowModal()
 
-  useEffect(()=> {
-    const loginBtn = document.getElementById('login-button')
-    if (showModal === true) {
-      loginBtn.disabled = true;
-    } else {
-      loginBtn.disabled = false;
-    }
-  }, [showModal])
+  const opener = () => {
+    setNum(2)
+    setShowModal(true)
+  }
 
+  const closer = () => {
+    setShowModal(false)
+    setNum(0)
+  }
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="gundam-dropbtn gundam-dropdown pointer nav-right" id="login-button">Log In</button>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+      <button onClick={opener} className="gundam-dropbtn gundam-dropdown pointer nav-right" id="login-button">Log In</button>
+      {num === 2 && (
+        <Modal onClose={closer}>
           <LoginForm />
         </Modal>
       )}
