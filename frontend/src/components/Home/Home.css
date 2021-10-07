@@ -1,0 +1,57 @@
+.body {
+  margin-top: 1rem;
+  margin-left: 22%;
+  margin-right: 22%;
+  color: rgba(225, 217, 209, 1);
+  display: flex;
+}
+
+.title-text {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.sort {
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  float: right;
+}
+
+.head-card {
+  padding: 20px;
+  border: 0.5px solid white;
+  border-radius: 20px;
+  width: 45rem;
+  background: rgba(38, 39, 38, 0.6);
+}
+
+.card {
+  padding: 1rem;
+  border-bottom: 0.3px solid white;
+  height: 10rem;
+}
+
+.last-card {
+  padding: 0.5rem;
+  height: 0.5rem;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1.5rem;
+}
+
+.upcoming-container {
+  background-color: rgba(38, 39, 38, 0.6);
+  border: 0.5px solid white;
+}
+
+.side-card {
+    width: 20rem;
+    height: 5rem;
+    margin: 1rem;
+    border-bottom: 0.5px solid white;
+  }
