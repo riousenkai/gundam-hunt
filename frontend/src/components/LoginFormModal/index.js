@@ -7,7 +7,7 @@ function LoginFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="gundam-dropbtn gundam-dropdown pointer">Log In</button>
+      <button onClick={() => setShowModal(true)} className="gundam-dropbtn gundam-dropdown pointer nav-right">Log In</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />

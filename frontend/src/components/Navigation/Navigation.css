@@ -95,6 +95,37 @@ a {
     text-decoration: none;
     background-color: transparent;
     color: rgba(225, 217, 209, 1);
-    z-index: 0;
     font-size: 16px;
   }
+
+.search-results {
+  position: absolute;
+  background-color: white;
+  bottom: -350%;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.search-container {
+  position: relative;
+  flex: 0 0 10%;
+}
+
+.search-container-focus {
+  flex: 0 0 94%;
+}
+
+.results {
+  margin-left: 20px;
+}
+
+#img-top {
+  height: 4rem;
+  width: 5rem;
+}
+
+.nav-right {
+  text-align: right;
+  margin-left: auto;
+}

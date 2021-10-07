@@ -3,6 +3,14 @@
     width: 30px;
 }
 
+a > i {
+    font-size: 24px;
+}
+
+.fab {
+    margin-left: 1rem;
+}
+
 .footer {
     display: flex;
     box-shadow: 0 0 1px 1px rgb(57, 62, 63);
@@ -25,4 +33,5 @@
   .footer-text {
     font-size: 1rem;
     text-align: center;
+    margin-right: 1rem;
   }

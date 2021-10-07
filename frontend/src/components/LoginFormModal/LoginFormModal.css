@@ -1,0 +1,17 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 500px;
+  background-color: rgba(38, 39, 38, 0.6);
+  align-items: center;
+}
+
+.username {
+  margin-top: 10rem;
+}
+
+.login-input {
+  background-color: rgba(237, 243, 238, 0.24);
+  color: rgba(225, 217, 209, 1);
+}
