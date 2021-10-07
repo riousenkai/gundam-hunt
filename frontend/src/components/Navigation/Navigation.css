@@ -1,0 +1,100 @@
+.hidden {
+  display: none;
+}
+
+.header {
+  display: flex;
+  box-shadow: 0 0 1px 1px rgb(57, 62, 63);
+  top: 0;
+  position: sticky;
+  z-index: 20;
+  height: 40px;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  /* justify-content: space-between; */
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  background-color: rgba(38, 39, 38, 0.6);
+}
+
+.header-icon {
+  fill: rgb(218, 85, 47);
+  margin-right: 1rem;
+  transition: 2s all;
+}
+
+.search:focus {
+  background-color: rgb(49, 53, 50);
+  transition: all 2s;
+  width: 100%;
+  z-index: 1;
+}
+
+.search {
+  line-height: normal;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  cursor: text;
+  margin: 0em;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  height: 1.5rem;
+  background-color: rgba(237, 243, 238, 0.24);
+  color: rgba(225, 217, 209, 1);
+}
+
+.search::-webkit-input-placeholder {
+  color: rgba(225, 217, 209, 1);
+}
+
+.gundam-dropbtn {
+  background-color: transparent;
+  color: rgba(225, 217, 209, 1);
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.gundam-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(38, 39, 38, 1);
+  min-width: 20rem;
+  border-radius: 10px;
+}
+
+/* Links inside the dropdown */
+.gundam-dropdown-content a {
+  color: rgba(225, 217, 209, 1);
+  padding: 15px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.gundam-dropdown-content a:hover {
+  background-color: rgba(38, 39, 38, 0.6);
+}
+
+/* Show the dropdown menu on hover */
+.gundam-dropdown:hover .gundam-dropdown-content {
+  display: block;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+    color: rgba(225, 217, 209, 1);
+    z-index: 0;
+    font-size: 16px;
+  }
