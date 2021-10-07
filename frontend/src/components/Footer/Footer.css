@@ -1,0 +1,28 @@
+.footer-img {
+    height: 30px;
+    width: 30px;
+}
+
+.footer {
+    display: flex;
+    box-shadow: 0 0 1px 1px rgb(57, 62, 63);
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 20;
+    height: 5px;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    /* justify-content: space-between; */
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    text-align: center;
+    background-color: rgba(38, 39, 38, 0.6);
+  }
+
+  .footer-text {
+    font-size: 1rem;
+    text-align: center;
+  }

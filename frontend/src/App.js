@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer"
 
 function App() {
   const dispatch = useDispatch();
@@ -20,8 +21,12 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route>
+            <h2>Page Not Found</h2>
+          </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }
