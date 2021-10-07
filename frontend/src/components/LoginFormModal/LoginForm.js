@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
-import './LoginFormModal.css'
+import "./LoginFormModal.css";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -22,10 +22,10 @@ function LoginForm() {
 
   const demo = (e) => {
     e.preventDefault();
-    setCredential('Demo-lition');
-    setPassword('password');
-    return dispatch(sessionActions.login('Demo-lition', 'password'))
-  }
+    setCredential("Demo-lition");
+    setPassword("password");
+    return dispatch(sessionActions.login("Demo-lition", "password"));
+  };
 
   return (
     <form onSubmit={handleSubmit} className="login-form">
@@ -34,28 +34,31 @@ function LoginForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label className="username">
-        Username
-        <input
-          className="login-input"
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          className="login-input"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Log In</button>
-      <button onMouseDown={demo}>Demo User</button>
+      <label className="login-header">Log in to Gundam Hunt</label>
+      <label className="username">Username</label>
+      <input
+        className="login-input"
+        type="text"
+        value={credential}
+        onChange={(e) => setCredential(e.target.value)}
+        required
+      />
+      <label className="password">Password</label>
+      <input
+        className="login-input"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <div className="flex">
+      <button className="submit-login" type="submit">
+        Log In
+      </button>
+      <button onMouseDown={demo} className="demo">
+        Demo User
+      </button>
+      </div>
     </form>
   );
 }

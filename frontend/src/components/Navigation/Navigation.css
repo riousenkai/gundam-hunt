@@ -100,7 +100,7 @@ a {
 
 .search-results {
   position: absolute;
-  background-color: white;
+  background-color: rgba(38, 39, 38, 1);
   bottom: -350%;
   left: 0;
   width: 100%;

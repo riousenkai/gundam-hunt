@@ -1,17 +1,71 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  height: 500px;
-  width: 500px;
-  background-color: rgba(38, 39, 38, 0.6);
+  height: 450px;
+  width: 700px;
+  background-color: rgba(38, 39, 38, 1);
   align-items: center;
+  justify-content: center;
+  background-image: url('https://i.ytimg.com/vi/2Q2CGSN0F7s/maxresdefault.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .username {
-  margin-top: 10rem;
+  font-size: 16px;
 }
 
 .login-input {
   background-color: rgba(237, 243, 238, 0.24);
   color: rgba(225, 217, 209, 1);
+  width: 200px;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.password {
+  font-size: 16px;
+}
+
+.login-header {
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-top: -5rem;
+    margin-bottom: 3rem;
+}
+
+.submit-login {
+    display: inline-block;
+    flex-direction: row;
+    background-color: black;
+    box-shadow: black;
+    border: none;
+    transition: all 150ms;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    padding: 5px 5px 5px 5px;
+    background-color: rgb(7, 107, 77);
+}
+
+.submit-login:active {
+    transform: translatey(2px);
+}
+
+.demo {
+    display: inline-block;
+    flex-direction: row;
+    background-color: rgb(7, 107, 77);
+    box-shadow: black;
+    border: none;
+    transition: all 150ms;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 5px 5px 5px;
+}
+
+.demo:active {
+    transform: translatey(2px);
 }

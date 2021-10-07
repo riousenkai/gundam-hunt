@@ -3,8 +3,10 @@ import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormPage";
 import "./Navigation.css";
 import image from '../Images/header.png'
+import image2 from '../Images/header2.png'
 
 function Navigation({ isLoaded }) {
   const history = useHistory("");
@@ -12,6 +14,7 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const searchDiv = document.querySelector(".search-container");
   const searchRes = document.querySelector(".search-results");
+  const img = document.getElementById('img-top')
 
   const hide = () => {
     const dropdown = document.querySelectorAll(".gundam-dropdown");
@@ -31,15 +34,21 @@ function Navigation({ isLoaded }) {
     searchDiv.classList.remove("search-container-focus");
   };
 
+  const imgChange = () => {
+    img.src = image2;
+  }
+
+  const imgReturn = () => {
+    img.src = image
+  }
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = <ProfileButton user={sessionUser} />;
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/signup" className="gundam-dropdown nav-right">
-          Sign Up
-        </NavLink>
+        <SignupFormModal />
         <LoginFormModal />
       </>
     );
@@ -48,7 +57,7 @@ function Navigation({ isLoaded }) {
   return (
     <div className="header">
       <NavLink to="/" className="header-icon">
-        <img id="img-top" src={image} />
+        <img id="img-top" src={image} onMouseOver={imgChange} onMouseOut={imgReturn} />
       </NavLink>
       <div className="search-container">
         <input
