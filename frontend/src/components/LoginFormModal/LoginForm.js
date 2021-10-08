@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import "./LoginFormModal.css";
+import { useShowModal } from "../../context/ShowModal"
 
 function LoginForm() {
+  const { setShowModal, setNum } = useShowModal();
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +31,7 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className="login-form">
-      <ul>
+      <ul className="error-login">
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}

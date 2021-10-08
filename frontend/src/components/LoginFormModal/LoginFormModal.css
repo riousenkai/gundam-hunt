@@ -10,6 +10,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  animation: move-it 280ms linear;
 }
 
 .username {
@@ -22,6 +23,7 @@
   width: 200px;
   font-size: 16px;
   margin-bottom: 12px;
+  font-family: inherit;
 }
 
 .password {
@@ -48,6 +50,7 @@
     margin-right: 10px;
     padding: 5px 5px 5px 5px;
     background-color: rgb(7, 107, 77);
+    font-family: inherit;
 }
 
 .submit-login:active {
@@ -64,8 +67,35 @@
     cursor: pointer;
     font-size: 16px;
     padding: 5px 5px 5px 5px;
+    font-family: inherit;
 }
 
 .demo:active {
     transform: translatey(2px);
+}
+
+@keyframes move-it {
+  0% {
+    transform: translateY(10rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+ul.error-login {
+  text-align: center;
+  padding: none !important;
+  padding-inline-start: 0;
+}
+
+.error-login > li {
+  display: block;
+  list-style-type: none;
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
 }

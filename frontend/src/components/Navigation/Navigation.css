@@ -50,6 +50,7 @@
   height: 1.5rem;
   background-color: rgba(237, 243, 238, 0.24);
   color: rgba(225, 217, 209, 1);
+  font-family: inherit;
 }
 
 .search::-webkit-input-placeholder {

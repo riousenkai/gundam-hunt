@@ -1,0 +1,73 @@
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 700px;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://i.pinimg.com/originals/b2/a5/c0/b2a5c03f75b6778c54d61b6850e733e4.jpg');
+    /* background-image: url('https://www.ft.com/__origami/service/image/v2/images/raw/https%253A%252F%252Fs3-ap-northeast-1.amazonaws.com%252Fpsh-ex-ftnikkei-3937bb4%252Fimages%252F8%252F0%252F5%252F7%252F31307508-3-eng-GB%252F20201218-AO7I9795Photo%2520by%2520Koji%2520Uema.jpg?width=700&fit=cover&gravity=faces&dpr=2&quality=medium&source=nar-cms'); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    animation: move-it 280ms linear;
+  }
+
+.signup-submit {
+  display: inline-block;
+  flex-direction: row;
+  background-color: rgb(166,182,146);
+  color: grey;
+  box-shadow: black;
+  border: none;
+  transition: all 150ms;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 10px 10px 10px;
+  font-family: inherit;
+}
+
+.signup-submit:active {
+  transform: translatey(2px);
+  color: rgba(38, 39, 38, 1);
+}
+
+.signup-input {
+  color: black;
+  background-color: rgba(237, 243, 238, 0.8);
+  width: 200px;
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-family: inherit;
+}
+
+.signup-input:focus {
+  outline: none;
+}
+
+.signup-label {
+  font-size: 16;
+  color: whitesmoke;
+}
+
+.errors > li {
+  color: black;
+  text-decoration: none;
+  list-style-type: none;
+  background-color: rgba(237, 243, 238, 0.8);
+}
+
+
+
+@keyframes move-it {
+  0% {
+    transform: translateY(10rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

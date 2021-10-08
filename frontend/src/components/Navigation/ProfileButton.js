@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { useShowModal } from "../../context/ShowModal"
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const { setShowModal, setNum } = useShowModal();
 
   const openMenu = () => {
     if (showMenu) return;
@@ -25,6 +27,8 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
+    setShowModal(false)
+    setNum(0)
     dispatch(sessionActions.logout());
   };
 
