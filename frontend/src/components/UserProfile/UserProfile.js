@@ -35,21 +35,21 @@ const UserProfile = () => {
       </div>
       <div className="profile-bottom">
         <div className="profile-bottom-left">
-          <div className="profile-upvotes">Upvotes (num)</div>
+          <div className="profile-upvotes">Upvotes (2)</div>
           <div className="profile-activity">
-          <NavLink to="/" className="activity-card">
+            <NavLink to="/" className="activity-card">
                 <img className="activity-img" src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg" />
                 <div className="activity-card-text">
-                <p className="activity-title">Shin Musha Gundam</p>
-                <p className="activity-description">Master Grade</p>
+                    <p className="activity-title">Shin Musha Gundam</p>
+                    <p className="activity-description">Master Grade</p>
                 </div>
                 <button type="button" className="activity-upvote" onClick={prevent}>1</button>
             </NavLink>
             <NavLink to="/" className="activity-card">
                 <img className="activity-img" src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg" />
                 <div className="activity-card-text">
-                <p className="activity-title">Shin Musha Gundam</p>
-                <p className="activity-description">Master Grade</p>
+                    <p className="activity-title">Shin Musha Gundam</p>
+                    <p className="activity-description">Master Grade</p>
                 </div>
                 <button type="button" className="activity-upvote" onClick={prevent}>1</button>
             </NavLink>
