@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import "./LoginFormModal.css";
-import { useShowModal } from "../../context/ShowModal"
+import { useShowModal } from "../../context/ShowModal";
 
 function LoginForm() {
   const { setShowModal, setNum } = useShowModal();
@@ -26,7 +26,9 @@ function LoginForm() {
     e.preventDefault();
     setCredential("Demo-lition");
     setPassword("password");
-    return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" }));
+    return dispatch(
+      sessionActions.login({ credential: "Demo-lition", password: "password" })
+    );
   };
 
   return (
@@ -54,12 +56,12 @@ function LoginForm() {
         required
       />
       <div className="flex">
-      <button className="submit-login" type="submit">
-        Log In
-      </button>
-      <button type="button" onMouseDown={demo} className="demo">
-        Demo User
-      </button>
+        <button className="submit-login" type="submit">
+          Log In
+        </button>
+        <button type="button" onMouseDown={demo} className="demo">
+          Demo User
+        </button>
       </div>
     </form>
   );

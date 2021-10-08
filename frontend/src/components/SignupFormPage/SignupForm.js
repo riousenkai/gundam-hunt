@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css";
-import { useShowModal } from "../../context/ShowModal"
-
+import { useShowModal } from "../../context/ShowModal";
 
 function SignupFormPage() {
   const { setShowModal, setNum } = useShowModal();
@@ -22,18 +21,19 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return await dispatch(
+      await dispatch(
         sessionActions.signup({ email, username, password })
       ).catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
       });
+    } else {
+      setErrors([
+        "Confirm Password field must be the same as the Password field",
+      ]);
     }
-    setShowModal(false)
-    setNum(0)
-    return setErrors([
-      "Confirm Password field must be the same as the Password field",
-    ]);
   };
 
   return (
