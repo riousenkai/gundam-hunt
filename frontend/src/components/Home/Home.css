@@ -1,9 +1,14 @@
 .body {
-  margin-top: 1rem;
-  margin-left: 22%;
-  margin-right: 22%;
-  color: rgba(225, 217, 209, 1);
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.body-container {
   display: flex;
+  margin: 0 auto;
+  color: rgba(225, 217, 209, 1);
+  margin-top: 1rem;
 }
 
 .title-text {
@@ -50,8 +55,8 @@
 }
 
 .side-card {
-    width: 20rem;
-    height: 5rem;
-    margin: 1rem;
-    border-bottom: 0.5px solid white;
-  }
+  width: 20rem;
+  height: 5rem;
+  margin: 1rem;
+  border-bottom: 0.5px solid white;
+}

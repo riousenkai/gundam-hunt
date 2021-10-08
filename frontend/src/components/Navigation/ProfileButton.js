@@ -37,7 +37,7 @@ function ProfileButton({ user }) {
     <>
     <button className="submit-post">Submit</button>
     <div className="gundam-dropdown">
-      <button className="gundam-dropbtn pointer">
+      <button className="gundam-dropbtn">
         <i className="fas fa-user-circle" />
       </button>
       <div className="gundam-dropdown-content-right">
