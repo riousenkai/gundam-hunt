@@ -26,7 +26,7 @@ function LoginForm() {
     e.preventDefault();
     setCredential("Demo-lition");
     setPassword("password");
-    return dispatch(sessionActions.login("Demo-lition", "password"));
+    return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" }));
   };
 
   return (
@@ -57,7 +57,7 @@ function LoginForm() {
       <button className="submit-login" type="submit">
         Log In
       </button>
-      <button onMouseDown={demo} className="demo">
+      <button type="button" onMouseDown={demo} className="demo">
         Demo User
       </button>
       </div>
