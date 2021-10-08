@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer"
 import Home from "./components/Home"
+import UserProfile from "./components/UserProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,8 +23,8 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/signup">
-            <SignupFormPage />
+          <Route path="/profile">
+            <UserProfile />
           </Route>
           <Route>
             <h2>Page Not Found</h2>

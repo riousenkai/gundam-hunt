@@ -4,8 +4,7 @@ import SignupForm from './SignupForm'
 import { useShowModal } from '../../context/ShowModal'
 
 function SignupFormModal() {
-  const { showModal, setShowModal, num, setNum } = useShowModal()
-
+  const { setShowModal, num, setNum } = useShowModal()
 
   const opener = () => {
     setNum(1)
