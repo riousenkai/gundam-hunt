@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { useShowModal } from "../../context/ShowModal";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
+  const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const { setShowModal, setNum } = useShowModal();
@@ -31,11 +32,12 @@ function ProfileButton({ user }) {
     setShowModal(false);
     setNum(0);
     dispatch(sessionActions.logout());
+    history.push("/")
   };
 
   return (
     <>
-    <button className="submit-post">Submit</button>
+    <button className="submit-post gundam-dropdown">Submit</button>
     <div className="gundam-dropdown">
       <button className="gundam-dropbtn">
         <i className="fas fa-user-circle" />

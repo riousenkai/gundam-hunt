@@ -1,6 +1,6 @@
 .profile-body {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     height: 100%;
     width: 100%;
 }
@@ -11,8 +11,9 @@
     margin: 0 auto;
     margin-top: 2rem;
     width: 70rem;
-    background-color: rgba(81, 85, 81, 0.8);;
+    background-color: rgba(81, 85, 81, 0.9);;
     height: 250px;
+    border-radius: 5px;
 }
 
 .profile-img-card {
@@ -35,6 +36,7 @@
 .profile-username {
     font-size: 1.5rem;
     margin-bottom: 15px;
+    font-weight: 500;
 }
 
 .profile-description {
@@ -54,4 +56,72 @@
 
 .edit-profile:active {
     transform: translateY(2px)
+}
+
+.profile-bottom {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 2rem;
+    width: 70rem;
+    height: 250px;
+}
+
+.profile-bottom-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-upvotes {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.profile-activity {
+    width: 716px;
+    background-color: rgba(38, 39, 38, 0.6);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: none;
+}
+
+.activity-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 105px;
+    padding: 20px 20px 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.activity-card-text {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.activity-card:hover {
+    background-color: rgba(38, 39, 38, 0.9);
+}
+
+.activity-img {
+    height: 100px;
+    width: 100px;
+}
+
+.activity-title {
+    margin-left: 2px;
+    font-size: 18px;
+    font-weight: 500;
+    z-index: 50;
+}
+
+.activity-upvote {
+    text-align: center;
+    z-index: 100;
+    color: black;
+    height: 50px;
+    width: 50px;
+    float: right;
+    cursor: pointer;
 }
