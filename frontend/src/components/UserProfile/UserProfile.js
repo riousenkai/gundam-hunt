@@ -92,6 +92,12 @@ const UserProfile = () => {
               <i className="fas fa-birthday-cake"></i>
               <p className="user-joined">Joined on {mainUser?.createdAt}</p>
             </div>
+            <p className="profile-comments-title">Comments</p>
+            <div className="profile-comments-right">
+              {!mainUser.comments && (
+                <div>No comments yet.</div>
+              )}
+            </div>
           </div>
         </div>
       </div>

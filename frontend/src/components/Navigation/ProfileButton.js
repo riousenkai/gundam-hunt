@@ -1,31 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink, useHistory } from "react-router-dom";
+import { retrieveUser } from "../../store/user";
+
 
 function ProfileButton({ user }) {
   const history = useHistory()
   const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
+  const [ loaded, setLoaded ] = useState(false);
   const { setShowModal, setNum } = useShowModal();
-
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
+  const mainUser = useSelector((state) => state.user.user);
 
   useEffect(() => {
-    if (!showMenu) return;
-
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
-
-    document.addEventListener("click", closeMenu);
-
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+    dispatch(retrieveUser(user.id)).then(() => setLoaded(true))
+  }, [user.id]);
 
   const logout = (e) => {
     e.preventDefault();
@@ -35,12 +25,15 @@ function ProfileButton({ user }) {
     history.push("/")
   };
 
+  if(loaded) {
   return (
     <>
     <button className="submit-post gundam-dropdown">Submit</button>
     <div className="gundam-dropdown">
+      {console.log(user)}
       <button className="gundam-dropbtn">
-        <i className="fas fa-user-circle" />
+        <img src={mainUser.image_url} />
+        {/* <i className="fas fa-user-circle" /> */}
       </button>
       <div className="gundam-dropdown-content-right">
         <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
@@ -52,6 +45,9 @@ function ProfileButton({ user }) {
     </div>
     </>
   );
+  } else {
+    return null;
+  }
 }
 
 export default ProfileButton;
