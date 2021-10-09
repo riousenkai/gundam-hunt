@@ -1,152 +1,162 @@
 .profile-body {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 .profile-top {
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    margin-top: 2rem;
-    width: 1070px;
-    background-color: rgba(81, 85, 81, 0.9);;
-    height: 250px;
-    border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 1070px;
+  background-color: rgba(81, 85, 81, 0.9);
+  height: 250px;
+  border-radius: 5px;
 }
 
 .profile-img-card {
-    width: 200px;
-    height: 200px;
-    margin-right: 30px;
-    margin-left: 35px;
+  width: 200px;
+  height: 200px;
+  margin-right: 30px;
+  margin-left: 35px;
 }
 
 .profile-img {
-    /* clip-path: circle(); */
-    border-radius: 50%;
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-    vertical-align: bottom;
-    border: 5px solid rgb(27, 27, 27);
+  /* clip-path: circle(); */
+  border-radius: 50%;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  vertical-align: bottom;
+  border: 5px solid rgb(27, 27, 27);
 }
 
 .profile-username {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 500;
 }
 
 .profile-description {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .edit-profile {
-    margin-top: 15px;
-    background-color: rgba(38, 39, 38, 1);
-    border: 1px solid white;
-    padding: 5px 5px 5px 5px;
+  margin-top: 15px;
+  background-color: rgba(38, 39, 38, 1);
+  border: 1px solid white;
+  padding: 5px 5px 5px 5px;
 }
 
 .edit-profile:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .edit-profile:active {
-    transform: translateY(2px)
+  transform: translateY(2px);
 }
 
 .profile-bottom {
-    display: flex;
-    margin: 0 auto;
-    margin-top: 2rem;
-    width: 1070px;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 1070px;
 }
 
 .profile-bottom-left {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .profile-upvotes {
-    font-size: 1.8rem;
-    font-weight: 500;
-    margin-bottom: 10px;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .profile-activity {
-    width: 716px;
-    background-color: rgba(38, 39, 38, 0.6);
-    border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-bottom: none;
+  width: 716px;
+  background-color: rgba(38, 39, 38, 0.6);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: none;
 }
 
 .activity-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 105px;
-    padding: 20px 20px 20px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 105px;
+  padding: 20px 20px 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .activity-card-text {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 502px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 502px;
 }
 
 .activity-card:hover {
-    background-color: rgba(38, 39, 38, 0.9);
-    cursor: pointer;
+  background-color: rgba(38, 39, 38, 0.9);
+  cursor: pointer;
 }
 
 .activity-img {
-    height: 100px;
-    width: 100px;
+  height: 100px;
+  width: 100px;
 }
 
 .activity-title {
-    margin-left: 2px;
-    font-size: 18px;
-    font-weight: 500;
-    z-index: 50;
+  margin-left: 2px;
+  font-size: 18px;
+  font-weight: 500;
+  z-index: 50;
 }
 
 .activity-upvote {
-    text-align: center;
-    z-index: 100;
-    color: black;
-    height: 50px;
-    width: 70px;
-    float: right;
-    cursor: pointer;
-    background-color:rgb(4,9,22);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+  text-align: center;
+  z-index: 100;
+  color: black;
+  height: 50px;
+  width: 70px;
+  float: right;
+  cursor: pointer;
+  background-color: rgb(4, 9, 22);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 .activity-upvote:active {
-    transform: translateY(-4px)
+  transform: translateY(-4px);
 }
 
 .profile-bottom-right {
-    width: 332px;
-    margin-left: 20px;
+  width: 332px;
+  margin-left: 20px;
 }
 
 .profile-comments {
-    height: 235px;
-    background-color: rgba(38, 39, 38, 0.6);
-    border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-bottom: none;
-    padding: 20px 20px 20px 20px;
-    margin-top: 3rem;
+  height: 235px;
+  background-color: rgba(38, 39, 38, 0.6);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 20px 20px 20px 20px;
+  margin-top: 3rem;
+  font-size: 20px;
+  display: flex;
+}
+
+.fas {
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.user-joined {
+  font-weight: lighter;
 }

@@ -1,8 +1,11 @@
 import { useEffect, useReducer } from "react";
+import { render } from "react-dom";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
 import "./UserProfile.css";
+
+
 
 const UserProfile = () => {
   const history = useHistory("");
@@ -15,21 +18,20 @@ const UserProfile = () => {
   }, [user]);
 
   const prevent = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   const dateChange = (date) => {
-      console.log(user.createdAt.split('T'))
-  }
+    const dateSplit = date.split("T");
+    const finDate = dateSplit[0].split("-");
+    return `${finDate[1]}/${finDate[2]}/${finDate[0]}`;
+  };
 
   return (
     <div className="profile-body">
       <div className="profile-top">
         <div className="profile-img-card">
-          <img
-            className="profile-img"
-            src={user?.image_url}
-          />
+          <img className="profile-img" src={user?.image_url} />
         </div>
         <div className="profile-info">
           <p className="profile-username">{user?.username}</p>
@@ -42,27 +44,48 @@ const UserProfile = () => {
           <div className="profile-upvotes">Upvotes (2)</div>
           <div className="profile-activity">
             <NavLink to="/" className="activity-card">
-                <img className="activity-img" src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg" />
-                <div className="activity-card-text">
-                    <p className="activity-title">Shin Musha Gundam</p>
-                    <p className="activity-description">Master Grade</p>
-                </div>
-                <button type="button" className="activity-upvote" onClick={prevent}>5422</button>
+              <img
+                className="activity-img"
+                src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg"
+              />
+              <div className="activity-card-text">
+                <p className="activity-title">Shin Musha Gundam</p>
+                <p className="activity-description">Master Grade</p>
+              </div>
+              <button
+                type="button"
+                className="activity-upvote"
+                onClick={prevent}
+              >
+                5422
+              </button>
             </NavLink>
             <NavLink to="/" className="activity-card">
-                <img className="activity-img" src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg" />
-                <div className="activity-card-text">
-                    <p className="activity-title">Shin Musha Gundam</p>
-                    <p className="activity-description">Master Grade</p>
-                </div>
-                <button type="button" className="activity-upvote" onClick={prevent}>1</button>
+              <img
+                className="activity-img"
+                src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg"
+              />
+              <div className="activity-card-text">
+                <p className="activity-title">Shin Musha Gundam</p>
+                <p className="activity-description">Master Grade</p>
+              </div>
+              <button
+                type="button"
+                className="activity-upvote"
+                onClick={prevent}
+              >
+                1
+              </button>
             </NavLink>
           </div>
         </div>
         <div className="profile-bottom-right">
-            <div className="profile-comments">
-                <p className="user-joined">Joined {user?.createdAt}</p>
-            </div>
+          <div className="profile-comments">
+            <i className="fas fa-birthday-cake"></i>
+            <p className="user-joined">
+              Joined on {user.createdAt && dateChange(user.createdAt)}
+            </p>
+          </div>
         </div>
       </div>
     </div>

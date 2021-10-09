@@ -40,4 +40,16 @@ router.post(
   })
 );
 
+router.get("/profile", asyncHandler(async (req, res) => {
+  const { username } = req.body;
+
+  const user = await User.findOne({
+    where: {
+      username,
+    }
+  })
+
+  res.json({ user })
+}))
+
 module.exports = router;
