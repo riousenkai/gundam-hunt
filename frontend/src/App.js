@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer"
 import Home from "./components/Home"
 import UserProfile from "./components/UserProfile";
+import Settings from "./components/Settings/Settings";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/profile/:id">
             <UserProfile />
+          </Route>
+          <Route path="/settings">
+            <Settings />
           </Route>
           <Route>
             <h2>Page Not Found</h2>

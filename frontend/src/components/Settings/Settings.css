@@ -1,0 +1,41 @@
+.settings-main {
+  width: 1070px;
+  margin: 0 auto;
+  margin-top: 5rem;
+  display: flex;
+}
+
+.settings-change {
+  width: 716px;
+  background-color: rgba(38, 39, 38, 0.6);
+  border-radius: 5px;
+  border: 1px solid #ffffff80;
+  padding: 20px 20px 20px 20px;
+  font-size: 16px;
+}
+
+.settings-img-change {
+  width: 332px;
+  margin-left: 20px;
+  background-color: rgba(38, 39, 38, 0.6);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 20px 20px 20px 20px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.settings-img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 150px;
+  width: 150px;
+  vertical-align: bottom;
+}
