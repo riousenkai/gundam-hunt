@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
 import { NavLink, Redirect } from "react-router-dom";
 import { retrieveUser, retrieveAllUsers } from "../../store/user";
 import { restoreUser } from "../../store/session";
@@ -8,7 +8,6 @@ import "./UserProfile.css";
 
 const UserProfile = () => {
   const { id } = useParams();
-  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const mainUser = useSelector((state) => state.user.user);
@@ -16,15 +15,16 @@ const UserProfile = () => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(restoreUser())
+    dispatch(restoreUser());
     dispatch(retrieveUser(id));
-    dispatch(retrieveAllUsers()).then(()=> setLoaded(true));
+    dispatch(retrieveAllUsers()).then(() => setLoaded(true));
   }, [id]);
 
-  const prevent = (e) => { 
+  const prevent = (e) => {
     e.preventDefault();
   };
 
+  // date change
   const dateChange = (date) => {
     const dateSplit = date.split("T");
     const finDate = dateSplit[0].split("-");
@@ -32,7 +32,7 @@ const UserProfile = () => {
   };
 
   if (loaded === true) {
-    if(allUsers.users.length < +id) return (<Redirect to="/" />)
+    if (allUsers.users.length < +id) return <Redirect to="/" />;
     return (
       <div className="profile-body">
         <div className="profile-top">
@@ -43,8 +43,10 @@ const UserProfile = () => {
             <p className="profile-username">{mainUser?.username}</p>
             <p className="profile-description">{mainUser?.description}</p>
             {user.username === mainUser.username ? (
-                <NavLink to="/settings"><button className="edit-profile">Edit my profile</button></NavLink>
-              ) : null}
+              <NavLink to="/settings">
+                <button className="edit-profile">Edit my profile</button>
+              </NavLink>
+            ) : null}
           </div>
         </div>
         <div className="profile-bottom">
@@ -94,9 +96,7 @@ const UserProfile = () => {
             </div>
             <p className="profile-comments-title">Comments</p>
             <div className="profile-comments-right">
-              {!mainUser.comments && (
-                <div>No comments yet.</div>
-              )}
+              {!mainUser.comments && <div>No comments yet.</div>}
             </div>
           </div>
         </div>
@@ -104,10 +104,10 @@ const UserProfile = () => {
     );
   } else {
     return (
-    <div className="profile-loading">
-      <p className="profile-load">Loading...</p>
-    </div>
-    )
+      <div className="profile-loading">
+        <img className="loading-img" src="https://c.tenor.com/zt4FFbGYIvcAAAAM/gundam.gif" />
+      </div>
+    );
   }
 };
 

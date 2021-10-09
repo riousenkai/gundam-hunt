@@ -3,46 +3,44 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink, useHistory } from "react-router-dom";
-import { retrieveUser } from "../../store/user";
-import { restoreUser } from "../../store/session"
+import { getMainUser } from "../../store/user"
 
 function ProfileButton({ user }) {
-  const history = useHistory()
+  const history = useHistory();
   const dispatch = useDispatch();
-  const [ loaded, setLoaded ] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const { setShowModal, setNum } = useShowModal();
-  const mainUser = useSelector((state) => state.user.user);
+  const mainUser = useSelector((state) => state.user.mainUser)
 
   useEffect(() => {
-    dispatch(restoreUser())
-    dispatch(retrieveUser(user.id)).then(() => setLoaded(true))
-  }, []);
+    dispatch(getMainUser(user.id)).then(() => setLoaded(true));
+  }, [loaded]);
 
   const logout = (e) => {
     e.preventDefault();
     setShowModal(false);
     setNum(0);
     dispatch(sessionActions.logout());
-    history.push("/")
+    history.push("/");
   };
 
-  if(loaded) {
-  return (
-    <>
-    <button className="submit-post gundam-dropdown">Submit</button>
-    <div className="gundam-dropdown">
-      <button className="gundam-dropbtn">
-        <img className="nav-profile-image" src={mainUser.image_url} />
-      </button>
-      <div className="gundam-dropdown-content-right">
-        <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
-        <NavLink to="/">My Gundams</NavLink>
-        <NavLink to="/">Settings</NavLink>
-        <div onClick={logout}>Log Out</div>
-      </div>
-    </div>
-    </>
-  );
+  if (loaded) {
+    return (
+      <>
+        <button className="submit-post gundam-dropdown">Submit</button>
+        <div className="gundam-dropdown">
+          <button className="gundam-dropbtn">
+            <img className="nav-profile-image" src={mainUser.image_url} />
+          </button>
+          <div className="gundam-dropdown-content-right">
+            <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
+            <NavLink to="/">My Gundams</NavLink>
+            <NavLink to="/">Settings</NavLink>
+            <div onClick={logout}>Log Out</div>
+          </div>
+        </div>
+      </>
+    );
   } else {
     return null;
   }
