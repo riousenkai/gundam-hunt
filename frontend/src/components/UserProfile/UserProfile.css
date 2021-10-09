@@ -44,7 +44,7 @@
 }
 
 .edit-profile {
-  margin-top: 15px;
+  margin-top: 1px;
   background-color: rgba(38, 39, 38, 1);
   border: 1px solid white;
   padding: 5px 5px 5px 5px;
@@ -159,4 +159,17 @@
 
 .user-joined {
   font-weight: lighter;
+}
+
+.profile-load {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 2rem;
+    width: 1070px;
+    background-color: rgba(81, 85, 81, 0.9);
+    height: 250px;
+    border-radius: 5px;
+    font-size: 5rem;
 }

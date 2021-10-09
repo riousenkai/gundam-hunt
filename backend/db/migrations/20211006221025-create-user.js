@@ -33,7 +33,7 @@ module.exports = {
       description: {
         allowNull: true,
         type: Sequelize.TEXT,
-        defaulValue: "Hello."
+        defaultValue: "Hello!",
       },
       createdAt: {
         allowNull: false,

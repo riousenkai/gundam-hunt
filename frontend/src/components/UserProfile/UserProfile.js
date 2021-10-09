@@ -1,25 +1,24 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router";
-import { NavLink } from "react-router-dom";
-import { retrieveUser } from "../../store/user";
+import { NavLink, Redirect } from "react-router-dom";
+import { retrieveUser, retrieveAllUsers } from "../../store/user";
+import { restoreUser } from "../../store/session";
 import "./UserProfile.css";
 
 const UserProfile = () => {
   const { id } = useParams();
-  console.log(useParams())
-  console.log(id)
-  const history = useHistory("");
+  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const mainUser = useSelector((state) => state.user.user);
+  const allUsers = useSelector((state) => state.user.users);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-     dispatch(retrieveUser(id));
-     console.log(mainUser)
-    if (!user) {
-      history.push("/");
-    }
+    dispatch(restoreUser())
+    dispatch(retrieveUser(id));
+    dispatch(retrieveAllUsers()).then(()=> setLoaded(true));
   }, [id]);
 
   const prevent = (e) => {
@@ -32,70 +31,78 @@ const UserProfile = () => {
     return `${finDate[1]}/${finDate[2]}/${finDate[0]}`;
   };
 
-  return (
-    <div className="profile-body">
-      {mainUser && console.log(mainUser)}
-      <div className="profile-top">
-        <div className="profile-img-card">
-          <img className="profile-img" src={user?.image_url} />
-        </div>
-        <div className="profile-info">
-          <p className="profile-username">{user?.username}</p>
-          <p className="profile-description">{user?.description}</p>
-          <button className="edit-profile">Edit My Profile</button>
-        </div>
-      </div>
-      <div className="profile-bottom">
-        <div className="profile-bottom-left">
-          <div className="profile-upvotes">Upvotes (2)</div>
-          <div className="profile-activity">
-            <NavLink to="/" className="activity-card">
-              <img
-                className="activity-img"
-                src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg"
-              />
-              <div className="activity-card-text">
-                <p className="activity-title">Shin Musha Gundam</p>
-                <p className="activity-description">Master Grade</p>
-              </div>
-              <button
-                type="button"
-                className="activity-upvote"
-                onClick={prevent}
-              >
-                5422
-              </button>
-            </NavLink>
-            <NavLink to="/" className="activity-card">
-              <img
-                className="activity-img"
-                src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg"
-              />
-              <div className="activity-card-text">
-                <p className="activity-title">Shin Musha Gundam</p>
-                <p className="activity-description">Master Grade</p>
-              </div>
-              <button
-                type="button"
-                className="activity-upvote"
-                onClick={prevent}
-              >
-                1
-              </button>
-            </NavLink>
+  if (loaded === true) {
+    if(allUsers.users.length < +id) return (<Redirect to="/" />)
+    return (
+      <div className="profile-body">
+        <div className="profile-top">
+          <div className="profile-img-card">
+            <img className="profile-img" src={mainUser?.image_url} />
+          </div>
+          <div className="profile-info">
+            <p className="profile-username">{mainUser?.username}</p>
+            <p className="profile-description">{mainUser?.description}</p>
+            {user.username === mainUser.username ? (
+                <NavLink to="/settings"><button className="edit-profile">Edit my profile</button></NavLink>
+              ) : null}
           </div>
         </div>
-        <div className="profile-bottom-right">
-          <div className="profile-comments">
-            <i className="fas fa-birthday-cake"></i>
-            <p className="user-joined">
-              Joined on {user.createdAt && dateChange(user.createdAt)}
-            </p>
+        <div className="profile-bottom">
+          <div className="profile-bottom-left">
+            <div className="profile-upvotes">Upvotes (2)</div>
+            <div className="profile-activity">
+              <NavLink to="/" className="activity-card">
+                <img
+                  className="activity-img"
+                  src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg"
+                />
+                <div className="activity-card-text">
+                  <p className="activity-title">Shin Musha Gundam</p>
+                  <p className="activity-description">Master Grade</p>
+                </div>
+                <button
+                  type="button"
+                  className="activity-upvote"
+                  onClick={prevent}
+                >
+                  5422
+                </button>
+              </NavLink>
+              <NavLink to="/" className="activity-card">
+                <img
+                  className="activity-img"
+                  src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg"
+                />
+                <div className="activity-card-text">
+                  <p className="activity-title">Shin Musha Gundam</p>
+                  <p className="activity-description">Master Grade</p>
+                </div>
+                <button
+                  type="button"
+                  className="activity-upvote"
+                  onClick={prevent}
+                >
+                  1
+                </button>
+              </NavLink>
+            </div>
+          </div>
+          <div className="profile-bottom-right">
+            <div className="profile-comments">
+              <i className="fas fa-birthday-cake"></i>
+              <p className="user-joined">Joined on {mainUser?.createdAt}</p>
+            </div>
           </div>
         </div>
       </div>
+    );
+  } else {
+    return (
+    <div className="profile-loading">
+      <p className="profile-load">Loading...</p>
     </div>
-  );
+    )
+  }
 };
 
 export default UserProfile;

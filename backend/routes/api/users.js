@@ -40,12 +40,22 @@ router.post(
   })
 );
 
-router.get("/profile/:userId", asyncHandler(async (req, res) => {
-  const { userId } = req.params.userId;
+// Get all users
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const users = await User.findAll();
+    return res.json({ users });
+  })
+);
 
-  const user = await User.findByPk(userId);
-
-  return res.json({ user });
-}));
+// Get one user
+router.get(
+  "/profile/:userId",
+  asyncHandler(async (req, res) => {
+    const user = await User.findByPk(req.params.userId);
+    return res.json({ user });
+  })
+);
 
 module.exports = router;
