@@ -15,9 +15,10 @@ const UserProfile = () => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(restoreUser());
-    dispatch(retrieveUser(id));
-    dispatch(retrieveAllUsers()).then(() => setLoaded(true));
+    dispatch(restoreUser())
+      .then(() => dispatch(retrieveUser(id)))
+      .then(dispatch(retrieveAllUsers()))
+      .then(() => setLoaded(true));
   }, [id]);
 
   const prevent = (e) => {
@@ -105,7 +106,10 @@ const UserProfile = () => {
   } else {
     return (
       <div className="profile-loading">
-        <img className="loading-img" src="https://c.tenor.com/zt4FFbGYIvcAAAAM/gundam.gif" />
+        <img
+          className="loading-img"
+          src="https://c.tenor.com/zt4FFbGYIvcAAAAM/gundam.gif"
+        />
       </div>
     );
   }
