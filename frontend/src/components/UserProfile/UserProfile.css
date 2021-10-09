@@ -129,3 +129,7 @@
     background-color: rgba(225, 217, 209, 1);
     border: none;
 }
+
+.activity-upvote:active {
+    transform: translateY(-4px)
+}
