@@ -177,3 +177,13 @@ a {
 .submit-post:hover {
   cursor: pointer;
 }
+
+.nav-profile-image {
+  /* clip-path: circle(); */
+  border-radius: 50%;
+  object-fit: cover;
+  height: 40px;
+  width: 40px;
+  vertical-align: bottom;
+  border: 5px solid rgb(27, 27, 27);
+}

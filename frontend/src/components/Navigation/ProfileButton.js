@@ -4,7 +4,7 @@ import * as sessionActions from "../../store/session";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink, useHistory } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
-
+import { restoreUser } from "../../store/session"
 
 function ProfileButton({ user }) {
   const history = useHistory()
@@ -14,8 +14,9 @@ function ProfileButton({ user }) {
   const mainUser = useSelector((state) => state.user.user);
 
   useEffect(() => {
+    dispatch(restoreUser())
     dispatch(retrieveUser(user.id)).then(() => setLoaded(true))
-  }, [user.id]);
+  }, []);
 
   const logout = (e) => {
     e.preventDefault();
@@ -30,16 +31,13 @@ function ProfileButton({ user }) {
     <>
     <button className="submit-post gundam-dropdown">Submit</button>
     <div className="gundam-dropdown">
-      {console.log(user)}
       <button className="gundam-dropbtn">
-        <img src={mainUser.image_url} />
-        {/* <i className="fas fa-user-circle" /> */}
+        <img className="nav-profile-image" src={mainUser.image_url} />
       </button>
       <div className="gundam-dropdown-content-right">
         <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
         <NavLink to="/">My Gundams</NavLink>
         <NavLink to="/">Settings</NavLink>
-        <NavLink to="/">{user.email}</NavLink>
         <div onClick={logout}>Log Out</div>
       </div>
     </div>

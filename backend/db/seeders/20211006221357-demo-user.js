@@ -14,13 +14,17 @@ module.exports = {
       },
       {
         email: faker.internet.email(),
-        username: 'FakeUser1',
+        username: "Heero",
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
+        image_url: faker.internet.avatar(),
+        description: faker.name.jobTitle(),
       },
       {
         email: faker.internet.email(),
-        username: 'FakeUser2',
+        username: "Trowa",
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
+        image_url: faker.internet.avatar(),
+        description: faker.name.jobTitle(),
       },
     ], {});
   },
@@ -28,7 +32,7 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Users', {
-      username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
+      username: { [Op.in]: ['Demo-lition', 'Heero', 'Trowa'] }
     }, {});
   }
 };

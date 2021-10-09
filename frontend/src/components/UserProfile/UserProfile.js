@@ -21,7 +21,7 @@ const UserProfile = () => {
     dispatch(retrieveAllUsers()).then(()=> setLoaded(true));
   }, [id]);
 
-  const prevent = (e) => {
+  const prevent = (e) => { 
     e.preventDefault();
   };
 
