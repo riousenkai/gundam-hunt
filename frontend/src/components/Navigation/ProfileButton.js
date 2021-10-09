@@ -43,7 +43,7 @@ function ProfileButton({ user }) {
         <i className="fas fa-user-circle" />
       </button>
       <div className="gundam-dropdown-content-right">
-        <NavLink to="/profile">Profile</NavLink>
+        <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
         <NavLink to="/">My Gundams</NavLink>
         <NavLink to="/">Settings</NavLink>
         <NavLink to="/">{user.email}</NavLink>

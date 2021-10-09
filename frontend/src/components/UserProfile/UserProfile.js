@@ -1,21 +1,26 @@
 import { useEffect, useReducer } from "react";
-import { render } from "react-dom";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory, useParams } from "react-router";
 import { NavLink } from "react-router-dom";
+import { retrieveUser } from "../../store/user";
 import "./UserProfile.css";
 
-
-
 const UserProfile = () => {
+  const { id } = useParams();
+  console.log(useParams())
+  console.log(id)
   const history = useHistory("");
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const mainUser = useSelector((state) => state.user.user);
 
   useEffect(() => {
+     dispatch(retrieveUser(id));
+     console.log(mainUser)
     if (!user) {
       history.push("/");
     }
-  }, [user]);
+  }, [id]);
 
   const prevent = (e) => {
     e.preventDefault();
@@ -29,6 +34,7 @@ const UserProfile = () => {
 
   return (
     <div className="profile-body">
+      {mainUser && console.log(mainUser)}
       <div className="profile-top">
         <div className="profile-img-card">
           <img className="profile-img" src={user?.image_url} />
