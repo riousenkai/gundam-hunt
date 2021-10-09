@@ -10,7 +10,7 @@
     align-items: center;
     margin: 0 auto;
     margin-top: 2rem;
-    width: 70rem;
+    width: 1070px;
     background-color: rgba(81, 85, 81, 0.9);;
     height: 250px;
     border-radius: 5px;
@@ -62,8 +62,7 @@
     display: flex;
     margin: 0 auto;
     margin-top: 2rem;
-    width: 70rem;
-    height: 250px;
+    width: 1070px;
 }
 
 .profile-bottom-left {
@@ -123,13 +122,31 @@
     z-index: 100;
     color: black;
     height: 50px;
-    width: 50px;
+    width: 70px;
     float: right;
     cursor: pointer;
-    background-color: rgba(225, 217, 209, 1);
+    background-color:rgb(4,9,22);
+    color: white;
     border: none;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 .activity-upvote:active {
     transform: translateY(-4px)
+}
+
+.profile-bottom-right {
+    width: 332px;
+    margin-left: 20px;
+}
+
+.profile-comments {
+    height: 235px;
+    background-color: rgba(38, 39, 38, 0.6);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: none;
+    padding: 20px 20px 20px 20px;
+    margin-top: 3rem;
 }

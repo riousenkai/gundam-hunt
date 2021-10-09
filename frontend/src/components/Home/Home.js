@@ -14,7 +14,7 @@ const Home = () => {
             <div className="card">Gundam Product #1</div>
             <div className="card">Gundam Product #2</div>
             <div className="card">Gundam Product #3</div>
-            <div class="last-card">Show more...</div>
+            <div className="last-card">Show more...</div>
           </div>
         </div>
         <div className="side-container">
