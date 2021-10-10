@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { NavLink, Redirect } from "react-router-dom";
 import { retrieveUser, retrieveAllUsers } from "../../store/user";
 import { restoreUser } from "../../store/session";
+import Loading from "../Loading/Loading"
 import "./UserProfile.css";
 
 const UserProfile = () => {
@@ -105,12 +106,7 @@ const UserProfile = () => {
     );
   } else {
     return (
-      <div className="profile-loading">
-        <img
-          className="loading-img"
-          src="https://c.tenor.com/zt4FFbGYIvcAAAAM/gundam.gif"
-        />
-      </div>
+     <Loading />
     );
   }
 };

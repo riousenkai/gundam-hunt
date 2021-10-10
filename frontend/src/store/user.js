@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 const GET_USER = "user/getUser"
 const GET_ALL_USERS = "user/getAllUsers"
 const GET_MAIN_USER = "user/getMainUser"
+const EDIT_USER = "/user/editUser"
 
 const getPrimaryUser = (user) => {
     return {
@@ -22,6 +23,13 @@ const getAllUsers = (users) => {
     return {
         type: GET_ALL_USERS,
         payload: users,
+    }
+}
+
+const editUser = (user) => {
+    return {
+        type: EDIT_USER,
+        payload: user,
     }
 }
 

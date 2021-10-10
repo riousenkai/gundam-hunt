@@ -1,35 +1,54 @@
-import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import './Settings.css'
-import Loading from '../Loading/Loading'
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { restoreUser } from "../../store/session";
+import { retrieveUser } from "../../store/user";
+import { Redirect } from "react-router";
+import { NavLink } from "react-router-dom";
+import "./Settings.css";
+import Loading from "../Loading/Loading";
 
 const Settings = () => {
-    const [loaded, setLoaded] = useState(false)
-    const user = useSelector((state) => state.user.mainUser)
-    const [description, setDescription] = useState('')
+  const dispatch = useDispatch();
+  const [loaded, setLoaded] = useState(false);
+  const loggedUser = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.user.mainUser);
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("")
 
-    useEffect(() => {
-        setDescription(user.description)
-        setLoaded(true)
-    }, [])
+  useEffect(() => {
+    dispatch(restoreUser())
+      .then(() => dispatch(retrieveUser(loggedUser.id)))
+      .then(() => setDescription(user.description))
+      .then(() => setImage(user.image_url))
+      .then(() => console.log(user))
+      .then(() => setLoaded(true))
+      .catch(() => <Redirect to="/" />);
+  }, [user]);
 
-    if(loaded) {
+  if (loaded) {
     return (
-        <div className="settings-main">
-         <div className="settings-change">
-            <p className="settings-title">Update Your Profile</p>
-            <input></input>
-         </div>
-         <div className="settings-img-change">
-         <p className="settings-title">Profile Picture</p>
-         <img className="settings-img" src={user.image_url}></img>
-         </div>
+      <div className="settings-main">
+        <div className="settings-change">
+          <p className="settings-title">Update Your Profile</p>
+          <form>
+            <label>Description </label>
+            <input
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <label>Image Url</label>
+            <input value={image} />
+            <button type="submit">Submit Changes</button>
+            <NavLink to={`/profile/${user.id}`}>Cancel</NavLink>
+          </form>
         </div>
-    )
-    }
-    else return (
-        <Loading />
-    )
-}
+        <div className="settings-img-change">
+          <p className="settings-title">Profile Picture</p>
+          <img className="settings-img" src={user?.image_url}></img>
+        </div>
+      </div>
+    );
+  } else return <Loading />;
+};
 
 export default Settings;
