@@ -16,9 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Gundam.associate = function (models) {
-    Gundam.belongsTo(models.User, { foreignKey: user_id });
-    Gundam.hasMany(models.Upvote, { foreignKey: gundam_id });
-    Gundam.hasMany(models.Comment, { foreignKey: gundam_id });
+    Gundam.belongsTo(models.User, { foreignKey: "user_id" });
+    Gundam.hasMany(models.Upvote, { foreignKey: "gundam_id" });
+    Gundam.hasMany(models.Comment, { foreignKey: "gundam_id" });
   };
   return Gundam;
 };

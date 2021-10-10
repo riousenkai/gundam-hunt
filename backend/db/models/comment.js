@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Comment.associate = function (models) {
-    Comment.belongsTo(models.User, { foreignKey: user_id });
-    Comment.belongsTo(models.Gundam, { foreignKey: gundam_id });
+    Comment.belongsTo(models.User, { foreignKey: "user_id" });
+    Comment.belongsTo(models.Gundam, { foreignKey: "gundam_id" });
   };
   return Comment;
 };
