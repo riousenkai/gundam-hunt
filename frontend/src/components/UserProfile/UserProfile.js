@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { NavLink, Redirect } from "react-router-dom";
 import { retrieveUser, retrieveAllUsers } from "../../store/user";
 import { restoreUser } from "../../store/session";
@@ -10,12 +10,18 @@ import "./UserProfile.css";
 const UserProfile = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const mainUser = useSelector((state) => state.user.user);
   const allUsers = useSelector((state) => state.user.users);
   const [loaded, setLoaded] = useState(false);
+  const regex = /\D/g
 
   useEffect(() => {
+    if (id.match(regex)) {
+      history.push("/")
+    }
+
     dispatch(restoreUser())
       .then(() => dispatch(retrieveUser(id)))
       .then(dispatch(retrieveAllUsers()))
