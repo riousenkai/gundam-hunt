@@ -29,16 +29,21 @@ function Navigation({ isLoaded }) {
       searchRes.classList.add("hidden");
     }
     if (results.length > 1) {
-      dispatch(searchFiveGundams(results)).then(console.log(gundamResult));
+      dispatch(searchFiveGundams(results));
     }
   }, [results]);
 
   const hide = () => {
+    searchRes = document.querySelector(".search-results");
     searchDiv = document.querySelector(".search-container");
     const dropdown = document.querySelectorAll(".gundam-dropdown");
     dropdown.forEach((e) => {
       e.classList.add("hidden");
     });
+    searchRes.classList.add("hidden");
+    if (results.length >= 3) {
+      searchRes.classList.remove("hidden");
+    }
     searchDiv.classList.add("search-container-focus");
   };
 
@@ -51,6 +56,9 @@ function Navigation({ isLoaded }) {
     });
     searchRes.classList.add("hidden");
     searchDiv.classList.remove("search-container-focus");
+    if (results.length > 1) {
+      dispatch(searchFiveGundams(results));
+    }
   };
 
   const imgChange = () => {
@@ -96,6 +104,7 @@ function Navigation({ isLoaded }) {
           onBlur={show}
         />
         <div className="search-results hidden">
+          <div className="inner-results">
           {gundamResult.gundams ? (
             <div className="pointer results">Gundams</div>
           ) : null}
@@ -104,12 +113,13 @@ function Navigation({ isLoaded }) {
                 <NavLink
                   to={`/gundams/${gundam.id}`}
                   className="pointer results"
-                >
-                  {gundam.name} : {gundam.grade}
+                ><img className="search-img" src={gundam.image1} />
+                  <p className="search-name"> {gundam.name} : {gundam.grade} </p>
                 </NavLink>
               ))
             : null}
           <div className="pointer results">People</div>
+          </div>
         </div>
       </div>
       <div className="gundam-dropdown">

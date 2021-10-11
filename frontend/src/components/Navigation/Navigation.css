@@ -112,6 +112,9 @@ a {
 
 .results {
   margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
 }
 
 #img-top {
@@ -183,4 +186,15 @@ a {
   width: 40px;
   vertical-align: bottom;
   border: 5px solid rgb(27, 27, 27);
+}
+
+.inner-results {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-img {
+  max-width: 20px;
+  max-height: 20px;
+  margin-right: 5px;
 }
