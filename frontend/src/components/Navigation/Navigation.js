@@ -53,7 +53,6 @@ function Navigation({ isLoaded }) {
   };
 
   const show = (e) => {
-    e.stopPropagation();
     searchInput = document.querySelector(".search");
     searchDiv = document.querySelector(".search-container");
     searchRes = document.querySelector(".search-results");
@@ -77,8 +76,11 @@ function Navigation({ isLoaded }) {
     searchRes.classList.add("hidden");
   };
 
-  const removeVal = () => {
-
+  const removeVal = (e) => {
+    console.log(e.target.attributes)
+    searchInput = document.querySelector(".search");
+    searchInput.classList.remove("search-focus");
+    setResults("")
   }
 
   const imgChange = () => {
@@ -132,7 +134,7 @@ function Navigation({ isLoaded }) {
               gundamResult.gundams.map((gundam) => (
                 <NavLink
                   to={`/gundams/${gundam.id}`}
-                  onClick={() => setResults("")}
+                  onClick={removeVal}
                   className="pointer results"
                 >
                   <img className="search-img" src={gundam.image1} />
@@ -146,7 +148,7 @@ function Navigation({ isLoaded }) {
               userResult.users.map((user) => (
                 <NavLink
                   to={`/profile/${user.id}`}
-                  onClick={() => setResults("")}
+                  onClick={removeVal}
                   className="pointer results"
                 >
                   <img className="search-img" src={user.image_url} />
