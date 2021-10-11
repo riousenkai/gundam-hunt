@@ -30,13 +30,69 @@
 .settings-title {
   font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
 }
 
 .settings-img {
+  margin-top: 10px;
   border-radius: 50%;
   object-fit: cover;
   height: 150px;
   width: 150px;
   vertical-align: bottom;
+}
+
+.settings-label {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.settings-input {
+  background-color: rgba(237, 243, 238, 0.24);
+  color: rgba(225, 217, 209, 1);
+  font-size: 16px;
+  border: 0.5px solid black;
+}
+
+.settings-input:focus {
+  outline: none;
+}
+
+.settings-buttons {
+ display: flex;
+ margin-top: 10px;
+}
+
+.settings-cancel {
+  border-radius: 2px;
+  padding: 5px 5px 5px 5px;
+  background-color: rgb(216, 24, 24);
+  width: 4rem;
+  text-align: center;
+  font-size: 16px;
+}
+
+.settings-cancel:active {
+  transform: translateY(4px)
+}
+
+.settings-submit {
+  border-radius: 2px;
+  padding: 5px 10px 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  color: rgba(225, 217, 209, 1);
+  background-color: rgb(7, 107, 77);
+  text-align: center;
+  font-size: 16px;
+  border: none;
+}
+
+.settings-submit:active {
+  transform: translateY(4px)
 }

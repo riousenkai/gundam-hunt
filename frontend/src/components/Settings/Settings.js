@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom";
 import "./Settings.css";
 import Loading from "../Loading/Loading";
 import { editUserProfile } from "../../store/user";
-import e from "express";
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ const Settings = () => {
   const loggedUser = useSelector((state) => state.session.user);
   const user = useSelector((state) => state.user.mainUser);
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("")
+  const [image, setImage] = useState("");
 
   useEffect(() => {
     dispatch(restoreUser())
@@ -29,32 +28,39 @@ const Settings = () => {
   }, [user]);
 
   const updateProfile = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const update = {
       description,
-      image_url: image
-    }
+      image_url: image,
+    };
 
-    dispatch(editUserProfile(user.id, update))
-    history.push(`/profile/${user.id}`)
-  }
+    dispatch(editUserProfile(user.id, update));
+    history.push(`/profile/${user.id}`);
+  };
 
   if (loaded) {
     return (
       <div className="settings-main">
         <div className="settings-change">
           <p className="settings-title">Update Your Profile</p>
-          <form onSubmit={updateProfile}>
-            <label>Description</label>
+          <form onSubmit={updateProfile} className="form">
+            <label className="settings-label">Description</label>
             <input
+              className="settings-input"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-            <label>Image Url</label>
-            <input value={image} onChange={(e) => setImage(e.target.value)} />
-            <button type="submit">Submit Changes</button>
-            <NavLink to={`/profile/${user.id}`}>Cancel</NavLink>
+            <label className="settings-label">Image Url</label>
+            <input
+              className="settings-input"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+            <div className="settings-buttons">
+            <button type="submit" className="settings-submit">Submit Changes</button>
+            <NavLink to={`/profile/${user.id}`} className="settings-cancel">Cancel</NavLink>
+            </div>
           </form>
         </div>
         <div className="settings-img-change">

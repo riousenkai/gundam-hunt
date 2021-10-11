@@ -19,4 +19,8 @@ body {
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.3);
   background-blend-mode: overlay;
+  margin-bottom: 70px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
