@@ -9,7 +9,7 @@ const getAllGundams = (gundams) => {
     }
 }
 
-export const getGundams = () => {
+export const getGundams = () => async (dispatch) => {
     const res = await csrfFetch(`/api/gundam`, {
         method: "GET",
         headers: {
@@ -25,7 +25,7 @@ const initialState = { gundams: null, gundam: null };
 const gundamReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_GUNDAMS:
-        return {...state, gundams: action.payload}
+        return {...state, gundams: action.payload.gundam}
     default:
       return state;
   }

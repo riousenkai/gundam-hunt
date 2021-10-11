@@ -17,11 +17,11 @@ const postError = () => {
 };
 
 router.get('/', asyncHandler(async(req, res) => {
-    const gundam = await Gundam.findAll({
-        include: [User, Comment, Upvote],
-    })
+    const gundam = await Gundam.findAll()
 
     return res.json({ gundam })
 }))
 
 module.exports = router;
+
+// include: [User, Comment, Upvote],
