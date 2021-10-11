@@ -23,7 +23,7 @@ export const searchFiveGundams = (results) => async (dispatch) => {
   }
 };
 
-const initialState = { gundams: null, users: null };
+const initialState = { gundams: {}, users: {} };
 
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
