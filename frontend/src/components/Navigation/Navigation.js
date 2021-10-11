@@ -1,7 +1,7 @@
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { searchFiveGundams } from "../../store/search";
+import { searchFiveGundams, searchFiveUsers } from "../../store/search";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormPage";
@@ -14,6 +14,7 @@ function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const gundamResult = useSelector((state) => state.search.gundams);
+  const userResult = useSelector((state) => state.search.users)
   const [results, setResults] = useState("");
   let searchDiv;
   let img;
@@ -30,8 +31,9 @@ function Navigation({ isLoaded }) {
     }
     if (results.length > 1) {
       dispatch(searchFiveGundams(results));
+      dispatch(searchFiveUsers(results))
     }
-  }, [results]);
+  }, [results, dispatch]);
 
   const hide = () => {
     searchRes = document.querySelector(".search-results");
@@ -118,6 +120,9 @@ function Navigation({ isLoaded }) {
                 </NavLink>
               ))}
           <div className="pointer results">People</div>
+          {userResult.users && userResult.users.map((user) => (
+              <p>{user.username}</p>
+          ))}
           </div>
         </div>
       </div>
