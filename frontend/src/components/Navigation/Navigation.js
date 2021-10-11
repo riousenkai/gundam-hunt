@@ -60,6 +60,7 @@ function Navigation({ isLoaded }) {
     searchDiv.classList.remove("search-container-focus");
     if (results.length > 1) {
       dispatch(searchFiveGundams(results));
+      dispatch(searchFiveUsers(results))
     }
   };
 
