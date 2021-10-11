@@ -18,7 +18,9 @@ function Navigation({ isLoaded }) {
   const searchDiv = document.querySelector(".search-container");
   const img = document.getElementById("img-top");
   const [results, setResults] = useState("");
-  const searchRes = document.querySelector(".search-results");
+  const [loaded, setLoaded] = useState(false);
+  let searchRes = document.querySelector(".search-results");
+
 
   useEffect(() => {
     const searchRes = document.querySelector(".search-results");
@@ -28,9 +30,9 @@ function Navigation({ isLoaded }) {
       searchRes.classList.add("hidden");
     }
     if (results.length > 1) {
-      dispatch(searchFiveGundams(results))
-      .then(console.log(gundamResult));
+      dispatch(searchFiveGundams(results)).then(console.log(gundamResult));
     }
+    setLoaded(true)
   }, [results]);
 
   const hide = () => {
@@ -69,64 +71,75 @@ function Navigation({ isLoaded }) {
       </>
     );
   }
-
-  return (
-    <div className="header">
-      <NavLink to="/" className="header-icon">
-        <img
-          id="img-top"
-          src={image}
-          onMouseOver={imgChange}
-          onMouseOut={imgReturn}
-        />
-      </NavLink>
-      <div className="search-container">
-        <input
-          className="search"
-          value={results}
-          onChange={(e) => setResults(e.target.value)}
-          type="search"
-          placeholder="Search..."
-          onFocus={hide}
-          onBlur={show}
-        />
-        <div className="search-results hidden">
-          <div
-            className="pointer results"
-            onMouseDown={() => history.push("/")}
-          >
-            Products
+  if (loaded) {
+    return (
+      <div className="header">
+        <NavLink to="/" className="header-icon">
+          <img
+            id="img-top"
+            src={image}
+            onMouseOver={imgChange}
+            onMouseOut={imgReturn}
+          />
+        </NavLink>
+        <div className="search-container">
+          <input
+            className="search"
+            value={results}
+            onChange={(e) => setResults(e.target.value)}
+            type="search"
+            placeholder="Search..."
+            onFocus={hide}
+            onBlur={show}
+          />
+          <div className="search-results hidden">
+            {gundamResult.gundams.length ? (
+              <div className="pointer results">Gundams</div>
+            ) : null}
+            {gundamResult.gundams.length ?
+              gundamResult.gundams.map((gundam) => (
+                <NavLink
+                  to={`/gundams/${gundam.id}`}
+                  className="pointer results"
+                >
+                  {gundam.name} : {gundam.grade}
+                </NavLink>
+              )) : null}
+            <div className="pointer results">People</div>
           </div>
-          <div className="pointer results">People</div>
         </div>
-      </div>
-      <div className="gundam-dropdown">
-        <button className="gundam-dropbtn">Gundam Kits</button>
-        <div className="gundam-dropdown-content">
-          <NavLink to="/">Link 1</NavLink>
-          <NavLink to="/">Link 2</NavLink>
-          <NavLink to="/">Link 3</NavLink>
+        <div className="gundam-dropdown">
+          <button className="gundam-dropbtn">Gundam Kits</button>
+          <div className="gundam-dropdown-content">
+            <NavLink to="/">Link 1</NavLink>
+            <NavLink to="/">Link 2</NavLink>
+            <NavLink to="/">Link 3</NavLink>
+          </div>
         </div>
-      </div>
-      <div className="gundam-dropdown">
-        <button className="gundam-dropbtn">Community</button>
-        <div className="gundam-dropdown-content">
-          <NavLink to="/">Link 1</NavLink>
-          <NavLink to="/">Link 2</NavLink>
-          <NavLink to="/">Link 3</NavLink>
+        <div className="gundam-dropdown">
+          <button className="gundam-dropbtn">Community</button>
+          <div className="gundam-dropdown-content">
+            <NavLink to="/">Link 1</NavLink>
+            <NavLink to="/">Link 2</NavLink>
+            <NavLink to="/">Link 3</NavLink>
+          </div>
         </div>
-      </div>
-      <div className="gundam-dropdown">
-        <button className="gundam-dropbtn">Tools</button>
-        <div className="gundam-dropdown-content">
-          <NavLink to="/">Link 1</NavLink>
-          <NavLink to="/">Link 2</NavLink>
-          <NavLink to="/">Link 3</NavLink>
+        <div className="gundam-dropdown">
+          <button className="gundam-dropbtn">Tools</button>
+          <div className="gundam-dropdown-content">
+            <NavLink to="/">Link 1</NavLink>
+            <NavLink to="/">Link 2</NavLink>
+            <NavLink to="/">Link 3</NavLink>
+          </div>
         </div>
+        <div className="nav-right">{isLoaded && sessionLinks}</div>
       </div>
-      <div className="nav-right">{isLoaded && sessionLinks}</div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div></div>
+    )
+  }
 }
 
 export default Navigation;

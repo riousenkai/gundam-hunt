@@ -19,7 +19,7 @@ router.post(
   asyncHandler(async (req, res) => {
     const { results } = req.body;
 
-    const user = await User.findByPk(1)
+    const user = await User.findByPk(1);
 
     const gundams = await Gundam.findAll({
       where: {
@@ -38,20 +38,21 @@ router.post(
 router.post(
   "/users",
   asyncHandler(async (req, res) => {
-    const { search } = req.body;
+    const { results } = req.body;
+
+    const user = await User.findByPk(1);
 
     const users = await User.findAll({
       where: {
-        username: {
-          [Op.iLike]: `%${search}%`,
+        name: {
+          [Op.iLike]: `%${results}%`,
         },
       },
       limit: 5,
     });
 
-    await setTokenCookie(res, users);
-
-    return res.json({ users });
+    await setTokenCookie(res, user);
+    res.json({ users });
   })
 );
 

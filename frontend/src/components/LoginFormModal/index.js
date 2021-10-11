@@ -18,7 +18,7 @@ function LoginFormModal() {
 
   return (
     <>
-      <button onClick={opener} className="gundam-dropbtn gundam-dropdown pointer nav-right" id="login-button">Log In</button>
+      <button onClick={opener} className="gundam-dropbtn gundam-dropdown pointer" id="login-button">Log In</button>
       {num === 2 && (
         <Modal onClose={closer}>
           <LoginForm />
