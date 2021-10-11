@@ -72,16 +72,28 @@ function Navigation({ isLoaded }) {
   };
 
   const hideRes = (e) => {
+    console.log(e.target.parentElement);
     searchRes = document.querySelector(".search-results");
-    searchRes.classList.add("hidden");
+    searchInput = document.querySelector(".search");
+    // searchInput.classList.remove("search-focus");
+    // searchRes.classList.add("hidden");
   };
 
   const removeVal = (e) => {
-    console.log(e.target.attributes)
+    console.log(e.target.parentElement);
     searchInput = document.querySelector(".search");
     searchInput.classList.remove("search-focus");
-    setResults("")
-  }
+    setResults("");
+  };
+
+  const hideSearch = (e) => {
+    if (!e.target.classList[0].includes("search")) {
+    searchRes = document.querySelector(".search-results");
+    searchInput = document.querySelector(".search");
+    searchInput.classList.remove("search-focus");
+    searchRes.classList.add("hidden");
+    }
+  };
 
   const imgChange = () => {
     img = document.getElementById("img-top");
@@ -125,7 +137,7 @@ function Navigation({ isLoaded }) {
           onFocus={hide}
           onBlur={show}
         />
-        <div className="search-results hidden" onClick={hideRes}>
+        <div className="search-results hidden">
           <div className="inner-results">
             {gundamResult.gundams ? (
               <div className="pointer results">Gundams</div>

@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getGundams } from "../../store/gundam";
 import { NavLink } from "react-router-dom";
+import GundamModal from "../GundamModal";
 import Loading from "../Loading/Loading";
 import "./Home.css";
 
@@ -27,20 +28,21 @@ const Home = () => {
             <div className="head-card">
               {gundams &&
                 gundams.map((gundam) => (
-                  <NavLink to="/" className="activity-card">
-                    <img className="activity-img" src={gundam.image1} />
-                    <div className="activity-card-text">
-                      <p className="activity-title">{gundam.name}</p>
-                      <p className="activity-description">{gundam.grade}</p>
-                    </div>
-                    <button
-                      type="button"
-                      className="activity-upvote"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      {gundam.upvotes}
-                    </button>
-                  </NavLink>
+                  <GundamModal gundam={gundam} />
+                  // <NavLink to="/" className="activity-card">
+                  //   <img className="activity-img" src={gundam.image1} />
+                  //   <div className="activity-card-text">
+                  //     <p className="activity-title">{gundam.name}</p>
+                  //     <p className="activity-description">{gundam.grade}</p>
+                  //   </div>
+                  //   <button
+                  //     type="button"
+                  //     className="activity-upvote"
+                  //     onClick={(e) => e.preventDefault()}
+                  //   >
+                  //     {gundam.upvotes}
+                  //   </button>
+                  // </NavLink>
                 ))}
               <div className="last-card">Show more...</div>
             </div>
