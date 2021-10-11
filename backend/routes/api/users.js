@@ -4,8 +4,17 @@ const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { User } = require("../../db/models");
+const user = require("../../db/models/user");
 
 const router = express.Router();
+
+const postError = () => {
+  let error = {
+    title: "Error in request!",
+    status: 404,
+  };
+  return error;
+};
 
 const validateSignup = [
   check("email")
@@ -55,6 +64,28 @@ router.get(
   asyncHandler(async (req, res) => {
     const user = await User.findByPk(req.params.userId);
     return res.json({ user });
+  })
+);
+
+// Edit user
+router.put(
+  "/profile/:userId",
+  asyncHandler(async (req, res) => {
+    const user = await User.findByPk(req.params.userId);
+    const { description, image_url } = req.body;
+
+    if (user) {
+      await user.update({
+        description,
+        image_url,
+      });
+
+      await setTokenCookie(res, user);
+
+      return res.json({ user });
+    } else {
+      return postError;
+    }
   })
 );
 

@@ -2,13 +2,16 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { restoreUser } from "../../store/session";
 import { retrieveUser } from "../../store/user";
-import { Redirect } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
 import "./Settings.css";
 import Loading from "../Loading/Loading";
+import { editUserProfile } from "../../store/user";
+import e from "express";
 
 const Settings = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [loaded, setLoaded] = useState(false);
   const loggedUser = useSelector((state) => state.session.user);
   const user = useSelector((state) => state.user.mainUser);
@@ -25,19 +28,31 @@ const Settings = () => {
       .catch(() => <Redirect to="/" />);
   }, [user]);
 
+  const updateProfile = (e) => {
+    e.preventDefault()
+
+    const update = {
+      description,
+      image_url: image
+    }
+
+    dispatch(editUserProfile(user.id, update))
+    history.push(`/profile/${user.id}`)
+  }
+
   if (loaded) {
     return (
       <div className="settings-main">
         <div className="settings-change">
           <p className="settings-title">Update Your Profile</p>
-          <form>
-            <label>Description </label>
+          <form onSubmit={updateProfile}>
+            <label>Description</label>
             <input
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
             <label>Image Url</label>
-            <input value={image} />
+            <input value={image} onChange={(e) => setImage(e.target.value)} />
             <button type="submit">Submit Changes</button>
             <NavLink to={`/profile/${user.id}`}>Cancel</NavLink>
           </form>
