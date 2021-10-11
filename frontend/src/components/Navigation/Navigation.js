@@ -109,15 +109,14 @@ function Navigation({ isLoaded }) {
             <div className="pointer results">Gundams</div>
           ) : null}
           {gundamResult.gundams
-            ? gundamResult.gundams.map((gundam) => (
+            && gundamResult.gundams.map((gundam) => (
                 <NavLink
                   to={`/gundams/${gundam.id}`}
                   className="pointer results"
                 ><img className="search-img" src={gundam.image1} />
                   <p className="search-name"> {gundam.name} : {gundam.grade} </p>
                 </NavLink>
-              ))
-            : null}
+              ))}
           <div className="pointer results">People</div>
           </div>
         </div>

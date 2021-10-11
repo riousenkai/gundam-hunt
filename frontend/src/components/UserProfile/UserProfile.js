@@ -15,9 +15,9 @@ const UserProfile = () => {
   const mainUser = useSelector((state) => state.user.user);
   const allUsers = useSelector((state) => state.user.users);
   const [loaded, setLoaded] = useState(false);
-  const regex = /\D/g
 
   useEffect(() => {
+    const regex = /\D/g
     if (id.match(regex)) {
       history.push("/")
     }
