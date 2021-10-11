@@ -1,7 +1,3 @@
-.hidden {
-  display: none;
-}
-
 .header {
   display: flex;
   box-shadow: 0 0 1px 1px rgb(57, 62, 63);
