@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import sessionReducer from './session';
 import gundamReducer from "./gundam";
 import userReducer from "./user";
+import searchReducer from "./search";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   user: userReducer,
-  gundam: gundamReducer
+  gundam: gundamReducer,
+  search: searchReducer
 });
 
 let enhancer;

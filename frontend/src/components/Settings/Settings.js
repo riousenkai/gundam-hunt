@@ -22,7 +22,6 @@ const Settings = () => {
       .then(() => dispatch(retrieveUser(loggedUser.id)))
       .then(() => setDescription(user.description))
       .then(() => setImage(user.image_url))
-      .then(() => console.log(user))
       .then(() => setLoaded(true))
       .catch(() => <Redirect to="/" />);
   }, [user]);

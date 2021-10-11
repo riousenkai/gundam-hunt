@@ -1,27 +1,43 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { searchFiveGundams } from "../../store/search";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormPage";
 import "./Navigation.css";
-import image from '../Images/header.png'
-import image2 from '../Images/header2.png'
+import image from "../Images/header.png";
+import image2 from "../Images/header2.png";
 
 function Navigation({ isLoaded }) {
   const history = useHistory("");
-
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const gundamResult = useSelector((state) => state.search.gundams);
   const searchDiv = document.querySelector(".search-container");
+  const img = document.getElementById("img-top");
+  const [results, setResults] = useState("");
   const searchRes = document.querySelector(".search-results");
-  const img = document.getElementById('img-top')
+
+  useEffect(() => {
+    const searchRes = document.querySelector(".search-results");
+    if (results.length >= 3) {
+      searchRes.classList.remove("hidden");
+    } else {
+      searchRes.classList.add("hidden");
+    }
+    if (results.length > 1) {
+      dispatch(searchFiveGundams(results))
+      .then(console.log(gundamResult));
+    }
+  }, [results]);
 
   const hide = () => {
     const dropdown = document.querySelectorAll(".gundam-dropdown");
     dropdown.forEach((e) => {
       e.classList.add("hidden");
     });
-    searchRes.classList.remove("hidden");
     searchDiv.classList.add("search-container-focus");
   };
 
@@ -36,11 +52,11 @@ function Navigation({ isLoaded }) {
 
   const imgChange = () => {
     img.src = image2;
-  }
+  };
 
   const imgReturn = () => {
-    img.src = image
-  }
+    img.src = image;
+  };
 
   let sessionLinks;
   if (sessionUser) {
@@ -57,19 +73,29 @@ function Navigation({ isLoaded }) {
   return (
     <div className="header">
       <NavLink to="/" className="header-icon">
-        <img id="img-top" src={image} onMouseOver={imgChange} onMouseOut={imgReturn} />
+        <img
+          id="img-top"
+          src={image}
+          onMouseOver={imgChange}
+          onMouseOut={imgReturn}
+        />
       </NavLink>
       <div className="search-container">
         <input
           className="search"
+          value={results}
+          onChange={(e) => setResults(e.target.value)}
           type="search"
           placeholder="Search..."
           onFocus={hide}
           onBlur={show}
         />
         <div className="search-results hidden">
-          <div className="pointer results" onMouseDown={() => history.push("/")}>
-              Products
+          <div
+            className="pointer results"
+            onMouseDown={() => history.push("/")}
+          >
+            Products
           </div>
           <div className="pointer results">People</div>
         </div>
@@ -98,9 +124,7 @@ function Navigation({ isLoaded }) {
           <NavLink to="/">Link 3</NavLink>
         </div>
       </div>
-      <div className="nav-right">
-      {isLoaded && sessionLinks}
-      </div>
+      <div className="nav-right">{isLoaded && sessionLinks}</div>
     </div>
   );
 }
