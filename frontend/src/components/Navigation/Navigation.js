@@ -19,6 +19,7 @@ function Navigation({ isLoaded }) {
   let searchDiv;
   let img;
   let searchRes;
+  let searchInput;
 
   useEffect(() => {
     img = document.getElementById("img-top");
@@ -36,9 +37,11 @@ function Navigation({ isLoaded }) {
   }, [results, dispatch]);
 
   const hide = () => {
+    searchInput = document.querySelector(".search");
     searchRes = document.querySelector(".search-results");
     searchDiv = document.querySelector(".search-container");
     const dropdown = document.querySelectorAll(".gundam-dropdown");
+    searchInput.classList.add("search-focus");
     dropdown.forEach((e) => {
       e.classList.add("hidden");
     });
@@ -49,20 +52,34 @@ function Navigation({ isLoaded }) {
     searchDiv.classList.add("search-container-focus");
   };
 
-  const show = () => {
+  const show = (e) => {
+    e.stopPropagation();
+    searchInput = document.querySelector(".search");
     searchDiv = document.querySelector(".search-container");
     searchRes = document.querySelector(".search-results");
     const dropdown = document.querySelectorAll(".gundam-dropdown");
-    dropdown.forEach((e) => {
-      e.classList.remove("hidden");
-    });
-    searchRes.classList.add("hidden");
-    searchDiv.classList.remove("search-container-focus");
+    if (results.length < 3) {
+      dropdown.forEach((e) => {
+        e.classList.remove("hidden");
+      });
+      searchInput.classList.remove("search-focus");
+      searchRes.classList.add("hidden");
+      searchDiv.classList.remove("search-container-focus");
+    }
     if (results.length > 1) {
       dispatch(searchFiveGundams(results));
       dispatch(searchFiveUsers(results));
     }
   };
+
+  const hideRes = (e) => {
+    searchRes = document.querySelector(".search-results");
+    searchRes.classList.add("hidden");
+  };
+
+  const removeVal = () => {
+
+  }
 
   const imgChange = () => {
     img = document.getElementById("img-top");
@@ -106,7 +123,7 @@ function Navigation({ isLoaded }) {
           onFocus={hide}
           onBlur={show}
         />
-        <div className="search-results hidden">
+        <div className="search-results hidden" onClick={hideRes}>
           <div className="inner-results">
             {gundamResult.gundams ? (
               <div className="pointer results">Gundams</div>
@@ -115,11 +132,12 @@ function Navigation({ isLoaded }) {
               gundamResult.gundams.map((gundam) => (
                 <NavLink
                   to={`/gundams/${gundam.id}`}
+                  onClick={() => setResults("")}
                   className="pointer results"
                 >
                   <img className="search-img" src={gundam.image1} />
                   <p className="search-name">
-                    {gundam.name} : {gundam.grade}{" "}
+                    {gundam.name} : {gundam.grade}
                   </p>
                 </NavLink>
               ))}
@@ -128,12 +146,11 @@ function Navigation({ isLoaded }) {
               userResult.users.map((user) => (
                 <NavLink
                   to={`/profile/${user.id}`}
+                  onClick={() => setResults("")}
                   className="pointer results"
                 >
                   <img className="search-img" src={user.image_url} />
-                  <p className="search-name">
-                    {user.username}
-                  </p>
+                  <p className="search-name">{user.username}</p>
                 </NavLink>
               ))}
           </div>

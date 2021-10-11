@@ -21,7 +21,7 @@
   transition: 2s all;
 }
 
-.search:focus {
+.search-focus {
   background-color: rgb(49, 53, 50);
   transition: all 2s;
   width: 100%;
