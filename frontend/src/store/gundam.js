@@ -9,6 +9,17 @@ const getAllGundams = (gundams) => {
     }
 }
 
+export const getGundams = () => {
+    const res = await csrfFetch(`/api/gundam`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+    const data = await res.json()
+    dispatch(getAllGundams(data))
+}
+
 const initialState = { gundams: null, gundam: null };
 
 const gundamReducer = (state = initialState, action) => {
