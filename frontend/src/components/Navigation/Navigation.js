@@ -14,7 +14,7 @@ function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const gundamResult = useSelector((state) => state.search.gundams);
-  const userResult = useSelector((state) => state.search.users)
+  const userResult = useSelector((state) => state.search.users);
   const [results, setResults] = useState("");
   let searchDiv;
   let img;
@@ -31,7 +31,7 @@ function Navigation({ isLoaded }) {
     }
     if (results.length > 1) {
       dispatch(searchFiveGundams(results));
-      dispatch(searchFiveUsers(results))
+      dispatch(searchFiveUsers(results));
     }
   }, [results, dispatch]);
 
@@ -60,7 +60,7 @@ function Navigation({ isLoaded }) {
     searchDiv.classList.remove("search-container-focus");
     if (results.length > 1) {
       dispatch(searchFiveGundams(results));
-      dispatch(searchFiveUsers(results))
+      dispatch(searchFiveUsers(results));
     }
   };
 
@@ -108,22 +108,34 @@ function Navigation({ isLoaded }) {
         />
         <div className="search-results hidden">
           <div className="inner-results">
-          {gundamResult.gundams ? (
-            <div className="pointer results">Gundams</div>
-          ) : null}
-          {gundamResult.gundams
-            && gundamResult.gundams.map((gundam) => (
+            {gundamResult.gundams ? (
+              <div className="pointer results">Gundams</div>
+            ) : null}
+            {gundamResult.gundams &&
+              gundamResult.gundams.map((gundam) => (
                 <NavLink
                   to={`/gundams/${gundam.id}`}
                   className="pointer results"
-                ><img className="search-img" src={gundam.image1} />
-                  <p className="search-name"> {gundam.name} : {gundam.grade} </p>
+                >
+                  <img className="search-img" src={gundam.image1} />
+                  <p className="search-name">
+                    {gundam.name} : {gundam.grade}{" "}
+                  </p>
                 </NavLink>
               ))}
-          <div className="pointer results">People</div>
-          {userResult.users && userResult.users.map((user) => (
-              <p>{user.username}</p>
-          ))}
+            <div className="pointer results">People</div>
+            {userResult.users &&
+              userResult.users.map((user) => (
+                <NavLink
+                  to={`/profile/${user.id}`}
+                  className="pointer results"
+                >
+                  <img className="search-img" src={user.image_url} />
+                  <p className="search-name">
+                    {user.username}
+                  </p>
+                </NavLink>
+              ))}
           </div>
         </div>
       </div>
