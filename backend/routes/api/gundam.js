@@ -4,7 +4,6 @@ const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie } = require("../../utils/auth");
 const { User, Gundam, Comment, Upvote } = require("../../db/models");
-const user = require("../../db/models/user");
 
 const router = express.Router();
 
@@ -25,6 +24,16 @@ router.get('/', asyncHandler(async(req, res) => {
 router.get('/:id', asyncHandler(async(req, res) => {
   const gundam = await Gundam.findByPk(req.params.id)
   return res.json(gundam)
+}))
+
+router.post("/", asyncHandler(async(req, res) => {
+  const newGundam = await Gundam.create(req.body)
+
+  const user = await User.findByPk(1)
+
+  setTokenCookie(res, user)
+
+  return res.json(newGundam)
 }))
 
 

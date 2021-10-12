@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { restoreUser } from "../../store/session";
+import { useHistory } from "react-router";
+import { getGundams, makeGundam } from "../../store/gundam";
 
 const SubmitGundam = () => {
   const dispatch = useDispatch();
+ const history = useHistory()
 
   const [name, setName] = useState("");
   const [grade, setGrade] = useState("High Grade 1/144");
@@ -13,6 +16,7 @@ const SubmitGundam = () => {
   const [image2, setImage2] = useState("");
   const [image3, setImage3] = useState("");
   const user = useSelector((state) => state.session.user);
+  const gundams = useSelector((state) => state.session.gundams)
 
   useEffect(() => {
     dispatch(restoreUser())
@@ -33,13 +37,18 @@ const SubmitGundam = () => {
         image3
     };
 
-    
+    dispatch(makeGundam(gundam))
+    dispatch(getGundams())
+
+    const length = gundams.length
+
+    history.push(`/gundams/${length}`)
   };
 
   return (
     <div className="submit-main">
       <p className="submit-title">Submit a new Gundam</p>
-      <form className="submit-form">
+      <form className="submit-form" onSubmit={submit}>
         <label className="submit-label">
           Gundam Name
           <input
@@ -85,7 +94,7 @@ const SubmitGundam = () => {
             type="url"
             className="submit-input-img"
             value={image1}
-            onChange={(e) => setImage2(e.target.value)}
+            onChange={(e) => setImage1(e.target.value)}
             placeholder="Primary Image"
           />
           <input
@@ -103,7 +112,7 @@ const SubmitGundam = () => {
             placeholder="Third Image"
           />
         </label>
-        <button className="submit-gundam-btn" onSubmit={submit} disabled={true}>
+        <button className="submit-gundam-btn" disabled={false}>
           Submit
         </button>
       </form>
