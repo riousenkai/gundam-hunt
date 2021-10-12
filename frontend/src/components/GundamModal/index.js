@@ -8,7 +8,7 @@ function GundamModal({ gundam }) {
   const { showModal, setShowModal, num, setNum } = useShowModal();
 
   const opener = () => {
-    setNum(3);
+    setNum(+gundam.id + 4);
     setShowModal(true);
   };
 
@@ -19,11 +19,13 @@ function GundamModal({ gundam }) {
 
   return (
     <>
-      <div onClick={opener} className="activity-card">
-        <img className="activity-img" src={gundam.image1} />
-        <div className="activity-card-text">
-          <p className="activity-title">{gundam.name}</p>
-          <p className="activity-description">{gundam.grade}</p>
+      <div className="activity-card">
+        <div onClick={opener} className="activity-card">
+          <img className="activity-img" src={gundam.image1} />
+          <div className="activity-card-text">
+            <p className="activity-title">{gundam.name}</p>
+            <p className="activity-description">{gundam.grade}</p>
+          </div>
         </div>
         <button
           type="button"
@@ -33,9 +35,9 @@ function GundamModal({ gundam }) {
           {gundam.upvotes}
         </button>
       </div>
-      {num === 3 && (
+      {num === +gundam.id + 4 && (
         <Modal onClose={closer}>
-          <GundamShow gundamId={gundam.id} />
+          <GundamShow gundam={gundam} />
         </Modal>
       )}
     </>
