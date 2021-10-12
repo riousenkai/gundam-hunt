@@ -50,7 +50,7 @@ const UserProfile = () => {
           <div className="profile-info">
             <p className="profile-username">{mainUser?.username}</p>
             <p className="profile-description">{mainUser?.description}</p>
-            {user.username === mainUser.username ? (
+            {user.id === mainUser.id ? (
               <NavLink to="/settings">
                 <button className="edit-profile">Edit my profile</button>
               </NavLink>
