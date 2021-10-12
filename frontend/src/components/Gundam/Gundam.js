@@ -5,6 +5,8 @@ import { singleGundam } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
 import Loading from "../Loading/Loading";
 import "./Gundam.css";
+import { NavLink } from "react-router-dom";
+import { retrieveUser } from "../../store/user";
 
 const Gundam = () => {
   const { id } = useParams();
@@ -13,15 +15,17 @@ const Gundam = () => {
   const [loaded, setLoaded] = useState(false);
   const [source, setSource] = useState("");
   const { setShowModal, setNum } = useShowModal();
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
-    dispatch(singleGundam(id)).then(() => setLoaded(true));
+    dispatch(singleGundam(id));
     setShowModal(false);
     setNum(0);
   }, [id, dispatch]);
 
   useEffect(() => {
     setSource(gundam?.image1);
+    dispatch(retrieveUser(gundam?.user_id)).then(() => setLoaded(true));
   }, [gundam]);
 
   if (loaded) {
@@ -65,7 +69,19 @@ const Gundam = () => {
             <div className="gundam-left-comments"></div>
           </div>
           <div className="gundam-info-right">
-            <a href={gundam?.link} target="_blank">Get It</a>
+            <a href={gundam?.link} target="_blank">
+              Get It
+            </a>
+            <button type="button" className="gundam-upvotes">
+              {gundam.upvotes}
+            </button>
+            <p className="gundam-submitted">
+              Submitted by:{" "}
+              <NavLink className="gundam-img-submit" to={`/profile/${gundam.user_id}`}>
+              <img className="gundam-user-img" src={user?.image_url} />
+                {user?.username}
+              </NavLink>
+            </p>
           </div>
         </div>
       </div>

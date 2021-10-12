@@ -92,3 +92,18 @@
     flex-direction: column;
     height: 250px;
 }
+
+.gundam-submitted {
+  display: flex;
+  flex-direction: column;
+}
+
+.gundam-img-submit {
+  display: flex;
+  flex-direction: row;
+}
+
+.gundam-user-img {
+  height: 50px;
+  width: 50px;
+}
