@@ -71,27 +71,24 @@ function Navigation({ isLoaded }) {
     }
   };
 
-  const hideRes = (e) => {
-    console.log(e.target.parentElement);
-    searchRes = document.querySelector(".search-results");
-    searchInput = document.querySelector(".search");
-    // searchInput.classList.remove("search-focus");
-    // searchRes.classList.add("hidden");
-  };
-
   const removeVal = (e) => {
-    console.log(e.target.parentElement);
+    setResults("");
+    searchDiv = document.querySelector(".search-container");
     searchInput = document.querySelector(".search");
     searchInput.classList.remove("search-focus");
-    setResults("");
+    const dropdown = document.querySelectorAll(".gundam-dropdown");
+    dropdown.forEach((e) => {
+      e.classList.remove("hidden");
+    });
+    searchDiv.classList.remove("search-container-focus");
   };
 
   const hideSearch = (e) => {
     if (!e.target.classList[0].includes("search")) {
-    searchRes = document.querySelector(".search-results");
-    searchInput = document.querySelector(".search");
-    searchInput.classList.remove("search-focus");
-    searchRes.classList.add("hidden");
+      searchRes = document.querySelector(".search-results");
+      searchInput = document.querySelector(".search");
+      searchInput.classList.remove("search-focus");
+      searchRes.classList.add("hidden");
     }
   };
 
