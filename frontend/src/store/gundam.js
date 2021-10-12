@@ -52,8 +52,18 @@ export const makeGundam = (gundam) => async (dispatch) => {
   });
   const data = await res.json()
   dispatch(createGundam(data));
-  return data.id;
 };
+
+export const deleteGundam = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/gundam/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  const data = res.json()
+  dispatch(getAllGundams(data));
+}
 
 const initialState = { gundams: null, gundam: null };
 

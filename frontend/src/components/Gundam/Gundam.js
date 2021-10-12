@@ -5,6 +5,7 @@ import { singleGundam } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
+import { deleteGundam } from "../../store/gundam";
 import "./Gundam.css";
 import Loading from "../Loading/Loading";
 
@@ -36,19 +37,20 @@ const Gundam = () => {
   }, [gundam]);
 
   useEffect(() => {
-    disabledBtn = document.querySelector(".gundam-delete-btn")
-  }, [])
+    disabledBtn = document.querySelector(".gundam-delete-btn");
+  }, []);
 
   useEffect(() => {
     let timer = setTimeout(() => {
-      setRemoved(false)
+      setRemoved(false);
     }, 5000);
   }, []);
 
-  const deleteGundam = (e) => {
-    e.preventDefault()
-    console.log("WEEEEEE")
-    // dispatch().then(() => history.push(`/profile/${loggedUser.id}`))
+  const deleteGundams = (id, e) => {
+    dispatch(deleteGundam(id))
+    .then(() =>
+      history.push(`/profile/${loggedUser.id}`)
+    );
   };
 
   if (loaded) {
@@ -101,13 +103,13 @@ const Gundam = () => {
             {gundam?.user_id === loggedUser?.id ? (
               <>
                 <NavLink to={`/edit/${gundam.id}`}>Edit</NavLink>
-                  <button
-                    className="gundam-delete-btn select-none"
-                    onClick={deleteGundam}
-                    disabled={removed}
-                  >
-                    Delete
-                  </button>
+                <button
+                  className="gundam-delete-btn"
+                  onClick={(e) => deleteGundams(gundam.id, e)}
+                  disabled={removed}
+                >
+                  Delete
+                </button>
               </>
             ) : (
               <p className="gundam-submitted">
