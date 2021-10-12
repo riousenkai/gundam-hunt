@@ -27,7 +27,7 @@ function ProfileButton({ user }) {
   if (loaded) {
     return (
       <>
-        <button className="submit-post gundam-dropdown">Submit</button>
+        <NavLink to="/submit" className="submit-post gundam-dropdown">Submit</NavLink>
         <div className="gundam-dropdown">
           <button className="gundam-dropbtn">
             <img className="nav-profile-image" src={mainUser.image_url} />
