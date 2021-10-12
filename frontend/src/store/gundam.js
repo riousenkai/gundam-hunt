@@ -41,7 +41,7 @@ const gundamReducer = (state = initialState, action) => {
     case GET_ALL_GUNDAMS:
         return {...state, gundams: action.payload.gundam}
     case GET_ONE_GUNDAM:
-        return {...state, gundam: action.payload}
+        return {...state, [action.payload.id]: action.payload}
     default:
       return state;
   }

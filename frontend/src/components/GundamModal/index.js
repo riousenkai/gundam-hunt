@@ -36,7 +36,7 @@ function GundamModal({ gundam }) {
         </button>
       </div>
       {num === +gundam.id + 4 && (
-        <Modal onClose={closer}>
+        <Modal onClose={closer} onBlur={closer}>
           <GundamShow gundam={gundam} />
         </Modal>
       )}
