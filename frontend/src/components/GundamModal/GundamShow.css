@@ -22,8 +22,8 @@
 }
 
 .gundam-modal-img {
-    max-height: 600px;
-    max-width: 600px;
+    height: 600px;
+    width: 600px;
     margin-bottom: 15px;
 }
 
