@@ -52,6 +52,7 @@ export const makeGundam = (gundam) => async (dispatch) => {
   });
   const data = await res.json()
   dispatch(createGundam(data));
+  return data.id;
 };
 
 const initialState = { gundams: null, gundam: null };

@@ -100,7 +100,7 @@ const UserProfile = () => {
           <div className="profile-bottom-right">
             <div className="profile-comments">
               <i className="fas fa-birthday-cake"></i>
-              <p className="user-joined">Joined on {mainUser?.createdAt}</p>
+              <p className="user-joined">Joined on {dateChange(mainUser?.createdAt)}</p>
             </div>
             <p className="profile-comments-title">Comments</p>
             <div className="profile-comments-right">

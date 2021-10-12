@@ -16,7 +16,9 @@ const postError = () => {
 };
 
 router.get('/', asyncHandler(async(req, res) => {
-    const gundam = await Gundam.findAll()
+    const gundam = await Gundam.findAll({
+      order: [["createdAt", "ASC"]],
+    })
 
     return res.json({ gundam })
 }))

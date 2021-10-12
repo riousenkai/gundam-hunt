@@ -6,7 +6,7 @@ import { getGundams, makeGundam } from "../../store/gundam";
 
 const SubmitGundam = () => {
   const dispatch = useDispatch();
- const history = useHistory()
+  const history = useHistory();
 
   const [name, setName] = useState("");
   const [grade, setGrade] = useState("High Grade 1/144");
@@ -16,33 +16,30 @@ const SubmitGundam = () => {
   const [image2, setImage2] = useState("");
   const [image3, setImage3] = useState("");
   const user = useSelector((state) => state.session.user);
-  const gundams = useSelector((state) => state.session.gundams)
+  const gundams = useSelector((state) => state.gundam.gundams);
 
   useEffect(() => {
-    dispatch(restoreUser())
+    dispatch(restoreUser());
   }, []);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
 
     const gundam = {
-        name,
-        user_id: user.id,
-        description,
-        link,
-        upvotes: 1,
-        grade,
-        image1,
-        image2,
-        image3
+      name,
+      user_id: user.id,
+      description,
+      link,
+      upvotes: 1,
+      grade,
+      image1,
+      image2,
+      image3,
     };
 
-    dispatch(makeGundam(gundam))
-    dispatch(getGundams())
-
-    const length = gundams.length
-
-    history.push(`/gundams/${length}`)
+    await dispatch(makeGundam(gundam)).then((newId) =>
+      history.push(`/gundams/${newId}`)
+    );
   };
 
   return (
