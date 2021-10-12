@@ -1,0 +1,62 @@
+.gundam-main {
+    width: 1070px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 30px 30px 30px;
+}
+
+.gundam-title {
+    margin-top: 1.5rem;
+}
+
+.gundam-title-text {
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.gundam-title-grade {
+    font-size: 16px;
+}
+
+.gundam-info-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.gundam-left {
+    width: 720px;
+    display: flex;
+    flex-direction: column;
+}
+
+.gundam-left-info {
+    width: 788px;
+    background-color: rgba(38, 39, 38, 0.6);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 20px 20px 20px 20px;
+    margin: 0 auto;
+}
+
+.gundam-img {
+    display: flex;
+    flex-direction: row;
+}
+
+.gundam-highlight-img {
+    height: 600px;
+    width: 600px;
+    margin-right: 10px;
+}
+
+.gundam-mini-img-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.gundam-mini-img {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 30px;
+}

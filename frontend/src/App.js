@@ -7,6 +7,7 @@ import Footer from "./components/Footer"
 import Home from "./components/Home"
 import UserProfile from "./components/UserProfile";
 import Settings from "./components/Settings/Settings";
+import Gundam from "./components/Gundam";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/settings">
             <Settings />
+          </Route>
+          <Route path="/gundams/:id">
+            <Gundam />
           </Route>
           <Route>
             <h2>Page Not Found</h2>

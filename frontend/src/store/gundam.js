@@ -5,7 +5,7 @@ const GET_ONE_GUNDAM = "gundam/getOneGundam"
 
 const getOneGundam = (gundam) => {
     return {
-        type: GET_ALL_GUNDAMS,
+        type: GET_ONE_GUNDAM,
         payload: gundam
     }
 }
@@ -18,7 +18,7 @@ const getAllGundams = (gundams) => {
 }
 
 export const singleGundam = (id) => async(dispatch) => {
-    const res = await csrfFetch(`/api/gundam/${id}`)
+    const res = await fetch(`/api/gundam/${id}`)
     const data = await res.json()
     dispatch(getOneGundam(data))
 }

@@ -24,7 +24,6 @@ router.get('/', asyncHandler(async(req, res) => {
 
 router.get('/:id', asyncHandler(async(req, res) => {
   const gundam = await Gundam.findByPk(req.params.id)
-
   return res.json(gundam)
 }))
 
