@@ -15,19 +15,21 @@ const Gundam = () => {
   const { setShowModal, setNum } = useShowModal();
 
   useEffect(() => {
-    dispatch(singleGundam(id))
-      .then(() => setLoaded(true))
-      .then(setSource(gundam.image1));
+    dispatch(singleGundam(id)).then(() => setLoaded(true));
     setShowModal(false);
     setNum(0);
   }, [id, dispatch]);
+
+  useEffect(() => {
+    setSource(gundam?.image1);
+  }, [gundam]);
 
   if (loaded) {
     return (
       <div className="gundam-main">
         <div className="gundam-title">
-          <p className="gundam-title-text">{gundam.name}</p>
-          <p className="gundam-title-grade">{gundam.grade}</p>
+          <p className="gundam-title-text">{gundam?.name}</p>
+          <p className="gundam-title-grade">{gundam?.grade}</p>
         </div>
         <div className="gundam-info-main">
           <div className="gundam-left">
@@ -41,23 +43,29 @@ const Gundam = () => {
                 <div className="gundam-mini-img-card">
                   <img
                     className="gundam-mini-img"
-                    src={gundam.image1}
-                    onClick={() => setSource(gundam.image1)}
+                    src={gundam?.image1}
+                    onClick={() => setSource(gundam?.image1)}
                   ></img>
                   <img
                     className="gundam-mini-img"
-                    src={gundam.image2}
-                    onClick={() => setSource(gundam.image2)}
+                    src={gundam?.image2}
+                    onClick={() => setSource(gundam?.image2)}
                   ></img>
                   <img
                     className="gundam-mini-img"
-                    src={gundam.image3}
-                    onClick={() => setSource(gundam.image3)}
+                    src={gundam?.image3}
+                    onClick={() => setSource(gundam?.image3)}
                   ></img>
                 </div>
               </div>
+              <div className="gundam-left-description">
+                <p className="gundam-description">{gundam?.description}</p>
+              </div>
             </div>
             <div className="gundam-left-comments"></div>
+          </div>
+          <div className="gundam-info-right">
+            <a href={gundam?.link} target="_blank">Get It</a>
           </div>
         </div>
       </div>

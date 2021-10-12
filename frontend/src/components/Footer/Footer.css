@@ -24,10 +24,10 @@ a > i {
     padding-left: 20px !important;
     padding-right: 20px !important;
     justify-content: center;
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
+    padding-top: 10px !important;
+    padding-bottom: 15px !important;
     text-align: center;
-    background-color: rgba(38, 39, 38, 0.6);
+    background-color: rgba(38, 39, 38, 0.99);
   }
 
   .footer-text {

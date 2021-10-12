@@ -7,7 +7,7 @@
 }
 
 .gundam-title {
-  margin-top: 1.5rem;
+  margin-top: 1px;
 }
 
 .gundam-title-text {
@@ -16,7 +16,8 @@
 }
 
 .gundam-title-grade {
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .gundam-info-main {
@@ -36,7 +37,7 @@
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 20px 20px 20px 20px;
-  margin: 0 auto;
+  z-index: 5;
 }
 
 .gundam-img {
@@ -68,4 +69,26 @@
 
 .gundam-left-comments {
     margin-bottom: 100px;
+}
+
+.gundam-left-description {
+    margin-top: 10px;
+    border-top: 1px solid whitesmoke;
+}
+
+.gundam-description {
+    margin-top: 10px;
+}
+
+.gundam-info-right {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 260px;
+    margin-left: 160px;
+    z-index: 1;
+    border-radius: 5px;
+    background-color: rgba(38, 39, 38, 0.6);
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
 }
