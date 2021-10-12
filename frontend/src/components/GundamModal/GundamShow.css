@@ -25,6 +25,7 @@
     height: 600px;
     width: 600px;
     margin-bottom: 15px;
+    border-radius: 8px;
 }
 
 .gundam-modal-bot {

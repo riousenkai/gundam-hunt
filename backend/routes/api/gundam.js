@@ -22,6 +22,13 @@ router.get('/', asyncHandler(async(req, res) => {
     return res.json({ gundam })
 }))
 
+router.get('/:id', asyncHandler(async(req, res) => {
+  const gundam = await Gundam.findByPk(req.params.id)
+
+  return res.json(gundam)
+}))
+
+
 module.exports = router;
 
 // include: [User, Comment, Upvote],
