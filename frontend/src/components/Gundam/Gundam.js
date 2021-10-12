@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { singleGundam } from "../../store/gundam";
@@ -16,10 +16,13 @@ const Gundam = () => {
   const gundam = useSelector((state) => state.gundam[id]);
   const [loaded, setLoaded] = useState(false);
   const [source, setSource] = useState("");
+  const [removed, setRemoved] = useState(true);
   const { setShowModal, setNum } = useShowModal();
 
   const user = useSelector((state) => state.user.user);
-  const loggedUser = useSelector((state) => state.session.user)
+  const loggedUser = useSelector((state) => state.session.user);
+
+  let disabledBtn;
 
   useEffect(() => {
     dispatch(singleGundam(id));
@@ -32,10 +35,21 @@ const Gundam = () => {
     dispatch(retrieveUser(gundam?.user_id)).then(() => setLoaded(true));
   }, [gundam]);
 
-  const delete = () => {
+  useEffect(() => {
+    disabledBtn = document.querySelector(".gundam-delete-btn")
+  }, [])
 
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setRemoved(false)
+    }, 5000);
+  }, []);
 
-  }
+  const deleteGundam = (e) => {
+    e.preventDefault()
+    console.log("WEEEEEE")
+    // dispatch().then(() => history.push(`/profile/${loggedUser.id}`))
+  };
 
   if (loaded) {
     return (
@@ -86,8 +100,14 @@ const Gundam = () => {
             </button>
             {gundam?.user_id === loggedUser?.id ? (
               <>
-              <NavLink to={`/edit/${gundam.id}`}>Edit</NavLink>
-              <button className="gundam-delete-btn" onClick={delete}>Delete</button>
+                <NavLink to={`/edit/${gundam.id}`}>Edit</NavLink>
+                  <button
+                    className="gundam-delete-btn select-none"
+                    onClick={deleteGundam}
+                    disabled={removed}
+                  >
+                    Delete
+                  </button>
               </>
             ) : (
               <p className="gundam-submitted">

@@ -107,3 +107,12 @@
   height: 50px;
   width: 50px;
 }
+
+.select-none {
+  user-select: none;
+}
+
+.select-none:active {
+ transform: none;
+ outline: none;
+}
