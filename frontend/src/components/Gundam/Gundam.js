@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { singleGundam } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
-import Loading from "../Loading/Loading";
-import "./Gundam.css";
 import { NavLink } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
+import "./Gundam.css";
+import Loading from "../Loading/Loading";
 
 const Gundam = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const gundam = useSelector((state) => state.gundam[id]);
   const [loaded, setLoaded] = useState(false);
   const [source, setSource] = useState("");
   const { setShowModal, setNum } = useShowModal();
+
   const user = useSelector((state) => state.user.user);
+  const loggedUser = useSelector((state) => state.session.user)
 
   useEffect(() => {
     dispatch(singleGundam(id));
@@ -27,6 +31,11 @@ const Gundam = () => {
     setSource(gundam?.image1);
     dispatch(retrieveUser(gundam?.user_id)).then(() => setLoaded(true));
   }, [gundam]);
+
+  const delete = () => {
+
+
+  }
 
   if (loaded) {
     return (
@@ -75,13 +84,23 @@ const Gundam = () => {
             <button type="button" className="gundam-upvotes">
               {gundam.upvotes}
             </button>
-            <p className="gundam-submitted">
-              Submitted by:{" "}
-              <NavLink className="gundam-img-submit" to={`/profile/${gundam.user_id}`}>
-              <img className="gundam-user-img" src={user?.image_url} />
-                {user?.username}
-              </NavLink>
-            </p>
+            {gundam?.user_id === loggedUser?.id ? (
+              <>
+              <NavLink to={`/edit/${gundam.id}`}>Edit</NavLink>
+              <button className="gundam-delete-btn" onClick={delete}>Delete</button>
+              </>
+            ) : (
+              <p className="gundam-submitted">
+                Submitted by:{" "}
+                <NavLink
+                  className="gundam-img-submit"
+                  to={`/profile/${gundam.user_id}`}
+                >
+                  <img className="gundam-user-img" src={user?.image_url} />
+                  {user?.username}
+                </NavLink>
+              </p>
+            )}
           </div>
         </div>
       </div>

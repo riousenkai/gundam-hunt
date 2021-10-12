@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { restoreUser } from "../../store/session";
 import { useHistory } from "react-router";
-import { getGundams, makeGundam } from "../../store/gundam";
+import { makeGundam } from "../../store/gundam";
 
 const SubmitGundam = () => {
   const dispatch = useDispatch();
