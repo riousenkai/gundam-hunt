@@ -52,6 +52,9 @@ const SubmitGundam = () => {
             className="submit-input-name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
+            autoComplete="false"
+            spellCheck="false"
           />
         </label>
         <label className="submit-label">
@@ -71,18 +74,24 @@ const SubmitGundam = () => {
         <label className="submit-label">
           Product Description
           <input
+          required
             className="submit-description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            autoComplete="false"
+            spellCheck="false"
           />
         </label>
         <label className="submit-label">
           Buy Link
           <input
             className="submit-input-link"
+            required
             type="url"
             value={link}
             onChange={(e) => setLink(e.target.value)}
+            autoComplete="false"
+            spellCheck="false"
           />
         </label>
         <label className="submit-label-img">
@@ -93,6 +102,9 @@ const SubmitGundam = () => {
             value={image1}
             onChange={(e) => setImage1(e.target.value)}
             placeholder="Primary Image"
+            required
+            autoComplete="false"
+            spellCheck="false"
           />
           <input
             type="url"
@@ -100,6 +112,9 @@ const SubmitGundam = () => {
             value={image2}
             onChange={(e) => setImage2(e.target.value)}
             placeholder="Second Image"
+            required
+            autoComplete="false"
+            spellCheck="false"
           />
           <input
             type="url"
@@ -107,6 +122,9 @@ const SubmitGundam = () => {
             value={image3}
             onChange={(e) => setImage3(e.target.value)}
             placeholder="Third Image"
+            required
+            autoComplete="false"
+            spellCheck="false"
           />
         </label>
         <button className="submit-gundam-btn" disabled={false}>
