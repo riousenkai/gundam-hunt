@@ -16,7 +16,7 @@ a:-webkit-any-link {
 body {
   background-image: url("https://www.pixelstalk.net/wp-content/uploads/images1/Best-gundam-hd-wallpapers.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-attachment: fixed;
   background-color: rgba(0, 0, 0, 0.3);
   background-blend-mode: overlay;
 }
