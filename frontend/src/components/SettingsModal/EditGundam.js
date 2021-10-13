@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { fixGundam } from "../../store/gundam";
 
 const EditGundam = ({ gundam }) => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const EditGundam = ({ gundam }) => {
   const submit = async (e) => {
     e.preventDefault();
 
-    const gundam = {
+    const payload = {
       name,
       description,
       link,
@@ -31,9 +32,9 @@ const EditGundam = ({ gundam }) => {
       image3,
     };
 
-    // await dispatch(makeGundam(gundam)).then((newId) =>
-    //   history.push(`/gundams/${newId}`)
-    // );
+    await dispatch(fixGundam(payload, gundam.id)).then((id) =>
+      history.push(`/gundams/${id}`)
+    );
   };
 
   return (

@@ -52,6 +52,7 @@ export const makeGundam = (gundam) => async (dispatch) => {
   });
   const data = await res.json()
   dispatch(createGundam(data));
+  return data.id
 };
 
 export const deleteGundam = (id) => async (dispatch) => {
@@ -63,6 +64,19 @@ export const deleteGundam = (id) => async (dispatch) => {
   })
   const data = res.json()
   dispatch(getAllGundams(data));
+}
+
+export const fixGundam = (gundam, id) => async(dispatch) => {
+  const res = await csrfFetch(`/api/gundam/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(gundam)
+  })
+  const data = await res.json()
+  dispatch(createGundam(data))
+  return data.id;
 }
 
 const initialState = { gundams: null, gundam: null };

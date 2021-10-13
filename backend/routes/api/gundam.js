@@ -48,6 +48,15 @@ router.delete('/:id', asyncHandler(async(req, res) => {
   return res.json(gundams)
 }))
 
+router.put("/:id", asyncHandler(async(req, res) => {
+
+  const gundam = await Gundam.findByPk(req.params.id)
+
+  await gundam.update(req.body)
+
+  return res.json(gundam)
+}))
+
 module.exports = router;
 
 // include: [User, Comment, Upvote],
