@@ -36,7 +36,7 @@ const Gundam = () => {
     dispatch(retrieveUser(gundam?.user_id))
     .then(() => dispatch(getComments(gundam?.id)))
     .then(() => setLoaded(true));
-  }, [gundam]);
+  }, [gundam, dispatch]);
 
   if (loaded) {
     return (
@@ -80,9 +80,9 @@ const Gundam = () => {
             <div className="gundam-left-comments">
               <p className="gundam-comment-title">Comments</p>
               <ul>
-              {/* {comments[id] && comments[id].map(comment => (
+              {comments[id] && comments[id].map((comment) =>
                 <li key={comment.id}>{comment}</li>
-              ))} */}
+              )}
               </ul>
             </div>
           </div>
