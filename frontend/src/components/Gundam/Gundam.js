@@ -65,7 +65,7 @@ const Gundam = () => {
     const payload = {
       comment: comm,
     };
-    dispatch(editComment(payload, num)).then(() => editComments(num))
+    dispatch(editComment(payload, id, num)).then(() => editComments(num))
   };
 
   if (loaded) {

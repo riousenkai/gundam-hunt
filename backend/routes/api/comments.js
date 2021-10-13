@@ -19,8 +19,8 @@ router.get(
   })
 );
 
-router.put("/:id", asyncHandler(async (req, res) => {
-    const comment = await Comment.findByPk(req.params.id)
+router.put("/:id/:commentId", asyncHandler(async (req, res) => {
+    const comment = await Comment.findByPk(req.params.commentId)
 
     await comment.update(req.body)
 
