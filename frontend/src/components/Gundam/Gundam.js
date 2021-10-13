@@ -47,6 +47,14 @@ const Gundam = () => {
 
   const editComment = (num) => {
     const com = document.querySelector(`.comment${num}`);
+    const input = document.querySelector(`.input${num}`)
+    if (com.classList.contains("hidden")) {
+      com.classList.remove("hidden");
+      input.classList.add("hidden")
+    } else {
+      com.classList.add("hidden");
+      input.classList.remove("hidden")
+    }
   };
 
   if (loaded) {
@@ -114,11 +122,11 @@ const Gundam = () => {
                       </div>
                     </div>
                     <div className="comment-comment">
-                      <div className="comment-comment-text">
+                      <div className={`comment-comment-text comment${comment.id}`}>
                         {comment.comment}
                       </div>
                       <textarea
-                        className="hidden"
+                        className={`hidden input${comment.id}`}
                         value={comm}
                         onChange={(e) => setComm(e.target.value)}
                       />
@@ -127,7 +135,8 @@ const Gundam = () => {
                       <div className="comment-buttons">
                         <button
                           className="comment-edit button"
-                          onClick={() => setComm(comment.comment)}
+                          onClick={() => editComment(comment.id)}
+                          onMouseDown={() => setComm(comment.comment)}
                         >
                           Edit
                         </button>
