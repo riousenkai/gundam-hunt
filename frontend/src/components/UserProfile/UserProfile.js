@@ -4,7 +4,8 @@ import { useParams, useHistory } from "react-router";
 import { NavLink, Redirect } from "react-router-dom";
 import { retrieveUser, retrieveAllUsers } from "../../store/user";
 import { restoreUser } from "../../store/session";
-import Loading from "../Loading/Loading"
+import { getUserGundams } from "../../store/gundam";
+import Loading from "../Loading/Loading";
 import "./UserProfile.css";
 
 const UserProfile = () => {
@@ -14,17 +15,19 @@ const UserProfile = () => {
   const user = useSelector((state) => state.session.user);
   const mainUser = useSelector((state) => state.user.user);
   const allUsers = useSelector((state) => state.user.users);
+  const userGundams = useSelector((state) => state.gundam.user);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const regex = /\D/g
+    const regex = /\D/g;
     if (id.match(regex)) {
-      history.push("/")
+      history.push("/");
     }
 
     dispatch(restoreUser())
       .then(() => dispatch(retrieveUser(id)))
-      .then(dispatch(retrieveAllUsers()))
+      .then(() => dispatch(retrieveAllUsers()))
+      .then(() => dispatch(getUserGundams(id)))
       .then(() => setLoaded(true));
   }, [id]);
 
@@ -96,48 +99,33 @@ const UserProfile = () => {
                 </button>
               </NavLink>
             </div>
-            <div className="profile-submitted">Submissions (2)</div>
+            <div className="profile-submitted">Submissions ({userGundams?.length})</div>
             <div className="profile-activity">
-              <NavLink to="/" className="activity-card">
-                <img
-                  className="activity-img"
-                  src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg"
-                />
-                <div className="activity-card-text">
-                  <p className="activity-title">Shin Musha Gundam</p>
-                  <p className="activity-description">Master Grade</p>
-                </div>
-                <button
-                  type="button"
-                  className="activity-upvote"
-                  onClick={prevent}
-                >
-                  5422
-                </button>
-              </NavLink>
-              <NavLink to="/" className="activity-card">
-                <img
-                  className="activity-img"
-                  src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg"
-                />
-                <div className="activity-card-text">
-                  <p className="activity-title">Shin Musha Gundam</p>
-                  <p className="activity-description">Master Grade</p>
-                </div>
-                <button
-                  type="button"
-                  className="activity-upvote"
-                  onClick={prevent}
-                >
-                  1
-                </button>
-              </NavLink>
+              {userGundams &&
+                userGundams.map((gundam) => (
+                  <NavLink to={`/gundams/${gundam.id}`} className="activity-card">
+                    <img className="activity-img" src={gundam.image1} />
+                    <div className="activity-card-text">
+                      <p className="activity-title">{gundam.name}</p>
+                      <p className="activity-description">{gundam.grade}</p>
+                    </div>
+                    <button
+                      type="button"
+                      className="activity-upvote"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      {gundam.upvotes}
+                    </button>
+                  </NavLink>
+                ))}
             </div>
           </div>
           <div className="profile-bottom-right">
             <div className="profile-comments">
               <i className="fas fa-birthday-cake"></i>
-              <p className="user-joined">Joined on {dateChange(mainUser?.createdAt)}</p>
+              <p className="user-joined">
+                Joined on {dateChange(mainUser?.createdAt)}
+              </p>
             </div>
             <p className="profile-comments-title">Comments</p>
             <div className="profile-comments-right">
@@ -148,9 +136,7 @@ const UserProfile = () => {
       </div>
     );
   } else {
-    return (
-     <Loading />
-    );
+    return <Loading />;
   }
 };
 

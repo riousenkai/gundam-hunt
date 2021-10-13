@@ -26,11 +26,10 @@ const createGundam = (gundam) => {
   };
 };
 
-const obtainUserGundams = (gundams, id) => {
+const obtainUserGundams = (gundams) => {
   return {
     type: GET_USER_GUNDAMS,
     payload: gundams,
-    id,
   };
 };
 
@@ -53,8 +52,8 @@ export const getGundams = () => async (dispatch) => {
 
 export const getUserGundams = (id) => async (dispatch) => {
   const res = await fetch(`/api/gundam/user/${id}`);
-  const data = res.json();
-  dispatch(obtainUserGundams(data, id));
+  const data = await res.json();
+  dispatch(obtainUserGundams(data));
 };
 
 export const makeGundam = (gundam) => async (dispatch) => {
@@ -105,7 +104,7 @@ const gundamReducer = (state = initialState, action) => {
     case CREATE_GUNDAM:
       return { ...state, [action.payload.id]: action.payload };
     case GET_USER_GUNDAMS:
-      return { ...state, users: { [action.id]: action.payload } };
+      return { ...state, user: action.payload };
     default:
       return state;
   }

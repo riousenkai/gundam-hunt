@@ -57,6 +57,16 @@ router.put("/:id", asyncHandler(async(req, res) => {
   return res.json(gundam)
 }))
 
+router.get("/user/:id", asyncHandler(async(req, res) => {
+  const gundams = await Gundam.findAll({
+    where: {
+      user_id: req.params.id
+    }
+  })
+
+  return res.json(gundams)
+}))
+
 module.exports = router;
 
 // include: [User, Comment, Upvote],
