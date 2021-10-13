@@ -5,10 +5,10 @@ import { singleGundam } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
-import { deleteGundam } from "../../store/gundam";
 import "./Gundam.css";
 import Loading from "../Loading/Loading";
 import SettingsModal from "../SettingsModal";
+import DeleteGundamModal from "../DeleteGundamModal";
 
 const Gundam = () => {
   const { id } = useParams();
@@ -18,13 +18,10 @@ const Gundam = () => {
   const gundam = useSelector((state) => state.gundam[id]);
   const [loaded, setLoaded] = useState(false);
   const [source, setSource] = useState("");
-  const [removed, setRemoved] = useState(true);
   const { setShowModal, setNum } = useShowModal();
 
   const user = useSelector((state) => state.user.user);
   const loggedUser = useSelector((state) => state.session.user);
-
-  let disabledBtn;
 
   useEffect(() => {
     dispatch(singleGundam(id));
@@ -37,22 +34,6 @@ const Gundam = () => {
     dispatch(retrieveUser(gundam?.user_id)).then(() => setLoaded(true));
   }, [gundam]);
 
-  useEffect(() => {
-    disabledBtn = document.querySelector(".gundam-delete-btn");
-  }, []);
-
-  useEffect(() => {
-    let timer = setTimeout(() => {
-      setRemoved(false);
-    }, 5000);
-  }, []);
-
-  const deleteGundams = (id, e) => {
-    dispatch(deleteGundam(id))
-    .then(() =>
-      history.push(`/profile/${loggedUser.id}`)
-    );
-  };
 
   if (loaded) {
     return (
@@ -95,22 +76,16 @@ const Gundam = () => {
             <div className="gundam-left-comments"></div>
           </div>
           <div className="gundam-info-right">
-            <a href={gundam?.link} target="_blank">
+            <a className="gundam-link" href={gundam?.link} target="_blank">
               Get It
             </a>
             <button type="button" className="gundam-upvotes">
-              {gundam.upvotes}
+              Upvotes: {gundam.upvotes}
             </button>
             {gundam?.user_id === loggedUser?.id ? (
               <>
                 <SettingsModal gundam={gundam} />
-                <button
-                  className="gundam-delete-btn"
-                  onClick={(e) => deleteGundams(gundam.id, e)}
-                  disabled={removed}
-                >
-                  Delete
-                </button>
+                <DeleteGundamModal gundam={gundam} />
               </>
             ) : (
               <p className="gundam-submitted">

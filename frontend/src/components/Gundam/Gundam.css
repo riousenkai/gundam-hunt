@@ -107,3 +107,71 @@
   height: 50px;
   width: 50px;
 }
+
+.gundam-link {
+  padding: 5px 5px 5px 5px;
+  margin: 0 auto;
+  width: 140px;
+  background-color: rgba(128, 0, 128, 0.589);
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.gundam-link:active {
+  transform: translateY(4px)
+}
+
+.gundam-upvotes {
+  padding: 5px 5px 5px 5px;
+  margin: 0 auto;
+  width: 140px;
+  background-color: rgb(4, 9, 22, 0.6);
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  border:none;
+}
+
+.gundam-upvotes:active {
+  transform: translateY(4px)
+}
+
+.gundam-edit-btn {
+  padding: 5px 5px 5px 5px;
+  margin: 0 auto;
+  width: 140px;
+  background-color: rgba(18, 63, 175, 0.459);
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  border:none;
+}
+
+.gundam-edit-button:active {
+  transform: translateY(4px)
+}
+
+.gundam-delete-btn {
+  padding: 5px 5px 5px 5px;
+  margin: 0 auto;
+  width: 140px;
+  background-color: rgb(158, 0, 0, 0.9);
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  border:none;
+  margin-top: 100px
+}
+
+.gundam-link, .gundam-delete-btn, .gundam-edit-btn, .gundam-upvotes {
+  cursor: pointer;
+}

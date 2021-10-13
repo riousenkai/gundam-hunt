@@ -156,6 +156,7 @@ function Navigation({ isLoaded }) {
             {userResult.users &&
               userResult.users.map((user) => (
                 <NavLink
+                  key={user.id}
                   to={`/profile/${user.id}`}
                   onClick={removeVal}
                   className="pointer results"

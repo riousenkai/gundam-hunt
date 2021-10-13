@@ -28,7 +28,7 @@ const Home = () => {
             <div className="head-card">
               {gundams &&
                 gundams.map((gundam) => (
-                  <GundamModal gundam={gundam} />
+                  <GundamModal key={gundam.id} gundam={gundam} />
                   // <NavLink to="/" className="activity-card">
                   //   <img className="activity-img" src={gundam.image1} />
                   //   <div className="activity-card-text">

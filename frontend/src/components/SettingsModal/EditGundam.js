@@ -16,7 +16,7 @@ const EditGundam = ({ gundam }) => {
   const [image2, setImage2] = useState(gundam.image2);
   const [image3, setImage3] = useState(gundam.image3);
 
-  const { setNum } = useShowModal()
+  const { setNum } = useShowModal();
 
   useEffect(() => {
     console.log(gundam);
@@ -35,7 +35,7 @@ const EditGundam = ({ gundam }) => {
       image3,
     };
 
-    await dispatch(fixGundam(payload, gundam.id)).then(() => setNum(0) );
+    await dispatch(fixGundam(payload, gundam.id)).then(() => setNum(0));
   };
 
   return (
