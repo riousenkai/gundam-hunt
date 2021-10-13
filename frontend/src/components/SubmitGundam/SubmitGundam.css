@@ -62,7 +62,6 @@
 .submit-label-img {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
   font-size: 20px;
 }
 
@@ -91,5 +90,103 @@
 }
 
 .submit-gundam-btn:active {
-    transform: translateY(4px);
+  transform: translateY(4px);
+}
+.submit-cancel-btn:active {
+  transform: translateY(4px);
+}
+
+.submit-cancel-btn {
+  border-radius: 2px;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+  color: rgba(225, 217, 209, 1);
+  background-color: rgb(216, 24, 24);
+  text-align: center;
+  font-size: 20px;
+  border-radius: 7px;
+  border: none;
+  margin-left: 20px;
+}
+
+.submit-main.edit {
+  margin-top: 10rem;
+  height: 880px;
+}
+
+.submit-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+
+@media only screen and (max-height: 800px) {
+  .submit-main.edit {
+    height: auto;
+  }
+  .submit-title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .submit-label-img {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  .submit-description {
+    height: 50px;
+    resize: none;
+  }
+  .submit-main {
+    display: flex;
+    margin: 0 auto;
+    width: 798px;
+    font-size: 10px;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 200px;
+  }
+  .submit-form {
+    display: flex;
+    background-color: rgba(38, 39, 38, 0.6);
+    border: 1px solid #ffffff80;
+    padding: 20px 20px 20px 20px;
+    border-radius: 5px;
+    flex-direction: column;
+  }
+  .submit-input-img {
+    background-color: rgba(237, 243, 238, 0.24);
+    color: rgba(225, 217, 209, 1);
+    font-size: 14px;
+    border: 0.5px solid black;
+    margin-top: 2px;
+  }
+  .submit-gundam-btn {
+    cursor: pointer;
+    color: rgba(225, 217, 209, 1);
+    background-color: rgb(7, 107, 77);
+    text-align: center;
+    font-size: 16px;
+    border-radius: 7px;
+    width: 150px;
+    border: none;
+    margin-right: 20px;
+  }
+  .submit-cancel-btn {
+    cursor: pointer;
+    color: rgba(225, 217, 209, 1);
+    text-align: center;
+    font-size: 16px;
+    border-radius: 7px;
+    width: 150px;
+    border: none;
+  }
+  .submit-label-img {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -10px;
+    font-size: 20px;
+  }
 }

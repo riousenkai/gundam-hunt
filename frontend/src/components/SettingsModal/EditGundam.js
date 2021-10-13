@@ -39,12 +39,12 @@ const EditGundam = ({ gundam }) => {
   };
 
   return (
-    <div className="edit-gundam-">
+    <div className="submit-main edit">
       <form className="submit-form" onSubmit={submit}>
         <label className="submit-label">
           Gundam Name
           <input
-            className="submit-input-name"
+            className="submit-input"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -55,7 +55,7 @@ const EditGundam = ({ gundam }) => {
         <label className="submit-label">
           Grade
           <select
-            className="submit-select"
+            className="submit-input"
             value={grade}
             onChange={(e) => setGrade(e.target.value)}
           >
@@ -68,9 +68,9 @@ const EditGundam = ({ gundam }) => {
         </label>
         <label className="submit-label">
           Product Description
-          <input
+          <textarea
             required
-            className="submit-description"
+            className="submit-input submit-description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             autoComplete="false"
@@ -80,7 +80,7 @@ const EditGundam = ({ gundam }) => {
         <label className="submit-label">
           Buy Link
           <input
-            className="submit-input-link"
+            className="submit-input"
             required
             type="url"
             value={link}
@@ -122,10 +122,12 @@ const EditGundam = ({ gundam }) => {
             spellCheck="false"
           />
         </label>
+        <div className="submit-btns">
         <button className="submit-gundam-btn" disabled={false}>
           Submit
         </button>
-        <button onMouseDown={() => setNum(0)}>Cancel</button>
+        <button onClick={() => setNum(0)} className="submit-cancel-btn">Cancel</button>
+        </div>
       </form>
     </div>
   );
