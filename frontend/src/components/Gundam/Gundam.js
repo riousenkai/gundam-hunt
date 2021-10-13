@@ -74,6 +74,16 @@ const Gundam = () => {
   }
 
   const submitComment = async () => {
+    if(!loggedUser) {
+      return setNum(0)
+    }
+
+    if (newComment.length < 1) {
+      return window.alert('Please place a comment!')
+    }
+
+    newComment.replace(/\r?\n/g, '<br />')
+
     const payload = {
       user_id: loggedUser.id,
       gundam_id: id,
