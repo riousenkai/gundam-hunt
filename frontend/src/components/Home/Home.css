@@ -3,6 +3,7 @@
     height: 100%;
     flex-direction: column;
     width: 100%;
+    margin-bottom: 70px;
 }
 
 .body-container {
