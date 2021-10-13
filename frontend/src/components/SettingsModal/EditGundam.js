@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { fixGundam } from "../../store/gundam";
+import { useShowModal } from "../../context/ShowModal";
 
 const EditGundam = ({ gundam }) => {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ const EditGundam = ({ gundam }) => {
   const [image1, setImage1] = useState(gundam.image1);
   const [image2, setImage2] = useState(gundam.image2);
   const [image3, setImage3] = useState(gundam.image3);
+
+  const { setNum } = useShowModal()
 
   useEffect(() => {
     console.log(gundam);
@@ -32,9 +35,7 @@ const EditGundam = ({ gundam }) => {
       image3,
     };
 
-    await dispatch(fixGundam(payload, gundam.id)).then((id) =>
-      history.push(`/gundams/${id}`)
-    );
+    await dispatch(fixGundam(payload, gundam.id)).then(() => setNum(0) );
   };
 
   return (
@@ -124,6 +125,7 @@ const EditGundam = ({ gundam }) => {
         <button className="submit-gundam-btn" disabled={false}>
           Submit
         </button>
+        <button onMouseDown={() => setNum(0)}>Cancel</button>
       </form>
     </div>
   );
