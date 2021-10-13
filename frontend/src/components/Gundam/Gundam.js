@@ -17,7 +17,7 @@ const Gundam = () => {
   const history = useHistory();
 
   const gundam = useSelector((state) => state.gundam[id]);
-  const comments = useSelector((state) => state.comments)
+  const comments = useSelector((state) => state.comments);
   const [loaded, setLoaded] = useState(false);
   const [source, setSource] = useState("");
   const { setShowModal, setNum } = useShowModal();
@@ -26,7 +26,7 @@ const Gundam = () => {
   const loggedUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(singleGundam(id))
+    dispatch(singleGundam(id));
     setShowModal(false);
     setNum(0);
   }, [id, dispatch]);
@@ -34,14 +34,16 @@ const Gundam = () => {
   useEffect(() => {
     setSource(gundam?.image1);
     dispatch(retrieveUser(gundam?.user_id))
-    .then(() => dispatch(getComments(gundam?.id)))
-    .then(() => setLoaded(true));
+      .then(() => dispatch(getComments(gundam?.id)))
+      .then(() => setLoaded(true));
   }, [gundam, dispatch]);
+
+  useEffect(() => {}, [gundam]);
 
   if (loaded) {
     return (
       <div className="gundam-main">
-        {console.log(comments[id])}
+        {console.log(Array.isArray(comments[id]))}
         <div className="gundam-title">
           <p className="gundam-title-text">{gundam?.name}</p>
           <p className="gundam-title-grade">{gundam?.grade}</p>
@@ -79,11 +81,9 @@ const Gundam = () => {
             </div>
             <div className="gundam-left-comments">
               <p className="gundam-comment-title">Comments</p>
-              <ul>
-              {comments[id] && comments[id].map((comment) =>
-                <li key={comment.id}>{comment}</li>
-              )}
-              </ul>
+              {comments[id]?.map((comment) => (
+                  <div key={comment.id}>{comment.comment}</div>
+              ))}
             </div>
           </div>
           <div className="gundam-info-right">

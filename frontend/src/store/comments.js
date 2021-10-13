@@ -16,12 +16,12 @@ export const getComments = (id) => async (dispatch) => {
   dispatch(getGundamComments(data, id));
 };
 
-const initialState = {};
+const initialState = { 0: []};
 
 const commentReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_COMMENTS:
-      return { ...state, [action.gundamId]: [...action.comments] };
+      return { ...state, [action.gundamId]: action.comments};
     default:
       return state;
   }
