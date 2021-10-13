@@ -8,6 +8,7 @@ import { retrieveUser } from "../../store/user";
 import { deleteGundam } from "../../store/gundam";
 import "./Gundam.css";
 import Loading from "../Loading/Loading";
+import SettingsModal from "../SettingsModal";
 
 const Gundam = () => {
   const { id } = useParams();
@@ -102,7 +103,7 @@ const Gundam = () => {
             </button>
             {gundam?.user_id === loggedUser?.id ? (
               <>
-                <NavLink to={`/edit/${gundam.id}`}>Edit</NavLink>
+                <SettingsModal />
                 <button
                   className="gundam-delete-btn"
                   onClick={(e) => deleteGundams(gundam.id, e)}
