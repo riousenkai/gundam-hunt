@@ -5,7 +5,7 @@ import { singleGundam } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
-import { getComments } from "../../store/comments";
+import { getComments, editComment } from "../../store/comments";
 import "./Gundam.css";
 import Loading from "../Loading/Loading";
 import SettingsModal from "../SettingsModal";
@@ -45,22 +45,32 @@ const Gundam = () => {
     return `${finDate[1]}/${finDate[2]}/${finDate[0]}`;
   };
 
-  const editComment = (num) => {
+  const editComments = (num) => {
     const com = document.querySelector(`.comment${num}`);
-    const input = document.querySelector(`.input${num}`)
+    const input = document.querySelector(`.input${num}`);
     if (com.classList.contains("hidden")) {
       com.classList.remove("hidden");
-      input.classList.add("hidden")
+      input.classList.add("hidden");
     } else {
       com.classList.add("hidden");
-      input.classList.remove("hidden")
+      input.classList.remove("hidden");
     }
+  };
+
+  const submitEdit = (num) => {
+    if (comm.length < 1) {
+      return window.alert('Please place a comment!')
+    }
+
+    const payload = {
+      comment: comm,
+    };
+    dispatch(editComment(payload, num)).then(() => editComments(num))
   };
 
   if (loaded) {
     return (
       <div className="gundam-main">
-        {console.log(Array.isArray(comments[id]))}
         <div className="gundam-title">
           <p className="gundam-title-text">{gundam?.name}</p>
           <p className="gundam-title-grade">{gundam?.grade}</p>
@@ -99,7 +109,6 @@ const Gundam = () => {
             <div className="gundam-left-comments">
               <p className="gundam-comment-title">Comments</p>
               {comments[id]?.map((comment) => (
-                <>
                   <div className="comment-card" key={comment.id}>
                     <div className="comment-user-date">
                       <NavLink
@@ -122,20 +131,36 @@ const Gundam = () => {
                       </div>
                     </div>
                     <div className="comment-comment">
-                      <div className={`comment-comment-text comment${comment.id}`}>
+                      <div
+                        className={`comment-comment-text comment${comment.id}`}
+                      >
                         {comment.comment}
                       </div>
-                      <textarea
-                        className={`hidden input${comment.id}`}
-                        value={comm}
-                        onChange={(e) => setComm(e.target.value)}
-                      />
+                      <div className={`hidden input${comment.id}`}>
+                        <textarea
+                          className={`comment-textarea`}
+                          value={comm}
+                          onChange={(e) => setComm(e.target.value)}
+                        />
+                        <button
+                          className="comment-edit-submit"
+                          onClick={() => submitEdit(comment.id)}
+                        >
+                          Submit
+                        </button>
+                        <button
+                          className="comment-edit-cancel"
+                          onClick={() => editComments(comment.id)}
+                        >
+                          Cancel
+                        </button>
+                      </div>
                     </div>
                     {comment.user_id === loggedUser?.id ? (
                       <div className="comment-buttons">
                         <button
                           className="comment-edit button"
-                          onClick={() => editComment(comment.id)}
+                          onClick={() => editComments(comment.id)}
                           onMouseDown={() => setComm(comment.comment)}
                         >
                           Edit
@@ -146,7 +171,6 @@ const Gundam = () => {
                       </div>
                     ) : null}
                   </div>
-                </>
               ))}
             </div>
           </div>

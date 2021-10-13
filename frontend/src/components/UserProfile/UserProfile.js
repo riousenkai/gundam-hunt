@@ -99,11 +99,16 @@ const UserProfile = () => {
                 </button>
               </NavLink>
             </div>
-            <div className="profile-submitted">Submissions ({userGundams?.length})</div>
+            <div className="profile-submitted">
+              Submissions ({userGundams?.length})
+            </div>
             <div className="profile-activity">
               {userGundams &&
                 userGundams.map((gundam) => (
-                  <NavLink to={`/gundams/${gundam.id}`} className="activity-card">
+                  <NavLink
+                    to={`/gundams/${gundam.id}`}
+                    className="activity-card"
+                  >
                     <img className="activity-img" src={gundam.image1} />
                     <div className="activity-card-text">
                       <p className="activity-title">{gundam.name}</p>

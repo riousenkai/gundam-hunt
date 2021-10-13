@@ -16,6 +16,18 @@ export const getComments = (id) => async (dispatch) => {
   dispatch(getGundamComments(data, id));
 };
 
+export const editComment = (comment, id) => async(dispatch) => {
+  const res = await csrfFetch(`/api/comments/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(comment)
+  })
+  const data = await res.json();
+  dispatch(getGundamComments(data, id))
+}
+
 const initialState = { 0: []};
 
 const commentReducer = (state = initialState, action) => {

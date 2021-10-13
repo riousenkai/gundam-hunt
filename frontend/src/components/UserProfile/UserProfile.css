@@ -25,7 +25,6 @@
 }
 
 .profile-img {
-  /* clip-path: circle(); */
   border-radius: 50%;
   object-fit: cover;
   height: 100%;

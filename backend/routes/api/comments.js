@@ -19,4 +19,19 @@ router.get(
   })
 );
 
+router.put("/:id", asyncHandler(async (req, res) => {
+    const comment = await Comment.findByPk(req.params.id)
+
+    await comment.update(req.body)
+
+    const comments = await Comment.findAll({
+      where: {
+        gundam_id: req.params.id,
+      },
+      include: [User]
+    });
+
+    return res.json(comments)
+}))
+
 module.exports = router;
