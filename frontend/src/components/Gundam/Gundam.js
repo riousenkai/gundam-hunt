@@ -88,8 +88,10 @@ const Gundam = () => {
                 <DeleteGundamModal gundam={gundam} />
               </>
             ) : (
+              <div>
               <p className="gundam-submitted">
-                Submitted by:{" "}
+                Posted by
+                </p>
                 <NavLink
                   className="gundam-img-submit"
                   to={`/profile/${gundam.user_id}`}
@@ -97,7 +99,7 @@ const Gundam = () => {
                   <img className="gundam-user-img" src={user?.image_url} />
                   {user?.username}
                 </NavLink>
-              </p>
+              </div>
             )}
           </div>
         </div>
