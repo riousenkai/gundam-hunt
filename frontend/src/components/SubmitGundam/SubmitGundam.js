@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { restoreUser } from "../../store/session";
 import { useHistory } from "react-router";
 import { makeGundam } from "../../store/gundam";
+import "./SubmitGundam.css";
 
 const SubmitGundam = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,6 @@ const SubmitGundam = () => {
   const [image2, setImage2] = useState("");
   const [image3, setImage3] = useState("");
   const user = useSelector((state) => state.session.user);
-  const gundams = useSelector((state) => state.gundam.gundams);
 
   useEffect(() => {
     dispatch(restoreUser());
@@ -49,7 +49,7 @@ const SubmitGundam = () => {
         <label className="submit-label">
           Gundam Name
           <input
-            className="submit-input-name"
+            className="submit-input"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -73,9 +73,9 @@ const SubmitGundam = () => {
         </label>
         <label className="submit-label">
           Product Description
-          <input
-          required
-            className="submit-description"
+          <textarea
+            required
+            className="submit-input submit-description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             autoComplete="false"
@@ -85,7 +85,7 @@ const SubmitGundam = () => {
         <label className="submit-label">
           Buy Link
           <input
-            className="submit-input-link"
+            className="submit-input"
             required
             type="url"
             value={link}
@@ -127,9 +127,7 @@ const SubmitGundam = () => {
             spellCheck="false"
           />
         </label>
-        <button className="submit-gundam-btn" disabled={false}>
-          Submit
-        </button>
+        <button className="submit-gundam-btn">Submit</button>
       </form>
     </div>
   );

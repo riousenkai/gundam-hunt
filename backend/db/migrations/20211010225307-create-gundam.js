@@ -19,7 +19,7 @@ module.exports = {
       },
       description: {
         allowNull: false,
-        type: Sequelize.TEXT(500)
+        type: Sequelize.TEXT
       },
       link: {
         allowNull: false,
