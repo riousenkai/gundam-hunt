@@ -73,7 +73,9 @@ const Gundam = () => {
                 <p className="gundam-description">{gundam?.description}</p>
               </div>
             </div>
-            <div className="gundam-left-comments"></div>
+            <div className="gundam-left-comments">
+            <p className="gundam-comment-title">Comments</p>
+            </div>
           </div>
           <div className="gundam-info-right">
             <a className="gundam-link" href={gundam?.link} target="_blank">

@@ -10,7 +10,7 @@ const getGundamComments = (comments, gundamId) => {
   };
 };
 
-export const getComments = (id) => {
+export const getComments = (id) => async (dispatch) => {
   const res = await fetch(`/api/comments/${id}`);
   const data = res.json();
   dispatch(getGundamComments(data, id));
@@ -21,7 +21,7 @@ const initialState = {};
 const commentReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_COMMENTS:
-      return { ...state, [action.gundamId]: comments };
+      return { ...state, [action.gundamId]: action.comments };
     default:
       return state;
   }
