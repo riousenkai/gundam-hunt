@@ -11,12 +11,12 @@
 }
 
 .submit-title {
-    font-size: 33px;
-    font-weight: 500;
+  font-size: 33px;
+  font-weight: 500;
 }
 
 .submit-form {
-    display: flex;
+  display: flex;
   background-color: rgba(38, 39, 38, 0.6);
   border: 1px solid #ffffff80;
   padding: 20px 20px 20px 20px;
@@ -25,35 +25,71 @@
 }
 
 .submit-input {
-    background-color: rgba(237, 243, 238, 0.24);
-    color: rgba(225, 217, 209, 1);
-    font-size: 16px;
-    border: 0.5px solid black;
-    margin-left: 5px;
+  background-color: rgba(237, 243, 238, 0.24);
+  color: rgba(225, 217, 209, 1);
+  font-size: 16px;
+  border: 0.5px solid black;
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
 
 .submit-input:focus {
-    outline: none;
+  outline: none;
 }
 
 .submit-label {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .submit-description {
-    height: 150px;
-    resize: none;
+  height: 150px;
+  resize: none;
 }
 
 .submit-select {
-    background-color: black;
-    font-size: 20px;
-    border: 0.1px solid rgb(48, 48, 48);
+  background-color: black;
+  font-size: 20px;
+  border: 0.1px solid rgb(48, 48, 48);
 }
 
 .submit-select:focus {
-    outline: none;
+  outline: none;
+}
+
+.submit-label-img {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.submit-input-img {
+  background-color: rgba(237, 243, 238, 0.24);
+  color: rgba(225, 217, 209, 1);
+  font-size: 16px;
+  border: 0.5px solid black;
+  margin-top: 2px;
+}
+
+.submit-input-img:focus {
+  outline: none;
+}
+
+.submit-gundam-btn {
+  border-radius: 2px;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+  color: rgba(225, 217, 209, 1);
+  background-color: rgb(7, 107, 77);
+  text-align: center;
+  font-size: 20px;
+  border-radius: 7px;
+  border: none;
+}
+
+.submit-gundam-btn:active {
+    transform: translateY(4px);
 }
