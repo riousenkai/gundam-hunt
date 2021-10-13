@@ -192,3 +192,49 @@
 .gundam-link, .gundam-delete-btn, .gundam-edit-btn, .gundam-upvotes {
   cursor: pointer;
 }
+
+.gundam-comment-title {
+  font-size: 20px;
+}
+
+.comment-card {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: left;
+  padding: 20px 20px 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.comment-user-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 71.3px;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.comment-user {
+  font-size: 18px;
+}
+
+.comment-comment {
+  width: 580px;
+  margin-right: 10px;
+}
+
+.comment-img {
+  max-width: 50px;
+  max-height: 50px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.comment-date {
+  font-size: 14px;
+}

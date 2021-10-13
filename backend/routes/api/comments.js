@@ -12,6 +12,7 @@ router.get(
       where: {
         gundam_id: req.params.id,
       },
+      include: [User]
     });
 
     return res.json(comments);

@@ -20,6 +20,7 @@ const Gundam = () => {
   const comments = useSelector((state) => state.comments);
   const [loaded, setLoaded] = useState(false);
   const [source, setSource] = useState("");
+  const [comm, setComm] = useState("");
   const { setShowModal, setNum } = useShowModal();
 
   const user = useSelector((state) => state.user.user);
@@ -38,7 +39,15 @@ const Gundam = () => {
       .then(() => setLoaded(true));
   }, [gundam, dispatch]);
 
-  useEffect(() => {}, [gundam]);
+  const dateChange = (date) => {
+    const dateSplit = date.split("T");
+    const finDate = dateSplit[0].split("-");
+    return `${finDate[1]}/${finDate[2]}/${finDate[0]}`;
+  };
+
+  const editComment = (num) => {
+    const com = document.querySelector(`.comment${num}`);
+  };
 
   if (loaded) {
     return (
@@ -82,7 +91,53 @@ const Gundam = () => {
             <div className="gundam-left-comments">
               <p className="gundam-comment-title">Comments</p>
               {comments[id]?.map((comment) => (
-                  <div key={comment.id}>{comment.comment}</div>
+                <>
+                  <div className="comment-card" key={comment.id}>
+                    <div className="comment-user-date">
+                      <NavLink
+                        to={`/profile/${comment.User.id}`}
+                        className="comment-user-img"
+                      >
+                        <img
+                          src={comment.User.image_url}
+                          className="comment-img"
+                        ></img>
+                      </NavLink>
+                      <NavLink
+                        to={`/profile/${comment.User.id}`}
+                        className="comment-user"
+                      >
+                        {comment.User.username}
+                      </NavLink>
+                      <div className="comment-date">
+                        {dateChange(comment.updatedAt)}
+                      </div>
+                    </div>
+                    <div className="comment-comment">
+                      <div className="comment-comment-text">
+                        {comment.comment}
+                      </div>
+                      <textarea
+                        className="hidden"
+                        value={comm}
+                        onChange={(e) => setComm(e.target.value)}
+                      />
+                    </div>
+                    {comment.user_id === loggedUser?.id ? (
+                      <div className="comment-buttons">
+                        <button
+                          className="comment-edit button"
+                          onClick={() => setComm(comment.comment)}
+                        >
+                          Edit
+                        </button>
+                        <button className="comment-delete button">
+                          Delete
+                        </button>
+                      </div>
+                    ) : null}
+                  </div>
+                </>
               ))}
             </div>
           </div>
