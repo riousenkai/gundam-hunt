@@ -55,9 +55,9 @@ router.delete(
 );
 
 router.post(
-  "/id",
+  "/:id",
   asyncHandler(async (req, res) => {
-    const comment = await Comment.create(req.body);
+    await Comment.create(req.body);
 
     const comments = await Comment.findAll({
       where: {

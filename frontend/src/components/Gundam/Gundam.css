@@ -246,9 +246,32 @@
   resize: none;
   background-color: rgba(237, 243, 238, 0.24);
   color: whitesmoke;
+  outline: none;
+  border: none;
 }
 
 .comment-textarea:focus {
   outline: none;
-  border: 1px solid black;
+  border: none;
+}
+
+.gundam-comment-post-input {
+  width: 790px;
+  height: 70px;
+  font-size: 16px;
+  resize: none;
+  background-color: rgba(237, 243, 238, 0.24);
+  color: whitesmoke;
+  outline: none;
+  border: none;
+}
+
+.gundam-comment-post-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.gundam-comment-post-input:focus {
+  outline: none;
+  border: none;
 }

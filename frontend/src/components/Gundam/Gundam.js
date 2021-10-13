@@ -5,7 +5,7 @@ import { singleGundam } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
-import { getComments, editComment, deleteComment } from "../../store/comments";
+import { getComments, editComment, deleteComment, createComment } from "../../store/comments";
 import "./Gundam.css";
 import Loading from "../Loading/Loading";
 import SettingsModal from "../SettingsModal";
@@ -21,6 +21,7 @@ const Gundam = () => {
   const [loaded, setLoaded] = useState(false);
   const [source, setSource] = useState("");
   const [comm, setComm] = useState("");
+  const [newComment, setNewComment] = useState("")
   const { setShowModal, setNum } = useShowModal();
 
   const user = useSelector((state) => state.user.user);
@@ -72,6 +73,18 @@ const Gundam = () => {
     dispatch(deleteComment(id, num))
   }
 
+  const submitComment = async () => {
+    const payload = {
+      user_id: loggedUser.id,
+      gundam_id: id,
+      comment: newComment
+    }
+
+    setNewComment('')
+
+    await dispatch(createComment(payload, id))
+  }
+
   if (loaded) {
     return (
       <div className="gundam-main">
@@ -111,6 +124,17 @@ const Gundam = () => {
               </div>
             </div>
             <div className="gundam-left-comments">
+              <p className="gundam-comment-post-title">Submit a comment</p>
+              <textarea className="gundam-comment-post-input"
+                autoComplete="false"
+                spellCheck="false"
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+              />
+              <button className="comment-submit" onClick={submitComment}>Submit</button>
+              <button className="comment-clear">Clear</button>
+            </div>
+            <div className="gundam-left-comments">
               <p className="gundam-comment-title">Comments</p>
               {comments[id]?.map((comment) => (
                   <div className="comment-card" key={comment.id}>
@@ -145,6 +169,8 @@ const Gundam = () => {
                           className={`comment-textarea`}
                           value={comm}
                           onChange={(e) => setComm(e.target.value)}
+                          autoComplete="false"
+                          spellCheck="false"
                         />
                         <button
                           className="comment-edit-submit"
