@@ -69,7 +69,13 @@
 }
 
 .gundam-left-comments {
-    margin-bottom: 0px;
+  margin-top: 20px;
+  width: 798px;
+  background-color: rgba(38, 39, 38, 0.9);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 20px 20px 20px 20px;
+  z-index: 5;
 }
 
 .gundam-left-description {

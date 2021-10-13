@@ -5,14 +5,17 @@ const { Op } = require("sequelize");
 
 const router = express.Router();
 
-router.get("/:id", asyncHandler(async(req, res) => {
-    const comments = await Comment.findall({
-        where: {
-            gundam_id: req.params.id
-        }
-    })
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const comments = await Comment.findAll({
+      where: {
+        gundam_id: req.params.id,
+      },
+    });
 
-    res.json(comments)
-}))
+    return res.json(comments);
+  })
+);
 
 module.exports = router;

@@ -5,6 +5,7 @@ import { singleGundam } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
+import { getComments } from "../../store/comments";
 import "./Gundam.css";
 import Loading from "../Loading/Loading";
 import SettingsModal from "../SettingsModal";
@@ -16,6 +17,7 @@ const Gundam = () => {
   const history = useHistory();
 
   const gundam = useSelector((state) => state.gundam[id]);
+  const comments = useSelector((state) => state.comments)
   const [loaded, setLoaded] = useState(false);
   const [source, setSource] = useState("");
   const { setShowModal, setNum } = useShowModal();
@@ -24,20 +26,22 @@ const Gundam = () => {
   const loggedUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(singleGundam(id));
+    dispatch(singleGundam(id))
     setShowModal(false);
     setNum(0);
   }, [id, dispatch]);
 
   useEffect(() => {
     setSource(gundam?.image1);
-    dispatch(retrieveUser(gundam?.user_id)).then(() => setLoaded(true));
+    dispatch(retrieveUser(gundam?.user_id))
+    .then(() => dispatch(getComments(gundam?.id)))
+    .then(() => setLoaded(true));
   }, [gundam]);
-
 
   if (loaded) {
     return (
       <div className="gundam-main">
+        {console.log(comments[id])}
         <div className="gundam-title">
           <p className="gundam-title-text">{gundam?.name}</p>
           <p className="gundam-title-grade">{gundam?.grade}</p>
@@ -74,7 +78,12 @@ const Gundam = () => {
               </div>
             </div>
             <div className="gundam-left-comments">
-            <p className="gundam-comment-title">Comments</p>
+              <p className="gundam-comment-title">Comments</p>
+              <ul>
+              {/* {comments[id] && comments[id].map(comment => (
+                <li key={comment.id}>{comment}</li>
+              ))} */}
+              </ul>
             </div>
           </div>
           <div className="gundam-info-right">
@@ -91,9 +100,7 @@ const Gundam = () => {
               </>
             ) : (
               <div>
-              <p className="gundam-submitted">
-                Posted by
-                </p>
+                <p className="gundam-submitted">Posted by</p>
                 <NavLink
                   className="gundam-img-submit"
                   to={`/profile/${gundam.user_id}`}
