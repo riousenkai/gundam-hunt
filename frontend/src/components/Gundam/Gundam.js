@@ -5,7 +5,7 @@ import { singleGundam } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
-import { getComments, editComment } from "../../store/comments";
+import { getComments, editComment, deleteComment } from "../../store/comments";
 import "./Gundam.css";
 import Loading from "../Loading/Loading";
 import SettingsModal from "../SettingsModal";
@@ -67,6 +67,10 @@ const Gundam = () => {
     };
     dispatch(editComment(payload, id, num)).then(() => editComments(num))
   };
+
+  const delComm = (num) => {
+    dispatch(deleteComment(id, num))
+  }
 
   if (loaded) {
     return (
@@ -165,7 +169,10 @@ const Gundam = () => {
                         >
                           Edit
                         </button>
-                        <button className="comment-delete button">
+                        <button
+                          className="comment-delete button"
+                          onClick={() => delComm(comment.id)}
+                        >
                           Delete
                         </button>
                       </div>

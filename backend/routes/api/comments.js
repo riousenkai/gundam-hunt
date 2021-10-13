@@ -12,26 +12,48 @@ router.get(
       where: {
         gundam_id: req.params.id,
       },
-      include: [User]
+      include: [User],
     });
 
     return res.json(comments);
   })
 );
 
-router.put("/:id/:commentId", asyncHandler(async (req, res) => {
-    const comment = await Comment.findByPk(req.params.commentId)
+router.put(
+  "/:id/:commentId",
+  asyncHandler(async (req, res) => {
+    const comment = await Comment.findByPk(req.params.commentId);
 
-    await comment.update(req.body)
+    await comment.update(req.body);
 
     const comments = await Comment.findAll({
       where: {
         gundam_id: req.params.id,
       },
-      include: [User]
+      include: [User],
     });
 
-    return res.json(comments)
-}))
+    return res.json(comments);
+  })
+);
+
+router.delete(
+  "/:id/:commentId",
+  asyncHandler(async (req, res) => {
+    const comment = await Comment.findByPk(req.params.commentId);
+
+    await comment.destroy(req.body);
+
+    const comments = await Comment.findAll({
+      where: {
+        gundam_id: req.params.id,
+      },
+      include: [User],
+    });
+    return res.json(comments);
+  })
+);
+
+
 
 module.exports = router;
