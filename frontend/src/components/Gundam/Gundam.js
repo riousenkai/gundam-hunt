@@ -1,11 +1,16 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { singleGundam } from "../../store/gundam";
+import { singleGundam, getGundams } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
-import { getComments, editComment, deleteComment, createComment } from "../../store/comments";
+import {
+  getComments,
+  editComment,
+  deleteComment,
+  createComment,
+} from "../../store/comments";
 import "./Gundam.css";
 import Loading from "../Loading/Loading";
 import SettingsModal from "../SettingsModal";
@@ -16,19 +21,30 @@ const Gundam = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const gundams = useSelector((state) => state.gundam.gundams);
   const gundam = useSelector((state) => state.gundam[id]);
   const comments = useSelector((state) => state.comments);
   const [loaded, setLoaded] = useState(false);
   const [source, setSource] = useState("");
   const [comm, setComm] = useState("");
-  const [newComment, setNewComment] = useState("")
+  const [newComment, setNewComment] = useState("");
+  const [disabler, setDisabler] = useState(false);
   const { setShowModal, setNum } = useShowModal();
 
   const user = useSelector((state) => state.user.user);
   const loggedUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(singleGundam(id));
+    const regex = /\D/g;
+    if (id.match(regex)) {
+      history.push("/");
+    }
+  }, []);
+
+  useEffect(() => {
+    dispatch(singleGundam(id)).catch(() => {
+      history.push("/");
+    });
     setShowModal(false);
     setNum(0);
   }, [id, dispatch]);
@@ -52,48 +68,48 @@ const Gundam = () => {
     if (com.classList.contains("hidden")) {
       com.classList.remove("hidden");
       input.classList.add("hidden");
+      setDisabler(false);
     } else {
       com.classList.add("hidden");
       input.classList.remove("hidden");
+      setDisabler(true);
     }
   };
 
   const submitEdit = (num) => {
     if (comm.length < 1) {
-      return window.alert('Please place a comment!')
+      return window.alert("Please place a comment!");
     }
 
     const payload = {
       comment: comm,
     };
-    dispatch(editComment(payload, id, num)).then(() => editComments(num))
+    dispatch(editComment(payload, id, num)).then(() => editComments(num));
   };
 
   const delComm = (num) => {
-    dispatch(deleteComment(id, num))
-  }
+    dispatch(deleteComment(id, num));
+  };
 
   const submitComment = async () => {
-    if(!loggedUser) {
-      return setNum(0)
+    if (!loggedUser) {
+      return setNum(2);
     }
 
     if (newComment.length < 1) {
-      return window.alert('Please place a comment!')
+      return window.alert("Please place a comment!");
     }
-
-    newComment.replace(/\r?\n/g, '<br />')
 
     const payload = {
       user_id: loggedUser.id,
       gundam_id: id,
-      comment: newComment
-    }
+      comment: newComment,
+    };
 
-    setNewComment('')
+    setNewComment("");
 
-    await dispatch(createComment(payload, id))
-  }
+    await dispatch(createComment(payload, id));
+  };
 
   if (loaded) {
     return (
@@ -135,85 +151,89 @@ const Gundam = () => {
             </div>
             <div className="gundam-left-comments">
               <p className="gundam-comment-post-title">Submit a comment</p>
-              <textarea className="gundam-comment-post-input"
+              <textarea
+                className="gundam-comment-post-input"
                 autoComplete="false"
                 spellCheck="false"
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
               />
-              <button className="comment-submit" onClick={submitComment}>Submit</button>
+              <button className="comment-submit" onClick={submitComment}>
+                Submit
+              </button>
               <button className="comment-clear">Clear</button>
             </div>
             <div className="gundam-left-comments">
               <p className="gundam-comment-title">Comments</p>
               {comments[id]?.map((comment) => (
-                  <div className="comment-card" key={comment.id}>
-                    <div className="comment-user-date">
-                      <NavLink
-                        to={`/profile/${comment.User.id}`}
-                        className="comment-user-img"
-                      >
-                        <img
-                          src={comment.User.image_url}
-                          className="comment-img"
-                        ></img>
-                      </NavLink>
-                      <NavLink
-                        to={`/profile/${comment.User.id}`}
-                        className="comment-user"
-                      >
-                        {comment.User.username}
-                      </NavLink>
-                      <div className="comment-date">
-                        {dateChange(comment.updatedAt)}
-                      </div>
+                <div className="comment-card" key={comment.id}>
+                  <div className="comment-user-date">
+                    <NavLink
+                      to={`/profile/${comment.User.id}`}
+                      className="comment-user-img"
+                    >
+                      <img
+                        src={comment.User.image_url}
+                        className="comment-img"
+                      ></img>
+                    </NavLink>
+                    <NavLink
+                      to={`/profile/${comment.User.id}`}
+                      className="comment-user"
+                    >
+                      {comment.User.username}
+                    </NavLink>
+                    <div className="comment-date">
+                      {dateChange(comment.updatedAt)}
                     </div>
-                    <div className="comment-comment">
-                      <div
-                        className={`comment-comment-text comment${comment.id}`}
-                      >
-                        {comment.comment}
-                      </div>
-                      <div className={`hidden input${comment.id}`}>
-                        <textarea
-                          className={`comment-textarea`}
-                          value={comm}
-                          onChange={(e) => setComm(e.target.value)}
-                          autoComplete="false"
-                          spellCheck="false"
-                        />
-                        <button
-                          className="comment-edit-submit"
-                          onClick={() => submitEdit(comment.id)}
-                        >
-                          Submit
-                        </button>
-                        <button
-                          className="comment-edit-cancel"
-                          onClick={() => editComments(comment.id)}
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                    {comment.user_id === loggedUser?.id ? (
-                      <div className="comment-buttons">
-                        <button
-                          className="comment-edit button"
-                          onClick={() => editComments(comment.id)}
-                          onMouseDown={() => setComm(comment.comment)}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="comment-delete button"
-                          onClick={() => delComm(comment.id)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    ) : null}
                   </div>
+                  <div className="comment-comment">
+                    <div
+                      className={`comment-comment-text comment${comment.id}`}
+                    >
+                      {comment.comment}
+                    </div>
+                    <div className={`hidden input${comment.id}`}>
+                      <textarea
+                        className={`comment-textarea`}
+                        value={comm}
+                        onChange={(e) => setComm(e.target.value)}
+                        autoComplete="false"
+                        spellCheck="false"
+                      />
+                      <button
+                        className="comment-edit-submit"
+                        onClick={() => submitEdit(comment.id)}
+                      >
+                        Submit
+                      </button>
+                      <button
+                        className="comment-edit-cancel"
+                        onClick={() => editComments(comment.id)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                  {comment.user_id === loggedUser?.id ? (
+                    <div className="comment-buttons">
+                      <button
+                        className="comment-edit button"
+                        onClick={() => editComments(comment.id)}
+                        onMouseDown={() => setComm(comment.comment)}
+                        disabled={disabler}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="comment-delete button"
+                        onClick={() => delComm(comment.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
               ))}
             </div>
           </div>

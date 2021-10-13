@@ -171,7 +171,7 @@
   border:none;
 }
 
-.gundam-edit-button:active {
+.gundam-edit-btn:active {
   transform: translateY(4px)
 }
 
@@ -187,6 +187,10 @@
   font-weight: 500;
   border:none;
   margin-top: 100px
+}
+
+.gundam-delete-btn:active {
+  transform: translateY(4px)
 }
 
 .gundam-link, .gundam-delete-btn, .gundam-edit-btn, .gundam-upvotes {

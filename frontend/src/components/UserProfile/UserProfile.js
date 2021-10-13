@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router";
 import { NavLink, Redirect } from "react-router-dom";
 import { retrieveUser, retrieveAllUsers } from "../../store/user";
-import { restoreUser } from "../../store/session";
-import { getUserGundams } from "../../store/gundam";
+import { getUserGundams, getGundams } from "../../store/gundam";
 import Loading from "../Loading/Loading";
 import "./UserProfile.css";
 
@@ -24,8 +23,7 @@ const UserProfile = () => {
       history.push("/");
     }
 
-    dispatch(restoreUser())
-      .then(() => dispatch(retrieveUser(id)))
+    dispatch(retrieveUser(id))
       .then(() => dispatch(retrieveAllUsers()))
       .then(() => dispatch(getUserGundams(id)))
       .then(() => setLoaded(true));
