@@ -54,6 +54,20 @@ router.delete(
   })
 );
 
+router.post(
+  "/id",
+  asyncHandler(async (req, res) => {
+    const comment = await Comment.create(req.body);
 
+    const comments = await Comment.findAll({
+      where: {
+        gundam_id: req.params.id,
+      },
+      include: [User],
+    });
+
+    return res.json(comments);
+  })
+);
 
 module.exports = router;
