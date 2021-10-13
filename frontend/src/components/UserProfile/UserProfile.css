@@ -208,3 +208,10 @@
   margin-top: 2rem;
   margin: 0 auto;
 }
+
+.profile-submitted {
+  margin-top: 20px;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
