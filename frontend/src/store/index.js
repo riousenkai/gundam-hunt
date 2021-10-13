@@ -4,12 +4,14 @@ import sessionReducer from './session';
 import gundamReducer from "./gundam";
 import userReducer from "./user";
 import searchReducer from "./search";
+import commentReducer from "./comments";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   user: userReducer,
   gundam: gundamReducer,
-  search: searchReducer
+  search: searchReducer,
+  comments: commentReducer
 });
 
 let enhancer;
