@@ -103,7 +103,7 @@ const Gundam = () => {
             </button>
             {gundam?.user_id === loggedUser?.id ? (
               <>
-                <SettingsModal />
+                <SettingsModal gundam={gundam} />
                 <button
                   className="gundam-delete-btn"
                   onClick={(e) => deleteGundams(gundam.id, e)}

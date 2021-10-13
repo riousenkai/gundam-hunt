@@ -3,7 +3,7 @@ import { Modal } from '../../context/Modal';
 import { useShowModal } from '../../context/ShowModal'
 import EditGundam from './EditGundam';
 
-function SettingsModal() {
+function SettingsModal({gundam}) {
   const { setShowModal, num, setNum } = useShowModal()
 
   const opener = () => {
@@ -21,7 +21,7 @@ function SettingsModal() {
       <button onClick={opener} className="gundam-edit-btn" id="edit-button">Edit</button>
       {num === -1 && (
         <Modal onClose={closer}>
-          <EditGundam />
+          <EditGundam gundam={gundam} />
         </Modal>
       )}
     </>
