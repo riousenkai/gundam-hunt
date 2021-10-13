@@ -19,7 +19,11 @@ const SubmitGundam = () => {
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(restoreUser());
+    dispatch(restoreUser()).then(() => {
+      if(!user) {
+        history.push("/")
+      }
+    });
   }, []);
 
   const submit = async (e) => {
