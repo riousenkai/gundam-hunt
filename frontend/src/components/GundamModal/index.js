@@ -12,7 +12,13 @@ function GundamModal({ gundam }) {
 
   const user = useSelector((state) => state.session.user);
 
-  const upvote = () => {
+  const upvote = (e) => {
+    e.preventDefault();
+
+    if (!user) {
+      return setNum(2);
+    }
+
     dispatch(createGundamUpvote(user.id, gundam.id, { gundam: "test" })).then(
       () => dispatch(getGundams())
     );
@@ -38,7 +44,7 @@ function GundamModal({ gundam }) {
             <p className="activity-description">{gundam.grade}</p>
           </div>
         </div>
-        <button type="button" className="activity-upvote" onClick={upvote}>
+        <button type="button" className="activity-upvote" onClick={(e) => upvote(e)}>
           {gundam.upvotes}
         </button>
       </div>

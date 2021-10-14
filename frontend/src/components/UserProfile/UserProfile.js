@@ -8,6 +8,7 @@ import {
   createGundamUpvote,
   getUpvotedGundams,
 } from "../../store/gundam";
+import { useShowModal } from "../../context/ShowModal";
 import Loading from "../Loading/Loading";
 import "./UserProfile.css";
 
@@ -21,6 +22,7 @@ const UserProfile = () => {
   const userGundams = useSelector((state) => state.gundam.user);
   const upvotedGundams = useSelector((state) => state.gundam.upvoted);
   const [loaded, setLoaded] = useState(false);
+  const { setNum } = useShowModal();
 
   useEffect(() => {
     const regex = /\D/g;
@@ -48,6 +50,11 @@ const UserProfile = () => {
 
   const upvote = (gundamId, e) => {
     e.preventDefault();
+
+    if (!user) {
+      return setNum(2);
+    }
+
     dispatch(createGundamUpvote(user.id, gundamId, { gundam: "test" })).then(
       () => dispatch(getUserGundams(id))
     );
@@ -55,6 +62,11 @@ const UserProfile = () => {
 
   const upvote2 = (gundamId, e) => {
     e.preventDefault();
+
+    if (!user) {
+      return setNum(2);
+    }
+
     dispatch(createGundamUpvote(user.id, gundamId, { gundam: "test" })).then(
       () => dispatch(getUpvotedGundams(id))
     );
@@ -80,7 +92,9 @@ const UserProfile = () => {
         </div>
         <div className="profile-bottom">
           <div className="profile-bottom-left">
-            <div className="profile-upvotes">Upvotes ({upvotedGundams.length})</div>
+            <div className="profile-upvotes">
+              Upvotes ({upvotedGundams.length})
+            </div>
             <div className="profile-activity">
               {upvotedGundams &&
                 upvotedGundams.map((gundam) => (
