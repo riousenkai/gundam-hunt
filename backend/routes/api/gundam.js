@@ -17,10 +17,26 @@ const postError = () => {
 
 router.get('/', asyncHandler(async(req, res) => {
     const gundam = await Gundam.findAll({
-      order: [["createdAt", "ASC"]],
+      order: [["name", "ASC"]],
     })
 
     return res.json({ gundam })
+}))
+
+router.get('/newest', asyncHandler(async(req, res) => {
+  const gundam = await Gundam.findAll({
+    order: [["createdAt", "DESC"]],
+  })
+
+  return res.json({ gundam })
+}))
+
+router.get('/popular', asyncHandler(async(req, res) => {
+  const gundam = await Gundam.findAll({
+    order: [["Upvotes", "DESC"]],
+  })
+
+  return res.json({ gundam })
 }))
 
 router.get('/:id', asyncHandler(async(req, res) => {
