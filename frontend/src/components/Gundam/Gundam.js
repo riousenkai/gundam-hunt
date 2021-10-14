@@ -181,7 +181,14 @@ const Gundam = () => {
                 </div>
               </div>
               <div className="gundam-left-description">
-                <p className="gundam-description">{gundam?.description}</p>
+                <p className="gundam-description">
+                  {gundam?.description.split("\n").map((sentence) => (
+                    <>
+                      {sentence}
+                      <br />
+                    </>
+                  ))}
+                </p>
               </div>
             </div>
             <div className="gundam-left-comments">
@@ -225,7 +232,12 @@ const Gundam = () => {
                     <div
                       className={`comment-comment-text comment${comment.id}`}
                     >
-                      {comment.comment}
+                      {comment.comment.split("\n").map((sentence) => (
+                        <>
+                          {sentence}
+                          <br />
+                        </>
+                      ))}
                     </div>
                     <div className={`hidden input${comment.id}`}>
                       <textarea
@@ -251,21 +263,21 @@ const Gundam = () => {
                   </div>
                   {comment.user_id === loggedUser?.id ? (
                     <div className="comment-buttons">
-                    <div className="comment-buttons-div">
-                      <button
-                        className="comment-edit button"
-                        onClick={() => editComments(comment.id)}
-                        onMouseDown={() => setComm(comment.comment)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="comment-delete button"
-                        onClick={() => delComm(comment.id)}
-                      >
-                        Delete
-                      </button>
-                    </div>
+                      <div className="comment-buttons-div">
+                        <button
+                          className="comment-edit button"
+                          onClick={() => editComments(comment.id)}
+                          onMouseDown={() => setComm(comment.comment)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="comment-delete button"
+                          onClick={() => delComm(comment.id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
                   ) : null}
                 </div>

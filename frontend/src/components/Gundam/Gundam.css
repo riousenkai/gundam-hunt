@@ -255,6 +255,7 @@
   color: whitesmoke;
   outline: none;
   border: none;
+  white-space: pre-line;
 }
 
 .comment-textarea:focus {
@@ -271,6 +272,7 @@
   color: whitesmoke;
   outline: none;
   border: none;
+  white-space: pre-line;
 }
 
 .gundam-comment-post-title {
