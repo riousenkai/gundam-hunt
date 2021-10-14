@@ -13,7 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getGundams()).then(setLoaded(true));
-  }, []);
+  }, [gundams]);
 
   if (loaded) {
     return (

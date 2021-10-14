@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "../../context/Modal";
-import { NavLink } from "react-router-dom";
 import GundamShow from "./GundamShow";
 import { useShowModal } from "../../context/ShowModal";
+import { useSelector, useDispatch } from "react-redux";
+import { createGundamUpvote, getGundams } from "../../store/gundam";
 
 function GundamModal({ gundam }) {
-  const { showModal, setShowModal, num, setNum } = useShowModal();
+  const dispatch = useDispatch();
+
+  const { setShowModal, num, setNum } = useShowModal();
+
+  const user = useSelector((state) => state.session.user);
 
   const opener = () => {
     setNum(+gundam.id + 4);
@@ -30,7 +35,9 @@ function GundamModal({ gundam }) {
         <button
           type="button"
           className="activity-upvote"
-          onClick={(e) => e.preventDefault()}
+          onClick={() =>
+            dispatch(createGundamUpvote(user.id, gundam.id, {gundam: "test"}))
+          }
         >
           {gundam.upvotes}
         </button>
