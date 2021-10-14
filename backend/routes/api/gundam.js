@@ -77,7 +77,8 @@ router.get("/user/:id", asyncHandler(async(req, res) => {
   const gundams = await Gundam.findAll({
     where: {
       user_id: req.params.id
-    }
+    },
+    order: [["createdAt", "DESC"]]
   })
 
   return res.json(gundams)

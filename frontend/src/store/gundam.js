@@ -4,6 +4,7 @@ const GET_ALL_GUNDAMS = "gundam/getAllGundams";
 const GET_ONE_GUNDAM = "gundam/getOneGundam";
 const CREATE_GUNDAM = "gundam/createGundam";
 const GET_USER_GUNDAMS = "gundam/obtainUserGundams";
+const GET_UPVOTED_GUNDAMS = "gundam/upvotedGundams";
 
 const getOneGundam = (gundam) => {
   return {
@@ -33,18 +34,26 @@ const obtainUserGundams = (gundams) => {
   };
 };
 
-export const createGundamUpvote = (userId, gundamId, payload) => async (dispatch) => {
-  const res = await csrfFetch(`/api/upvotes/${userId}/${gundamId}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(payload)
-  })
-  const data = await res.json();
-  dispatch(getOneGundam(data))
-  return data.id;
-}
+const upvotedGundams = (gundams) => {
+  return {
+    type: GET_UPVOTED_GUNDAMS,
+    payload: gundams,
+  };
+};
+
+export const createGundamUpvote =
+  (userId, gundamId, payload) => async (dispatch) => {
+    const res = await csrfFetch(`/api/upvotes/${userId}/${gundamId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    dispatch(getOneGundam(data));
+    return data.id;
+  };
 
 export const singleGundam = (id) => async (dispatch) => {
   const res = await fetch(`/api/gundam/${id}`);
@@ -67,6 +76,12 @@ export const getUserGundams = (id) => async (dispatch) => {
   const res = await fetch(`/api/gundam/user/${id}`);
   const data = await res.json();
   dispatch(obtainUserGundams(data));
+};
+
+export const getUpvotedGundams = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/upvotes/users/${userId}`);
+  const data = await res.json();
+  dispatch(upvotedGundams(data));
 };
 
 export const makeGundam = (gundam) => async (dispatch) => {
@@ -118,6 +133,8 @@ const gundamReducer = (state = initialState, action) => {
       return { ...state, [action.payload.id]: action.payload };
     case GET_USER_GUNDAMS:
       return { ...state, user: action.payload };
+    case GET_UPVOTED_GUNDAMS:
+      return { ...state, upvoted: action.payload };
     default:
       return state;
   }

@@ -8,7 +8,6 @@ const router = express.Router();
 router.post(
   "/:userId/:gundamId",
   asyncHandler(async (req, res) => {
-
     const check = await Upvote.findAll({
       where: {
         user_id: req.params.userId,
@@ -41,36 +40,39 @@ router.post(
   })
 );
 
-router.get('/users/:userId', asyncHandler(async (req, res) => {
+router.get(
+  "/users/:userId",
+  asyncHandler(async (req, res) => {
     const upvotes = await Upvote.findAll({
-        where: {
-            user_id: req.params.userId
-        },
-        include: [Gundam]
-    })
+      where: {
+        user_id: req.params.userId,
+      },
+      include: [Gundam],
+    });
 
     const gundams = await Gundam.findAll({
-        where: {
-            user_id: req.params.userId
-        }
+      where: {
+        user_id: req.params.userId,
+      },
+    });
+
+    const initArr = []
+
+    gundams.map((gundam) => {
+      return initArr.push(gundam.id);
+    });
+
+    const finalArr = [];
+
+    upvotes.forEach(upvote => {
+      if(!initArr.includes(upvote.Gundam.id)) {
+        finalArr.push(upvote.Gundam)
+      }
     })
 
-    const initSet = new Set()
-
-    upvotes.map((upvote) => {
-        return initSet.add(upvote.Gundam)
-    })
-
-    const finalSet = [];
-
-    gundams.forEach(gundam => {
-        if(!initSet.has(gundam)) {
-            finalSet.push(gundam)
-        }
-    })
-
-    res.json(finalSet)
-}))
+    return res.json(finalArr);
+  })
+);
 
 module.exports = router;
 

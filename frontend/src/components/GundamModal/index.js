@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Modal } from "../../context/Modal";
 import GundamShow from "./GundamShow";
 import { useShowModal } from "../../context/ShowModal";
@@ -13,10 +13,10 @@ function GundamModal({ gundam }) {
   const user = useSelector((state) => state.session.user);
 
   const upvote = () => {
-
-    dispatch(createGundamUpvote(user.id, gundam.id, { gundam: "test" }))
-    .then(() => dispatch(getGundams()))
-  }
+    dispatch(createGundamUpvote(user.id, gundam.id, { gundam: "test" })).then(
+      () => dispatch(getGundams())
+    );
+  };
 
   const opener = () => {
     setNum(+gundam.id + 4);

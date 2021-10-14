@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router";
 import { NavLink, Redirect } from "react-router-dom";
 import { retrieveUser, retrieveAllUsers } from "../../store/user";
-import { getUserGundams, getGundams } from "../../store/gundam";
+import { getUserGundams, createGundamUpvote, getUpvotedGundams } from "../../store/gundam";
 import Loading from "../Loading/Loading";
 import "./UserProfile.css";
 
@@ -26,6 +26,7 @@ const UserProfile = () => {
     dispatch(retrieveUser(id))
       .then(() => dispatch(retrieveAllUsers()))
       .then(() => dispatch(getUserGundams(id)))
+      .then(() => dispatch(getUpvotedGundams(id)))
       .then(() => setLoaded(true));
   }, [id]);
 
@@ -38,6 +39,13 @@ const UserProfile = () => {
     const dateSplit = date.split("T");
     const finDate = dateSplit[0].split("-");
     return `${finDate[1]}/${finDate[2]}/${finDate[0]}`;
+  };
+
+  const upvote = (gundamId, e) => {
+    e.preventDefault();
+    dispatch(createGundamUpvote(user.id, gundamId, { gundam: "test" })).then(
+      () => dispatch(getUserGundams(id))
+    );
   };
 
   if (loaded === true) {
@@ -115,7 +123,7 @@ const UserProfile = () => {
                     <button
                       type="button"
                       className="activity-upvote"
-                      onClick={(e) => e.preventDefault()}
+                      onClick={(e) => upvote(gundam.id, e)}
                     >
                       {gundam.upvotes}
                     </button>
