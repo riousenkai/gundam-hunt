@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Gundam.associate = function (models) {
     Gundam.belongsTo(models.User, { foreignKey: "user_id" });
-    Gundam.hasMany(models.Upvote, { foreignKey: "gundam_id", onDelete: "CASCADE", hooks: true  });
+    Gundam.hasMany(models.Upvote, { foreignKey: "gundam_id", onDelete: "CASCADE", hooks: true });
     Gundam.hasMany(models.Comment, { foreignKey: "gundam_id",  onDelete: "CASCADE",  hooks: true });
   };
   return Gundam;

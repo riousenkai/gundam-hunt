@@ -52,9 +52,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   User.associate = function (models) {
-    User.hasMany(models.Gundam, { foreignKey: "user_id" });
-    User.hasMany(models.Upvote, { foreignKey: "user_id" });
-    User.hasMany(models.Comment, { foreignKey: "user_id" });
+    User.hasMany(models.Gundam, { foreignKey: "user_id", onDelete: "CASCADE", hooks: true });
+    User.hasMany(models.Upvote, { foreignKey: "user_id", onDelete: "CASCADE", hooks: true });
+    User.hasMany(models.Comment, { foreignKey: "user_id", onDelete: "CASCADE", hooks: true });
   };
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
