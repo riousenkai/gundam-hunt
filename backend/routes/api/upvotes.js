@@ -2,6 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { User, Gundam, Comment, Upvote } = require("../../db/models");
 const { Op } = require("sequelize");
+const { set } = require("js-cookie");
 
 const router = express.Router();
 
@@ -41,4 +42,41 @@ router.post(
   })
 );
 
+router.get('/users/:userId', asyncHandler(async (req, res) => {
+    const upvotes = await Upvote.findAll({
+        where: {
+            user_id: req.params.userId
+        },
+        include: [Gundam]
+    })
+
+    const gundams = await Gundam.findAll({
+        where: {
+            user_id: req.params.userId
+        }
+    })
+
+    const initSet = new Set()
+
+    upvotes.map((upvote) => {
+        return initSet.add(upvote.Gundam)
+    })
+
+    const finalSet = [];
+
+    gundams.forEach(gundam => {
+        if(!initSet.has(gundam)) {
+            finalSet.push(gundam)
+        }
+    })
+
+    res.json(finalSet)
+}))
+
 module.exports = router;
+
+// where: {
+//     user_id: {
+//       [Op.iLike]: `%${results}%`,
+//     },
+//   },
