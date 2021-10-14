@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { restoreUser } from "../../store/session";
 import { useHistory } from "react-router";
-import { makeGundam } from "../../store/gundam";
+import { createGundamUpvote, makeGundam } from "../../store/gundam";
 import "./SubmitGundam.css";
 
 const SubmitGundam = () => {
@@ -41,7 +41,9 @@ const SubmitGundam = () => {
       image3,
     };
 
-    await dispatch(makeGundam(gundam)).then((newId) =>
+    await dispatch(makeGundam(gundam))
+    .then((newId) => createGundamUpvote(user.id, newId, image1))
+    .then((newId) =>
       history.push(`/gundams/${newId}`)
     );
   };
