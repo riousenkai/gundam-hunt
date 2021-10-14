@@ -1,4 +1,4 @@
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { searchFiveGundams, searchFiveUsers } from "../../store/search";
@@ -10,7 +10,6 @@ import image from "../Images/header.png";
 import image2 from "../Images/header2.png";
 
 function Navigation({ isLoaded }) {
-  const history = useHistory("");
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const gundamResult = useSelector((state) => state.search.gundams);
@@ -83,15 +82,6 @@ function Navigation({ isLoaded }) {
     searchDiv.classList.remove("search-container-focus");
   };
 
-  const hideSearch = (e) => {
-    if (!e.target.classList[0].includes("search")) {
-      searchRes = document.querySelector(".search-results");
-      searchInput = document.querySelector(".search");
-      searchInput.classList.remove("search-focus");
-      searchRes.classList.add("hidden");
-    }
-  };
-
   const imgChange = () => {
     img = document.getElementById("img-top");
     img.src = image2;
@@ -140,7 +130,7 @@ function Navigation({ isLoaded }) {
               <div className="pointer results">Gundams</div>
             ) : null}
             {gundamResult.gundams &&
-              gundamResult.gundams.map((gundam) => (
+              gundamResult.gundams.slice(0, 5).map((gundam) => (
                 <NavLink
                   to={`/gundams/${gundam.id}`}
                   onClick={removeVal}
@@ -154,7 +144,7 @@ function Navigation({ isLoaded }) {
               ))}
             <div className="pointer results">People</div>
             {userResult.users &&
-              userResult.users.map((user) => (
+              userResult.users.slice(0, 5).map((user) => (
                 <NavLink
                   key={user.id}
                   to={`/profile/${user.id}`}
@@ -165,6 +155,13 @@ function Navigation({ isLoaded }) {
                   <p className="search-name">{user.username}</p>
                 </NavLink>
               ))}
+          </div>
+          <div className="pointer results">
+            {(userResult.length > 5 || gundamResult.length > 5) && (
+              <NavLink className="pointer results" query={results}>
+                "View more results..."
+              </NavLink>
+            )}
           </div>
         </div>
       </div>

@@ -27,7 +27,6 @@ router.post(
           [Op.iLike]: `%${results}%`,
         },
       },
-      limit: 5,
     });
 
     await setTokenCookie(res, user);
@@ -48,7 +47,6 @@ router.post(
           [Op.iLike]: `%${results}%`,
         },
       },
-      limit: 5,
     });
 
     await setTokenCookie(res, user);

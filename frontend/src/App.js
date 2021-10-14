@@ -9,6 +9,7 @@ import UserProfile from "./components/UserProfile";
 import Settings from "./components/Settings/Settings";
 import Gundam from "./components/Gundam";
 import SubmitGundam from "./components/SubmitGundam";
+import Search from "./components/Search";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/submit">
             <SubmitGundam />
+          </Route>
+          <Route path="/search">
+            <Search />
           </Route>
           <Route>
             <h2>Page Not Found</h2>

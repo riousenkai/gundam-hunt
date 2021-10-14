@@ -153,7 +153,7 @@ const UserProfile = () => {
                 Joined on {dateChange(mainUser?.createdAt)}
               </p>
             </div>
-            <p className="profile-comments-title">Comments</p>
+            <p className="profile-comments-title">Comments ({comments.length})</p>
             <div className="profile-comment-container">
             {!comments && (
               <div className="profile-comment-card">No comments yet.</div>
@@ -169,7 +169,7 @@ const UserProfile = () => {
               </NavLink>
               </div>
             ))}
-            {comments.length > 5 && <div  className="see-more"> <NavLink to={`/comments/${mainUser.id}`}>See more...</NavLink> </div>}
+            {comments.length > 5 && <div  className="see-more"> <NavLink to={`/comments/${mainUser.id}`}>View all...</NavLink> </div>}
             </div>
           </div>
         </div>
