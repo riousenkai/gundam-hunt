@@ -65,7 +65,7 @@
 }
 
 .gundam-mini-img:hover {
-    cursor:pointer;
+  cursor: pointer;
 }
 
 .gundam-left-comments {
@@ -79,25 +79,25 @@
 }
 
 .gundam-left-description {
-    margin-top: 10px;
-    border-top: 1px solid whitesmoke;
+  margin-top: 10px;
+  border-top: 1px solid whitesmoke;
 }
 
 .gundam-description {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .gundam-info-right {
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    width: 260px;
-    margin-left: 160px;
-    z-index: 1;
-    border-radius: 5px;
-    background-color: rgba(38, 39, 38, 0.9);
-    padding: 20px 20px 20px 20px;
-    display: flex;
-    flex-direction: column;
-    height: 250px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  width: 260px;
+  margin-left: 160px;
+  z-index: 1;
+  border-radius: 5px;
+  background-color: rgba(38, 39, 38, 0.9);
+  padding: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
 }
 
 .gundam-submitted {
@@ -128,7 +128,7 @@
 .gundam-link {
   padding: 5px 5px 5px 5px;
   margin: 0 auto;
-  width: 140px;
+  width: 130px;
   background-color: rgba(128, 0, 128, 0.589);
   text-align: center;
   font-size: 16px;
@@ -138,7 +138,7 @@
 }
 
 .gundam-link:active {
-  transform: translateY(4px)
+  transform: translateY(4px);
 }
 
 .gundam-upvotes {
@@ -151,11 +151,11 @@
   margin-bottom: 10px;
   border-radius: 5px;
   font-weight: 500;
-  border:none;
+  border: none;
 }
 
 .gundam-upvotes:active {
-  transform: translateY(4px)
+  transform: translateY(4px);
 }
 
 .gundam-edit-btn {
@@ -168,11 +168,11 @@
   margin-bottom: 10px;
   border-radius: 5px;
   font-weight: 500;
-  border:none;
+  border: none;
 }
 
 .gundam-edit-btn:active {
-  transform: translateY(4px)
+  transform: translateY(4px);
 }
 
 .gundam-delete-btn {
@@ -185,15 +185,18 @@
   margin-bottom: 10px;
   border-radius: 5px;
   font-weight: 500;
-  border:none;
-  margin-top: 100px
+  border: none;
+  margin-top: 100px;
 }
 
 .gundam-delete-btn:active {
-  transform: translateY(4px)
+  transform: translateY(4px);
 }
 
-.gundam-link, .gundam-delete-btn, .gundam-edit-btn, .gundam-upvotes {
+.gundam-link,
+.gundam-delete-btn,
+.gundam-edit-btn,
+.gundam-upvotes {
   cursor: pointer;
 }
 
@@ -278,4 +281,109 @@
 .gundam-comment-post-input:focus {
   outline: none;
   border: none;
+}
+
+.comment-submits {
+  border-radius: 2px;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+  color: rgba(225, 217, 209, 1);
+  background-color: rgb(216, 24, 24);
+  text-align: center;
+  font-size: 20px;
+  border-radius: 7px;
+  border: none;
+  margin-left: 20px;
+}
+
+.comment-submit {
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: rgba(49, 197, 23, 0.795);
+  text-align: center;
+  font-size: 16px;
+  border-radius: 7px;
+  width: 100px;
+  border: none;
+  height: 30px;
+  margin-top: 10px;
+}
+.comment-submit:active {
+  transform: translateY(2px);
+  background-color: rgb(39, 160, 93);
+}
+
+.comment-edit-submit {
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: rgba(49, 197, 23, 0.795);
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 75px;
+  border: none;
+  height: 30px;
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+.comment-edit-submit:active {
+  transform: translateY(2px);
+  background-color: rgb(39, 160, 93);
+}
+
+.comment-edit-cancel {
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: rgb(216, 24, 24);
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 75px;
+  border: none;
+  height: 30px;
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+.comment-edit-cancel:active {
+  transform: translateY(2px);
+}
+
+.comment-buttons-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: -10px
+}
+
+.comment-edit {
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: rgb(7, 145, 122);
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 80px;
+  border: none;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.comment-delete {
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: rgb(216, 24, 24);
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 80px;
+  border: none;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.comment-edit:active, .comment-delete:active {
+  transform: translateY(4px);
 }

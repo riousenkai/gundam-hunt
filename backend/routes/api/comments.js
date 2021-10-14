@@ -12,6 +12,7 @@ router.get(
       where: {
         gundam_id: req.params.id,
       },
+      order: [["createdAt", "DESC"]],
       include: [User],
     });
 

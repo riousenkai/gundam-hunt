@@ -1,7 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { singleGundam, getGundams, createGundamUpvote } from "../../store/gundam";
+import {
+  singleGundam,
+  getGundams,
+  createGundamUpvote,
+} from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink, Redirect } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
@@ -65,26 +69,44 @@ const Gundam = () => {
   const editComments = (num) => {
     const com = document.querySelector(`.comment${num}`);
     const input = document.querySelector(`.input${num}`);
+    const buttons = document.querySelectorAll(".comment-buttons");
+
     if (com.classList.contains("hidden")) {
       com.classList.remove("hidden");
       input.classList.add("hidden");
-      setDisabler(false);
+      buttons.forEach((button) => {
+        button.classList.remove("hidden");
+      });
     } else {
       com.classList.add("hidden");
       input.classList.remove("hidden");
-      setDisabler(true);
+      buttons.forEach((button) => {
+        button.classList.add("hidden");
+      });
     }
   };
 
   const submitEdit = (num) => {
+    const buttons = document.querySelectorAll(".comment-buttons");
+
     if (comm.length < 1) {
       return window.alert("Please place a comment!");
     }
 
+    buttons.forEach((button) => {
+      button.classList.remove("hidden");
+    });
+
     const payload = {
       comment: comm,
     };
-    dispatch(editComment(payload, id, num)).then(() => editComments(num));
+    dispatch(editComment(payload, id, num))
+      .then(() => editComments(num))
+      .then(() =>
+        buttons.forEach((button) => {
+          button.classList.remove("hidden");
+        })
+      );
   };
 
   const delComm = (num) => {
@@ -118,11 +140,11 @@ const Gundam = () => {
 
     const payload = {
       user_id: loggedUser.id,
-      gundam_id: id
-    }
+      gundam_id: id,
+    };
 
-    dispatch(createGundamUpvote(loggedUser.id, id, payload))
-  }
+    dispatch(createGundamUpvote(loggedUser.id, id, payload));
+  };
 
   if (loaded) {
     return (
@@ -174,7 +196,6 @@ const Gundam = () => {
               <button className="comment-submit" onClick={submitComment}>
                 Submit
               </button>
-              <button className="comment-clear">Clear</button>
             </div>
             <div className="gundam-left-comments">
               <p className="gundam-comment-title">Comments</p>
@@ -230,11 +251,11 @@ const Gundam = () => {
                   </div>
                   {comment.user_id === loggedUser?.id ? (
                     <div className="comment-buttons">
+                    <div className="comment-buttons-div">
                       <button
                         className="comment-edit button"
                         onClick={() => editComments(comment.id)}
                         onMouseDown={() => setComm(comment.comment)}
-                        disabled={disabler}
                       >
                         Edit
                       </button>
@@ -244,6 +265,7 @@ const Gundam = () => {
                       >
                         Delete
                       </button>
+                    </div>
                     </div>
                   ) : null}
                 </div>
