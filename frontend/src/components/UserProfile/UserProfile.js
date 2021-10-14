@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router";
 import { NavLink, Redirect } from "react-router-dom";
 import { retrieveUser, retrieveAllUsers } from "../../store/user";
-import { getUserGundams, createGundamUpvote, getUpvotedGundams } from "../../store/gundam";
+import {
+  getUserGundams,
+  createGundamUpvote,
+  getUpvotedGundams,
+} from "../../store/gundam";
 import Loading from "../Loading/Loading";
 import "./UserProfile.css";
 
@@ -15,6 +19,7 @@ const UserProfile = () => {
   const mainUser = useSelector((state) => state.user.user);
   const allUsers = useSelector((state) => state.user.users);
   const userGundams = useSelector((state) => state.gundam.user);
+  const upvotedGundams = useSelector((state) => state.gundam.upvoted);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -48,6 +53,13 @@ const UserProfile = () => {
     );
   };
 
+  const upvote2 = (gundamId, e) => {
+    e.preventDefault();
+    dispatch(createGundamUpvote(user.id, gundamId, { gundam: "test" })).then(
+      () => dispatch(getUpvotedGundams(id))
+    );
+  };
+
   if (loaded === true) {
     if (allUsers.users.length < +id) return <Redirect to="/" />;
     return (
@@ -68,42 +80,28 @@ const UserProfile = () => {
         </div>
         <div className="profile-bottom">
           <div className="profile-bottom-left">
-            <div className="profile-upvotes">Upvotes (2)</div>
+            <div className="profile-upvotes">Upvotes ({upvotedGundams.length})</div>
             <div className="profile-activity">
-              <NavLink to="/" className="activity-card">
-                <img
-                  className="activity-img"
-                  src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg"
-                />
-                <div className="activity-card-text">
-                  <p className="activity-title">Shin Musha Gundam</p>
-                  <p className="activity-description">Master Grade</p>
-                </div>
-                <button
-                  type="button"
-                  className="activity-upvote"
-                  onClick={prevent}
-                >
-                  5422
-                </button>
-              </NavLink>
-              <NavLink to="/" className="activity-card">
-                <img
-                  className="activity-img"
-                  src="https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg"
-                />
-                <div className="activity-card-text">
-                  <p className="activity-title">Shin Musha Gundam</p>
-                  <p className="activity-description">Master Grade</p>
-                </div>
-                <button
-                  type="button"
-                  className="activity-upvote"
-                  onClick={prevent}
-                >
-                  1
-                </button>
-              </NavLink>
+              {upvotedGundams &&
+                upvotedGundams.map((gundam) => (
+                  <NavLink
+                    to={`/gundams/${gundam.id}`}
+                    className="activity-card"
+                  >
+                    <img className="activity-img" src={gundam.image1} />
+                    <div className="activity-card-text">
+                      <p className="activity-title">{gundam.name}</p>
+                      <p className="activity-description">{gundam.grade}</p>
+                    </div>
+                    <button
+                      type="button"
+                      className="activity-upvote"
+                      onClick={(e) => upvote2(gundam.id, e)}
+                    >
+                      {gundam.upvotes}
+                    </button>
+                  </NavLink>
+                ))}
             </div>
             <div className="profile-submitted">
               Submissions ({userGundams?.length})

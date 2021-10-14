@@ -51,6 +51,8 @@ export const createComment = (payload, id) => async (dispatch) => {
   dispatch(getGundamComments(data, id))
 }
 
+export 
+
 const initialState = { 0: []};
 
 const commentReducer = (state = initialState, action) => {
