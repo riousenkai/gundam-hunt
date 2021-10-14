@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const GET_COMMENTS = "comments/getGundamComments";
+const GET_USER_COMMENTS = "comments/getUserComments"
 
 const getGundamComments = (comments, gundamId) => {
   return {
@@ -9,6 +10,13 @@ const getGundamComments = (comments, gundamId) => {
     gundamId,
   };
 };
+
+const getUserComments = (comments) => {
+  return {
+    type: GET_USER_COMMENTS,
+    comments,
+  }
+}
 
 export const getComments = (id) => async (dispatch) => {
   const res = await fetch(`/api/comments/${id}`);
@@ -51,7 +59,11 @@ export const createComment = (payload, id) => async (dispatch) => {
   dispatch(getGundamComments(data, id))
 }
 
-export 
+export const getLimitedComment = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/comments/user/${userId}/limit`)
+  const data = await res.json()
+  dispatch(getUserComments(data))
+}
 
 const initialState = { 0: []};
 
@@ -59,6 +71,8 @@ const commentReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_COMMENTS:
       return { ...state, [action.gundamId]: action.comments};
+    case GET_USER_COMMENTS:
+      
     default:
       return state;
   }

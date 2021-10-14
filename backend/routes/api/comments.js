@@ -71,4 +71,15 @@ router.post(
   })
 );
 
+router.get('/user/:userId/limit', asyncHandler(async (req, res) => {
+  const comments = await Comment.findAll({
+    where: {
+      user_id: req.params.userId
+    },
+    limit: 5,
+  })
+
+  return res.json(comments)
+}))
+
 module.exports = router;

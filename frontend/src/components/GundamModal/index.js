@@ -44,7 +44,11 @@ function GundamModal({ gundam }) {
             <p className="activity-description">{gundam.grade}</p>
           </div>
         </div>
-        <button type="button" className="activity-upvote" onClick={(e) => upvote(e)}>
+        <button
+          type="button"
+          className="activity-upvote"
+          onClick={(e) => upvote(e)}
+        >
           {gundam.upvotes}
         </button>
       </div>
