@@ -3,15 +3,15 @@ import { searchFiveGundams, searchFiveUsers } from "../../store/search";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-const Search = () => {
+const Search = ({query}) => {
     const dispatch = useDispatch()
 
     const gundams = useSelector(state => state.search.gundams.gundams)
     const users = useSelector(state => state.search.users.users)
 
     useEffect(() => {
-        dispatch(searchFiveGundams("rev"))
-        dispatch(searchFiveUsers("rev"))
+        dispatch(searchFiveGundams(query))
+        dispatch(searchFiveUsers(query))
     }, [])
 
     return (

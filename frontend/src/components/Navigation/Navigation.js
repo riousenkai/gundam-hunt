@@ -156,13 +156,9 @@ function Navigation({ isLoaded }) {
                 </NavLink>
               ))}
           </div>
-          <div className="pointer results">
-            {(userResult.length > 5 || gundamResult.length > 5) && (
-              <NavLink className="pointer results" query={results}>
-                "View more results..."
+              <NavLink to="/search" className="pointer results" onClick={() => setResults('')} query={results}>
+                View more results...
               </NavLink>
-            )}
-          </div>
         </div>
       </div>
       <div className="gundam-dropdown">
