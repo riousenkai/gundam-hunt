@@ -158,7 +158,7 @@ const UserProfile = () => {
             {!comments && (
               <div className="profile-comment-card">No comments yet.</div>
             )}
-            {comments?.map((comment) => (
+            {comments?.slice(0,5).map((comment) => (
               <div className="profile-comment-card">
               <NavLink
                 to={`/gundams/${comment.gundam_id}`}
@@ -169,7 +169,7 @@ const UserProfile = () => {
               </NavLink>
               </div>
             ))}
-            {comments.length === 5 && <div>See more</div>}
+            {comments.length > 5 && <div  className="see-more"> <NavLink to={`/comments/${mainUser.id}`}>See more...</NavLink> </div>}
             </div>
           </div>
         </div>
