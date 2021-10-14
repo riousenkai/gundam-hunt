@@ -43,6 +43,7 @@ export const createGundamUpvote = (userId, gundamId, payload) => async (dispatch
   })
   const data = await res.json();
   dispatch(getOneGundam(data))
+  return data.id;
 }
 
 export const singleGundam = (id) => async (dispatch) => {

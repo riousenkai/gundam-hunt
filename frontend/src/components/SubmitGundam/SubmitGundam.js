@@ -41,8 +41,13 @@ const SubmitGundam = () => {
       image3,
     };
 
+    const payload = {
+      user_id: user.id,
+      gundam_id: 1
+    }
+
     await dispatch(makeGundam(gundam))
-    .then((newId) => createGundamUpvote(user.id, newId, image1))
+    .then((newId) => dispatch(createGundamUpvote(user.id, newId, gundam)))
     .then((newId) =>
       history.push(`/gundams/${newId}`)
     );
