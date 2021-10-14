@@ -14,6 +14,7 @@
 .gundam-title-text {
   font-size: 26px;
   font-weight: 500;
+  word-wrap: break-word;
 }
 
 .gundam-title-grade {
@@ -85,6 +86,7 @@
 
 .gundam-description {
   margin-top: 10px;
+  word-wrap: break-word;
 }
 
 .gundam-info-right {
@@ -229,6 +231,7 @@
 .comment-comment {
   width: 580px;
   margin-right: 10px;
+  word-wrap: break-word;
 }
 
 .comment-img {

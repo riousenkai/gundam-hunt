@@ -164,7 +164,8 @@ const UserProfile = () => {
                 to={`/gundams/${comment.gundam_id}`}
                 className="profile-comment-nav"
               >
-                <p className="profile-comment">{comment.comment}</p>
+                <p className="profile-comment">{comment.comment.slice(0, 30)}{comment.comment.length > 30 && "..."}</p>
+                <p className="profile-comment-source">on {dateChange(comment.updatedAt)}</p>
               </NavLink>
               </div>
             ))}
@@ -180,5 +181,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
-
-// https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
