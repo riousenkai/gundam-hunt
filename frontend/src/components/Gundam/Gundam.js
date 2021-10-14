@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { singleGundam, getGundams } from "../../store/gundam";
+import { singleGundam, getGundams, createGundamUpvote } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink, Redirect } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
@@ -110,6 +110,19 @@ const Gundam = () => {
 
     await dispatch(createComment(payload, id));
   };
+
+  const upvote = () => {
+    if (!loggedUser) {
+      return setNum(2);
+    }
+
+    const payload = {
+      user_id: loggedUser.id,
+      gundam_id: id
+    }
+
+    dispatch(createGundamUpvote(loggedUser.id, id, payload))
+  }
 
   if (loaded) {
     return (
@@ -241,7 +254,7 @@ const Gundam = () => {
             <a className="gundam-link" href={gundam?.link} target="_blank">
               Get It
             </a>
-            <button type="button" className="gundam-upvotes">
+            <button onClick={upvote} type="button" className="gundam-upvotes">
               Upvotes: {gundam.upvotes}
             </button>
             {gundam?.user_id === loggedUser?.id ? (

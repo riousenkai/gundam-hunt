@@ -33,6 +33,18 @@ const obtainUserGundams = (gundams) => {
   };
 };
 
+export const createGundamUpvote = (userId, gundamId, payload) => async (dispatch) => {
+  const res = await csrfFetch(`/api/upvotes/${userId}/${gundamId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  })
+  const data = await res.json();
+  dispatch(getOneGundam(data))
+}
+
 export const singleGundam = (id) => async (dispatch) => {
   const res = await fetch(`/api/gundam/${id}`);
   const data = await res.json();
