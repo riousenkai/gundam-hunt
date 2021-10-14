@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getGundams } from "../../store/gundam";
-import { NavLink } from "react-router-dom";
+import { useShowModal } from "../../context/ShowModal";
 import GundamModal from "../GundamModal";
 import Loading from "../Loading/Loading";
 import "./Home.css";
@@ -13,7 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getGundams()).then(setLoaded(true));
-  }, [gundams]);
+  }, []);
 
   if (loaded) {
     return (
