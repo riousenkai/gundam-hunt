@@ -2,7 +2,6 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { User, Gundam, Comment, Upvote } = require("../../db/models");
 const { Op } = require("sequelize");
-const { set } = require("js-cookie");
 
 const router = express.Router();
 
