@@ -76,6 +76,7 @@ router.get('/user/:userId/limit', asyncHandler(async (req, res) => {
     where: {
       user_id: req.params.userId
     },
+    order: [["createdAt", "DESC"]],
     limit: 5,
   })
 

@@ -72,7 +72,7 @@ const commentReducer = (state = initialState, action) => {
     case GET_COMMENTS:
       return { ...state, [action.gundamId]: action.comments};
     case GET_USER_COMMENTS:
-      
+      return { ...state, user: action.comments}
     default:
       return state;
   }

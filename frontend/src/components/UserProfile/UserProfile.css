@@ -196,12 +196,13 @@
 }
 
 .profile-comments-right {
+  display: flex;
+  flex-direction: column;
   background-color: rgba(38, 39, 38, 0.6);
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 20px 20px 20px 20px;
   font-size: 16px;
-  display: flex;
 }
 
 .loading-img {
@@ -214,4 +215,44 @@
   font-size: 1.8rem;
   font-weight: 500;
   margin-bottom: 10px;
+}
+
+.profile-comment-nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 502px;
+}
+
+.profile-comment-container{
+  background-color: rgba(38, 39, 38, 0.6);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: none;
+  word-wrap: break-word;
+  overflow-x: hidden;
+}
+
+.profile-comment-card {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  padding: 20px 20px 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.profile-comment-card:hover {
+  background-color: rgba(38, 39, 38, 0.9);
+  cursor: pointer;
+}
+
+.profile-comment {
+  margin: 0;
+  word-wrap: break-word;
+  width: 290px;
+  height: 50px;
 }

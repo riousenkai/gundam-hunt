@@ -8,6 +8,7 @@ import {
   createGundamUpvote,
   getUpvotedGundams,
 } from "../../store/gundam";
+import { getLimitedComment } from "../../store/comments";
 import { useShowModal } from "../../context/ShowModal";
 import Loading from "../Loading/Loading";
 import "./UserProfile.css";
@@ -21,6 +22,7 @@ const UserProfile = () => {
   const allUsers = useSelector((state) => state.user.users);
   const userGundams = useSelector((state) => state.gundam.user);
   const upvotedGundams = useSelector((state) => state.gundam.upvoted);
+  const comments = useSelector((state) => state.comments.user);
   const [loaded, setLoaded] = useState(false);
   const { setNum } = useShowModal();
 
@@ -34,6 +36,7 @@ const UserProfile = () => {
       .then(() => dispatch(retrieveAllUsers()))
       .then(() => dispatch(getUserGundams(id)))
       .then(() => dispatch(getUpvotedGundams(id)))
+      .then(() => dispatch(getLimitedComment(id)))
       .then(() => setLoaded(true));
   }, [id]);
 
@@ -151,8 +154,21 @@ const UserProfile = () => {
               </p>
             </div>
             <p className="profile-comments-title">Comments</p>
-            <div className="profile-comments-right">
-              {!mainUser.comments && <div>No comments yet.</div>}
+            <div className="profile-comment-container">
+            {!comments && (
+              <div className="profile-comment-card">No comments yet.</div>
+            )}
+            {comments?.map((comment) => (
+              <div className="profile-comment-card">
+              <NavLink
+                to={`/gundams/${comment.gundam_id}`}
+                className="profile-comment-nav"
+              >
+                <p className="profile-comment">{comment.comment}</p>
+              </NavLink>
+              </div>
+            ))}
+            {comments.length === 5 && <div>See more</div>}
             </div>
           </div>
         </div>
