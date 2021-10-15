@@ -27,6 +27,7 @@ router.post(
           [Op.iLike]: `%${results}%`,
         },
       },
+      order: [["name", "DESC"]],
     });
 
     await setTokenCookie(res, user);
@@ -47,6 +48,7 @@ router.post(
           [Op.iLike]: `%${results}%`,
         },
       },
+      order: [["username", "DESC"]],
     });
 
     await setTokenCookie(res, user);

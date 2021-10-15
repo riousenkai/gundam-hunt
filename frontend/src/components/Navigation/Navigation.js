@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { useHistory } from "react-router";
+import { useEffect, useState } from "react";
+// import { useHistory } from "react-router";
 import { searchFiveGundams, searchFiveUsers } from "../../store/search";
 import { useShowModal } from "../../context/ShowModal";
 import ProfileButton from "./ProfileButton";
@@ -13,11 +13,12 @@ import image2 from "../Images/header2.png";
 
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const gundamResult = useSelector((state) => state.search.gundams);
   const userResult = useSelector((state) => state.search.users);
   const { results, setResults } = useShowModal();
+  const [loaded, setLoaded] = useState();
 
   let searchDiv;
   let img;
@@ -37,21 +38,22 @@ function Navigation({ isLoaded }) {
       dispatch(searchFiveGundams(results));
       dispatch(searchFiveUsers(results));
     }
+    setLoaded(true);
   }, [results, dispatch]);
 
-  useEffect(() => {
-    const searchBar = document.querySelector(".search")
-    history.listen((location) => {
-      if (location.pathname.includes("search")) {
-        searchBar.disabled = true;
-        searchBar.classList.add('disabled')
-      } else {
-        searchBar.disabled = false;
-        searchBar.classList.remove('disabled')
-      }
-      console.log(`Location: ${location.pathname}`);
-    });
-  }, [history]);
+  // useEffect(() => {
+  //   const searchBar = document.querySelector(".search");
+  //   history.listen((location) => {
+  //     if (location.pathname.includes("search")) {
+  //       searchBar.disabled = true;
+  //       searchBar.classList.add("disabled");
+  //     } else {
+  //       searchBar.disabled = false;
+  //       searchBar.classList.remove("disabled");
+  //     }
+  //     console.log(`Location: ${location.pathname}`);
+  //   });
+  // }, [history]);
 
   const hide = () => {
     searchInput = document.querySelector(".search");
@@ -74,13 +76,14 @@ function Navigation({ isLoaded }) {
     searchDiv = document.querySelector(".search-container");
     searchRes = document.querySelector(".search-results");
     const dropdown = document.querySelectorAll(".gundam-dropdown");
-    if (results.length < 3) {
+    console.log(e.currentTarget);
+    if (!e.currentTarget.contains(e.relatedTarget)) {
       dropdown.forEach((e) => {
         e.classList.remove("hidden");
+        searchInput.classList.remove("search-focus");
+        searchRes.classList.add("hidden");
+        searchDiv.classList.remove("search-container-focus");
       });
-      searchInput.classList.remove("search-focus");
-      searchRes.classList.add("hidden");
-      searchDiv.classList.remove("search-container-focus");
     }
     if (results.length > 1) {
       dispatch(searchFiveGundams(results));
@@ -94,8 +97,8 @@ function Navigation({ isLoaded }) {
     searchInput = document.querySelector(".search");
     searchInput.classList.remove("search-focus");
     const dropdown = document.querySelectorAll(".gundam-dropdown");
-    dropdown.forEach((e) => {
-      e.classList.remove("hidden");
+    dropdown.forEach((el) => {
+      el.classList.remove("hidden");
     });
     searchDiv.classList.remove("search-container-focus");
   };
@@ -133,7 +136,6 @@ function Navigation({ isLoaded }) {
       </>
     );
   }
-
   return (
     <div className="header">
       <NavLink to="/" className="header-icon">
@@ -144,7 +146,7 @@ function Navigation({ isLoaded }) {
           onMouseOut={imgReturn}
         />
       </NavLink>
-      <div className="search-container">
+      <div className="search-container" onBlur={(e) => show(e)}>
         <input
           className="search"
           value={results}
@@ -152,12 +154,11 @@ function Navigation({ isLoaded }) {
           type="search"
           placeholder="Search..."
           onFocus={hide}
-          onBlur={show}
         />
         <div className="search-results hidden">
           <div className="inner-results">
-            {gundamResult.gundams ? (
-              <div className="pointer results">Gundams</div>
+            {gundamResult?.gundams?.length > 0 ? (
+              <div className="nopointer results">Gundams</div>
             ) : null}
             {gundamResult.gundams &&
               gundamResult.gundams.slice(0, 5).map((gundam) => (
@@ -172,14 +173,16 @@ function Navigation({ isLoaded }) {
                   </p>
                 </NavLink>
               ))}
-            <div className="pointer results">People</div>
+            {userResult?.users?.length > 0 ? (
+              <div className="nopointer results">Users</div>
+            ) : null}
             {userResult.users &&
               userResult.users.slice(0, 5).map((user) => (
                 <NavLink
                   key={user.id}
                   to={`/profile/${user.id}`}
-                  onClick={removeVal}
                   className="pointer results"
+                  onClick={removeVal}
                 >
                   <img className="search-img" src={user.image_url} />
                   <p className="search-name">{user.username}</p>
@@ -214,7 +217,7 @@ function Navigation({ isLoaded }) {
       <div className="gundam-dropdown">
         <button className="gundam-dropbtn">Tools</button>
         <div className="gundam-dropdown-content">
-          <NavLink to="/">Link 1</NavLink>
+          <NavLink to="/search">Search</NavLink>
           <NavLink to="/">Link 2</NavLink>
           <NavLink to="/">Link 3</NavLink>
         </div>

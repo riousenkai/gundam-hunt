@@ -80,16 +80,16 @@
   background-color: rgba(38, 39, 38, 0.6);
 }
 
-.gundam-dropdown:hover .gundam-dropdown-content{
+.gundam-dropdown:hover .gundam-dropdown-content {
   display: block;
 }
 
 a {
-    text-decoration: none;
-    background-color: transparent;
-    color: rgba(225, 217, 209, 1);
-    font-size: 16px;
-  }
+  text-decoration: none;
+  background-color: transparent;
+  color: rgba(225, 217, 209, 1);
+  font-size: 16px;
+}
 
 .search-results {
   position: absolute;
@@ -154,7 +154,7 @@ a {
   display: block;
 }
 
-.gundam-dropdown:hover .gundam-dropdown-content-right{
+.gundam-dropdown:hover .gundam-dropdown-content-right {
   display: block;
 }
 
@@ -201,4 +201,8 @@ a {
 
 .disabled {
   display: none;
+}
+
+.nopointer:hover {
+  cursor: default;
 }
