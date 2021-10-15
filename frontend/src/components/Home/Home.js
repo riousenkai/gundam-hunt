@@ -119,8 +119,8 @@ const Home = () => {
                     className="profile-comment-nav"
                   >
                     <p className="profile-comment home-text">
-                      {comment.comment.slice(0, 42)}
-                      {comment.comment.length > 42 && "..."}
+                      {comment.comment.slice(0, 30)}
+                      {comment.comment.length > 30 && "..."}
                     </p>
                     <p className="profile-comment-source home-text">
                       <img

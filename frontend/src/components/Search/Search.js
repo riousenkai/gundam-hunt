@@ -120,7 +120,7 @@ const Search = () => {
             </div>
             <div className="profile-activity">
               {users &&
-                users.map((user) => (
+                users?.map((user) => (
                   <NavLink to={`/profile/${user.id}`} className="activity-card">
                     <img
                       alt="Missing Image"
