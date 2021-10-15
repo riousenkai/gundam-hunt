@@ -3,13 +3,14 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import Footer from "./components/Footer"
-import Home from "./components/Home"
+import Footer from "./components/Footer";
+import Home from "./components/Home";
 import UserProfile from "./components/UserProfile";
 import Settings from "./components/Settings/Settings";
 import Gundam from "./components/Gundam";
 import SubmitGundam from "./components/SubmitGundam";
 import Search from "./components/Search";
+import AllGundams from "./components/AllGundams";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <>
-    <Navigation isLoaded={isLoaded} />
+      <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
           <Route exact path="/">
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route path="/search">
             <Search />
+          </Route>
+          <Route exact path="/gundams">
+            <AllGundams />
           </Route>
           <Route>
             <h2>Page Not Found</h2>
