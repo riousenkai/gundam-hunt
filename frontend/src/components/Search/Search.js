@@ -24,8 +24,8 @@ const Search = () => {
       dispatch(searchAllGundams(results));
       dispatch(searchAllUsers(results)).then(() => setLoaded(true));
     } else {
-     dispatch(searchAllGundams("@__@#!!!*(xc!"));
-     dispatch(searchAllUsers("@__@#!!!*(!!")).then(() => setLoaded(true));
+      dispatch(searchAllGundams("@__@#!!!*(xc!"));
+      dispatch(searchAllUsers("@__@#!!!*(!!")).then(() => setLoaded(true));
     }
     setResults("");
     setSearch("");
@@ -72,21 +72,21 @@ const Search = () => {
 
   if (loaded) {
     return (
-      <div className="profile-bottom">
+      <div className="profile-bottom searches">
         <div className="profile-bottom-left">
           <p className="search-title">Search</p>
           <form onSubmit={(e) => submitSearch(e)}>
             <input
-              className="submit-input"
+              className="submit-input search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search Here..."
             />
           </form>
           <div className="search-gundams">
-            <div className="profile-upvotes">
-              Gundams ({gundams?.length ? gundams.length : 0})
-            </div>
-
+            {gundams?.length ? (
+              <div className="profile-upvotes">Gundams ({gundams.length})</div>
+            ) : null}
             <div className="profile-activity">
               {gundams &&
                 gundams.map((gundam) => (
@@ -111,9 +111,9 @@ const Search = () => {
             </div>
           </div>
           <div className="search-users">
-            <div className="profile-upvotes">
-              Users ({users?.length ? users.length : 0})
-            </div>
+            {users?.length ? (
+              <div className="profile-upvotes">Users ({users.length})</div>
+            ) : null}
             <div className="profile-activity">
               {users &&
                 users.map((user) => (

@@ -21,3 +21,24 @@
     flex-direction: column;
     justify-content: center;
   }
+
+.search-title {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.submit-input.search {
+    width: 676px;
+    background-color: rgba(38, 39, 38, 0.9);
+    padding: 20px 20px 20px 20px;
+    margin-top: 10px;
+    margin-bottom: 20px
+}
+
+.profile-bottom.searches {
+    margin-bottom: 60px;
+}
+
+.search-users {
+    margin-top: 20px;
+}
