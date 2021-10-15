@@ -125,14 +125,14 @@ const Home = () => {
                     <p className="profile-comment-source home-text">
                       <img
                         className="profile-img-home"
-                        src={comment.Gundam.User.image_url}
+                        src={comment.User?.image_url}
                       />
-                      {comment.Gundam.User.username.slice(0, 40)}
-                      {comment.Gundam.User.username.length > 40 && "..."}
+                      {comment.User?.username.slice(0, 40)}
+                      {comment.User?.username.length > 40 && "..."}
                     </p>
                     <p className="profile-comment-source home-text">
-                      on {comment.Gundam.name.slice(0, 40)}
-                      {comment.Gundam.name.length > 40 && "..."}
+                      on {comment.Gundam?.name.slice(0, 40)}
+                      {comment.Gundam?.name.length > 40 && "..."}
                     </p>
                   </NavLink>
                 </div>

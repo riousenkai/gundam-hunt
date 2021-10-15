@@ -13,8 +13,10 @@ router.get(
       include: [
         {
           model: Gundam,
-          include: [User]
-        }
+        },
+        {
+          model: User
+        },
       ],
     });
 

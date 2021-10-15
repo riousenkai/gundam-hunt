@@ -208,8 +208,12 @@
 }
 
 .loading-img {
-  margin-top: 2rem;
+  margin-top: 5% !important;
   margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  max-height: 300px;
+  max-width: 300px;
 }
 
 .profile-submitted {
