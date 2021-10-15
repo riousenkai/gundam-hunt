@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Modal } from '../../context/Modal';
 import LoginForm from './LoginForm';
 import { useShowModal } from '../../context/ShowModal'
 
 function LoginFormModal() {
-  const { showModal, setShowModal, num, setNum } = useShowModal()
+  const { setShowModal, num, setNum } = useShowModal()
 
   const opener = () => {
     setNum(2)

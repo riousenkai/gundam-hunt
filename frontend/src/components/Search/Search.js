@@ -94,7 +94,7 @@ const Search = () => {
                     to={`/profile/${gundam.id}`}
                     className="activity-card"
                   >
-                    <img className="activity-img" src={gundam.image1} />
+                    <img alt="Missing Image" className="activity-img" src={gundam.image1} />
                     <div className="activity-card-text">
                       <p className="activity-title">{gundam.name}</p>
                       <p className="activity-description">{gundam.grade}</p>
@@ -118,7 +118,7 @@ const Search = () => {
               {users &&
                 users.map((user) => (
                   <NavLink to={`/profile/${user.id}`} className="activity-card">
-                    <img className="activity-img" src={user.image_url} />
+                    <img alt="Missing Image" className="activity-img" src={user.image_url} />
                     <div className="activity-card-text">
                       <p className="activity-title">{user.username}</p>
                       <p className="activity-description">{user.description}</p>

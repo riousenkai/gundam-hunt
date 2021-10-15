@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { useShowModal } from "../../context/ShowModal";
 import { NavLink, useHistory } from "react-router-dom";
-import { getMainUser } from "../../store/user"
+import { getMainUser } from "../../store/user";
 
 function ProfileButton({ user }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const { setShowModal, setNum } = useShowModal();
-  const mainUser = useSelector((state) => state.user.mainUser)
+  const mainUser = useSelector((state) => state.user.mainUser);
 
   useEffect(() => {
     dispatch(getMainUser(user.id)).then(() => setLoaded(true));
@@ -27,10 +27,16 @@ function ProfileButton({ user }) {
   if (loaded) {
     return (
       <>
-        <NavLink to="/submit" className="submit-post gundam-dropdown">Submit</NavLink>
+        <NavLink to="/submit" className="submit-post gundam-dropdown">
+          Submit
+        </NavLink>
         <div className="gundam-dropdown">
           <button className="gundam-dropbtn">
-            <img className="nav-profile-image" src={mainUser.image_url} />
+            <img
+              alt="Missing Image"
+              className="nav-profile-image"
+              src={mainUser.image_url}
+            />
           </button>
           <div className="gundam-dropdown-content-right">
             <NavLink to={`/profile/${user.id}`}>Profile</NavLink>

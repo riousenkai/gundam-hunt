@@ -81,7 +81,11 @@ const UserProfile = () => {
       <div className="profile-body">
         <div className="profile-top">
           <div className="profile-img-card">
-            <img className="profile-img" src={mainUser?.image_url} />
+            <img
+              alt="Missing Image"
+              className="profile-img"
+              src={mainUser?.image_url}
+            />
           </div>
           <div className="profile-info">
             <p className="profile-username">{mainUser?.username}</p>
@@ -105,7 +109,11 @@ const UserProfile = () => {
                     to={`/gundams/${gundam.id}`}
                     className="activity-card"
                   >
-                    <img className="activity-img" src={gundam.image1} />
+                    <img
+                      alt="Missing Image"
+                      className="activity-img"
+                      src={gundam.image1}
+                    />
                     <div className="activity-card-text">
                       <p className="activity-title">{gundam.name}</p>
                       <p className="activity-description">{gundam.grade}</p>
@@ -130,7 +138,11 @@ const UserProfile = () => {
                     to={`/gundams/${gundam.id}`}
                     className="activity-card"
                   >
-                    <img className="activity-img" src={gundam.image1} />
+                    <img
+                      alt="Missing Image"
+                      className="activity-img"
+                      src={gundam.image1}
+                    />
                     <div className="activity-card-text">
                       <p className="activity-title">{gundam.name}</p>
                       <p className="activity-description">{gundam.grade}</p>
@@ -153,23 +165,37 @@ const UserProfile = () => {
                 Joined on {dateChange(mainUser?.createdAt)}
               </p>
             </div>
-            <p className="profile-comments-title">Comments ({comments.length})</p>
+            <p className="profile-comments-title">
+              Comments ({comments.length})
+            </p>
             <div className="profile-comment-container">
-            {!comments && (
-              <div className="profile-comment-card">No comments yet.</div>
-            )}
-            {comments?.slice(0,5).map((comment) => (
-              <div className="profile-comment-card">
-              <NavLink
-                to={`/gundams/${comment.gundam_id}`}
-                className="profile-comment-nav"
-              >
-                <p className="profile-comment">{comment.comment.slice(0, 30)}{comment.comment.length > 30 && "..."}</p>
-                <p className="profile-comment-source">on {dateChange(comment.updatedAt)}</p>
-              </NavLink>
-              </div>
-            ))}
-            {comments.length > 5 && <div  className="see-more"> <NavLink to={`/comments/${mainUser.id}`}>View all...</NavLink> </div>}
+              {!comments && (
+                <div className="profile-comment-card">No comments yet.</div>
+              )}
+              {comments?.slice(0, 5).map((comment) => (
+                <div className="profile-comment-card">
+                  <NavLink
+                    to={`/gundams/${comment.gundam_id}`}
+                    className="profile-comment-nav"
+                  >
+                    <p className="profile-comment">
+                      {comment.comment.slice(0, 30)}
+                      {comment.comment.length > 30 && "..."}
+                    </p>
+                    <p className="profile-comment-source">
+                      on {dateChange(comment.updatedAt)}
+                    </p>
+                  </NavLink>
+                </div>
+              ))}
+              {comments.length > 5 && (
+                <div className="see-more">
+                  {" "}
+                  <NavLink to={`/comments/${mainUser.id}`}>
+                    View all...
+                  </NavLink>{" "}
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-// import { useHistory } from "react-router";
+import { useEffect } from "react";
 import { searchFiveGundams, searchFiveUsers } from "../../store/search";
 import { useShowModal } from "../../context/ShowModal";
 import ProfileButton from "./ProfileButton";
@@ -13,12 +12,10 @@ import image2 from "../Images/header2.png";
 
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
-  // const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const gundamResult = useSelector((state) => state.search.gundams);
   const userResult = useSelector((state) => state.search.users);
   const { results, setResults } = useShowModal();
-  const [loaded, setLoaded] = useState();
 
   let searchDiv;
   let img;
@@ -38,22 +35,7 @@ function Navigation({ isLoaded }) {
       dispatch(searchFiveGundams(results));
       dispatch(searchFiveUsers(results));
     }
-    setLoaded(true);
   }, [results, dispatch]);
-
-  // useEffect(() => {
-  //   const searchBar = document.querySelector(".search");
-  //   history.listen((location) => {
-  //     if (location.pathname.includes("search")) {
-  //       searchBar.disabled = true;
-  //       searchBar.classList.add("disabled");
-  //     } else {
-  //       searchBar.disabled = false;
-  //       searchBar.classList.remove("disabled");
-  //     }
-  //     console.log(`Location: ${location.pathname}`);
-  //   });
-  // }, [history]);
 
   const hide = () => {
     searchInput = document.querySelector(".search");
@@ -140,6 +122,7 @@ function Navigation({ isLoaded }) {
     <div className="header">
       <NavLink to="/" className="header-icon">
         <img
+          alt="Missing Image"
           id="img-top"
           src={image}
           onMouseOver={imgChange}
@@ -167,7 +150,11 @@ function Navigation({ isLoaded }) {
                   onClick={removeVal}
                   className="pointer results"
                 >
-                  <img className="search-img" src={gundam.image1} />
+                  <img
+                    alt="Missing Image"
+                    className="search-img"
+                    src={gundam.image1}
+                  />
                   <p className="search-name">
                     {gundam.name} : {gundam.grade}
                   </p>
@@ -184,7 +171,7 @@ function Navigation({ isLoaded }) {
                   className="pointer results"
                   onClick={removeVal}
                 >
-                  <img className="search-img" src={user.image_url} />
+                  <img alt="Missing Image" className="search-img" src={user.image_url} />
                   <p className="search-name">{user.username}</p>
                 </NavLink>
               ))}

@@ -64,7 +64,7 @@ const Settings = () => {
         </div>
         <div className="settings-img-change">
           <p className="settings-title">Profile Picture</p>
-          <img className="settings-img" src={user?.image_url}></img>
+          <img alt="Missing Image" className="settings-img" src={user?.image_url}></img>
         </div>
       </div>
     );

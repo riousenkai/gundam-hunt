@@ -12,7 +12,7 @@ import {
 function GundamModal({ gundam }) {
   const dispatch = useDispatch();
 
-  const { setShowModal, num, setNum, pop, setPop } = useShowModal();
+  const { setShowModal, num, setNum, pop } = useShowModal();
 
   const user = useSelector((state) => state.session.user);
 
@@ -47,7 +47,7 @@ function GundamModal({ gundam }) {
   return (
     <>
       <div className="activity-card">
-        <img className="activity-img" onClick={opener} src={gundam.image1} />
+        <img className="activity-img" onClick={opener} src={gundam.image1} alt="Missing Image" />
         <div className="activity-card-text" onClick={opener}>
           <p className="activity-title">{gundam.name}</p>
           <p className="activity-description">{gundam.grade}</p>

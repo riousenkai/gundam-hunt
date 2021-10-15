@@ -1,13 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  singleGundam,
-  getGundams,
-  createGundamUpvote,
-} from "../../store/gundam";
+import { singleGundam, createGundamUpvote } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { retrieveUser } from "../../store/user";
 import {
   getComments,
@@ -25,14 +21,12 @@ const Gundam = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const gundams = useSelector((state) => state.gundam.gundams);
   const gundam = useSelector((state) => state.gundam[id]);
   const comments = useSelector((state) => state.comments);
   const [loaded, setLoaded] = useState(false);
   const [source, setSource] = useState("");
   const [comm, setComm] = useState("");
   const [newComment, setNewComment] = useState("");
-  const [disabler, setDisabler] = useState(false);
   const { setShowModal, setNum } = useShowModal();
 
   const user = useSelector((state) => state.user.user);
@@ -161,22 +155,26 @@ const Gundam = () => {
                   className="gundam-highlight-img"
                   id="main-img"
                   src={source}
+                  alt="Missing Image"
                 />
                 <div className="gundam-mini-img-card">
                   <img
                     className="gundam-mini-img"
                     src={gundam?.image1}
                     onClick={() => setSource(gundam?.image1)}
+                    alt="Missing Image"
                   ></img>
                   <img
                     className="gundam-mini-img"
                     src={gundam?.image2}
                     onClick={() => setSource(gundam?.image2)}
+                    alt="Missing Image"
                   ></img>
                   <img
                     className="gundam-mini-img"
                     src={gundam?.image3}
                     onClick={() => setSource(gundam?.image3)}
+                    alt="Missing Image"
                   ></img>
                 </div>
               </div>
@@ -216,6 +214,7 @@ const Gundam = () => {
                       <img
                         src={comment.User.image_url}
                         className="comment-img"
+                        alt="Missing Image"
                       ></img>
                     </NavLink>
                     <NavLink
@@ -285,7 +284,12 @@ const Gundam = () => {
             </div>
           </div>
           <div className="gundam-info-right">
-            <a className="gundam-link" href={gundam?.link} target="_blank" rel="noreferrer">
+            <a
+              className="gundam-link"
+              href={gundam?.link}
+              target="_blank"
+              rel="noreferrer"
+            >
               Get It
             </a>
             <button onClick={upvote} type="button" className="gundam-upvotes">
@@ -303,7 +307,7 @@ const Gundam = () => {
                   className="gundam-img-submit"
                   to={`/profile/${gundam.user_id}`}
                 >
-                  <img className="gundam-user-img" src={user?.image_url} />
+                  <img className="gundam-user-img" src={user?.image_url} alt="Missing Image" />
                   {user?.username}
                 </NavLink>
               </div>

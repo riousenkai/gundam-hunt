@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getGundams()).then(setLoaded(true));
-  }, []);
+  }, [dispatch]);
 
   const popular = () => {
     const popular = document.querySelector(".sort.pop");
@@ -68,6 +68,7 @@ const Home = () => {
                 rel="noreferrer"
               >
                 <img
+                  alt="Missing Image"
                   className="upcoming-img"
                   src="https://sneakerbardetroit.com/wp-content/uploads/2021/07/Gundam-Unicorn-Nike-SB.jpg"
                 />
@@ -85,6 +86,7 @@ const Home = () => {
                 rel="noreferrer"
               >
                 <img
+                  alt="Missing Image"
                   className="upcoming-img"
                   src="https://p-bandai.com/img/us/p/m/N2613235001001_001.jpg"
                 />
