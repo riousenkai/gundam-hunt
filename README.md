@@ -22,7 +22,7 @@ Gundam models are model ktis that depict the robotic vehicles (called "Mobile Su
   * Edit the product details (if you submitted the post)
 * [All Gundams Page](https://gundam-hunt.herokuapp.com/gundams)
   * Sort all Gundams by grade
-* Submit Gundam Page
+* [Submit Gundam Page](https://gundam-hunt.herokuapp.com/submit) (Only accessible if logged in)
   * Create a new Gundam product post
   * Only accessible if logged in
 * [Search](https://gundam-hunt.herokuapp.com/search)
@@ -30,9 +30,8 @@ Gundam models are model ktis that depict the robotic vehicles (called "Mobile Su
   * Search page can be sorted to only show user or gundam results
 * [User Profile Page](https://gundam-hunt.herokuapp.com/profile/1)
   * Shows user's upvoted Gundam products, submitted Gundam products and recent comments
-* Settings Page
+* [Settings Page](https://gundam-hunt.herokuapp.com/settings) (Only accessible if logged in)
   * Update user's description and profile image
-  * Only accessible if logged in
 
 
 ### A project by [Revan Fajardo](https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3)
