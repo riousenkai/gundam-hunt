@@ -171,7 +171,11 @@ function Navigation({ isLoaded }) {
                   className="pointer results"
                   onClick={removeVal}
                 >
-                  <img alt="Missing Image" className="search-img" src={user.image_url} />
+                  <img
+                    alt="Missing Image"
+                    className="search-img"
+                    src={user.image_url}
+                  />
                   <p className="search-name">{user.username}</p>
                 </NavLink>
               ))}
@@ -179,7 +183,7 @@ function Navigation({ isLoaded }) {
           <NavLink
             to="/search"
             className="pointer results"
-            onMouseDown={moveSearch}
+            onClick={moveSearch}
           >
             View more results...
           </NavLink>
