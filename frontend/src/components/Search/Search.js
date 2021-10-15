@@ -34,8 +34,8 @@ const Search = () => {
   const submitSearch = (e) => {
     e.preventDefault();
 
-    if (search.length < 3) {
-      return window.alert("Please enter three or more characters!");
+    if (search.length < 1) {
+      return window.alert("Please enter one or more characters!");
     }
 
     dispatch(searchAllGundams(search));
@@ -84,9 +84,9 @@ const Search = () => {
             />
           </form>
           <div className="search-gundams">
-            {gundams?.length ? (
-              <div className="profile-upvotes">Gundams ({gundams.length})</div>
-            ) : null}
+            <div className="profile-upvotes">
+              Gundams ({gundams?.length ? gundams.length : 0})
+            </div>
             <div className="profile-activity">
               {gundams &&
                 gundams.map((gundam) => (
@@ -111,9 +111,9 @@ const Search = () => {
             </div>
           </div>
           <div className="search-users">
-            {users?.length ? (
-              <div className="profile-upvotes">Users ({users.length})</div>
-            ) : null}
+            <div className="profile-upvotes">
+              Users ({users?.length ? users.length : 0})
+            </div>
             <div className="profile-activity">
               {users &&
                 users.map((user) => (
