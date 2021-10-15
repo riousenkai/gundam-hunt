@@ -31,6 +31,7 @@ router.put(
       where: {
         gundam_id: req.params.id,
       },
+      order: [["createdAt", "DESC"]],
       include: [User],
     });
 
@@ -49,6 +50,7 @@ router.delete(
       where: {
         gundam_id: req.params.id,
       },
+      order: [["createdAt", "DESC"]],
       include: [User],
     });
     return res.json(comments);
@@ -64,6 +66,7 @@ router.post(
       where: {
         gundam_id: req.params.id,
       },
+      order: [["createdAt", "DESC"]],
       include: [User],
     });
 

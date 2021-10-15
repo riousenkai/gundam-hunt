@@ -57,7 +57,7 @@ const Home = () => {
                   .map((gundam) => (
                     <GundamModal key={gundam.id} gundam={gundam} />
                   ))}
-              <div className="last-card" onClick={() => history.push("/gundams")}>Show {gundams.length - 10} More</div>
+              <div className="last-card" onClick={() => history.push("/gundams")}>Show {gundams?.length - 10} More</div>
             </div>
           </div>
           <div className="side-container">
