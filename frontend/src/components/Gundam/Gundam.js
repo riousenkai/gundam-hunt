@@ -285,7 +285,7 @@ const Gundam = () => {
             </div>
           </div>
           <div className="gundam-info-right">
-            <a className="gundam-link" href={gundam?.link} target="_blank">
+            <a className="gundam-link" href={gundam?.link} target="_blank" rel="noreferrer">
               Get It
             </a>
             <button onClick={upvote} type="button" className="gundam-upvotes">

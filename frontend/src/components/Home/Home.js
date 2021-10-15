@@ -65,6 +65,7 @@ const Home = () => {
                 href="https://p-bandai.com/us/item/N2613234001001"
                 target="_blank"
                 className="side-card"
+                rel="noreferrer"
               >
                 <img
                   className="upcoming-img"
@@ -81,6 +82,7 @@ const Home = () => {
                 href="https://p-bandai.com/us/item/N2613235001001"
                 target="_blank"
                 className="side-card"
+                rel="noreferrer"
               >
                 <img
                   className="upcoming-img"

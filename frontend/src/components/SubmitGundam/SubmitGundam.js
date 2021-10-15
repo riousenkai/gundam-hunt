@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { restoreUser } from "../../store/session";
 import { useHistory } from "react-router";
 import { createGundamUpvote, makeGundam } from "../../store/gundam";
 import "./SubmitGundam.css";
@@ -19,11 +18,9 @@ const SubmitGundam = () => {
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(restoreUser()).then(() => {
       if(!user) {
         history.push("/")
       }
-    });
   }, []);
 
   const submit = async (e) => {
