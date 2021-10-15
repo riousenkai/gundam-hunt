@@ -9,7 +9,7 @@ import "./Home.css";
 const Home = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-  const { setPop } = useShowModal()
+  const { setPop } = useShowModal();
   const gundams = useSelector((state) => state.gundam.gundams);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Home = () => {
     const newest = document.querySelector(".sort.newest");
     popular.classList.add("underline");
     newest.classList.remove("underline");
-    setPop(true)
+    setPop(true);
     dispatch(getPopularGundams());
   };
 
@@ -30,7 +30,7 @@ const Home = () => {
     const newest = document.querySelector(".sort.newest");
     newest.classList.add("underline");
     popular.classList.remove("underline");
-    setPop(false)
+    setPop(false);
     dispatch(getGundams());
   };
 

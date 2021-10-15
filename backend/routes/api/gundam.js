@@ -25,7 +25,7 @@ router.get('/', asyncHandler(async(req, res) => {
 
 router.get('/popular', asyncHandler(async(req, res) => {
   const gundam = await Gundam.findAll({
-    order: [["upvotes", "DESC"]],
+    order: [["upvotes", "DESC"], ["createdAt", "DESC"]],
   })
 
   return res.json({ gundam })

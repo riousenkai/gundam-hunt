@@ -3,7 +3,11 @@ import { Modal } from "../../context/Modal";
 import GundamShow from "./GundamShow";
 import { useShowModal } from "../../context/ShowModal";
 import { useSelector, useDispatch } from "react-redux";
-import { createGundamUpvote, getGundams, getPopularGundams } from "../../store/gundam";
+import {
+  createGundamUpvote,
+  getGundams,
+  getPopularGundams,
+} from "../../store/gundam";
 
 function GundamModal({ gundam }) {
   const dispatch = useDispatch();
@@ -15,19 +19,19 @@ function GundamModal({ gundam }) {
   const upvote = (e) => {
     e.preventDefault();
 
-
-
     if (!user) {
       return setNum(2);
     }
 
-    dispatch(createGundamUpvote(user.id, gundam.id, { gundam: "test" })).then(() => {
+    dispatch(createGundamUpvote(user.id, gundam.id, { gundam: "test" })).then(
+      () => {
         if (!pop) {
-          dispatch(getGundams())
+          dispatch(getGundams());
         } else {
-          dispatch(getPopularGundams())
+          dispatch(getPopularGundams());
         }
-      });
+      }
+    );
   };
 
   const opener = () => {
@@ -44,7 +48,7 @@ function GundamModal({ gundam }) {
     <>
       <div className="activity-card">
         <img className="activity-img" onClick={opener} src={gundam.image1} />
-        <div className="activity-card-text" onClick={opener} >
+        <div className="activity-card-text" onClick={opener}>
           <p className="activity-title">{gundam.name}</p>
           <p className="activity-description">{gundam.grade}</p>
         </div>
