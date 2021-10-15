@@ -58,16 +58,38 @@
 
 .upcoming-container {
   background-color: rgba(38, 39, 38, 0.6);
-  border: 0.5px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: none;
+  border-radius: 5px;
 }
 
 .side-card {
+  display: flex;
   width: 20rem;
   height: 5rem;
-  margin: 1rem;
-  border-bottom: 0.5px solid white;
+  padding: 20px 20px 20px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .underline {
   text-decoration: underline;
+}
+
+.upcoming-img {
+  height: 80px;
+  width: 80px;
+  border-radius: 5px;
+}
+
+.upcoming-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.upcoming-details {
+  margin-left: 10px;
+}
+
+.side-card:hover {
+  background-color: rgba(38, 39, 38, 0.9);
 }

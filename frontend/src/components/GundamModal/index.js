@@ -36,13 +36,11 @@ function GundamModal({ gundam }) {
 
   return (
     <>
-      <div className="activity-card">
-        <div onClick={opener} className="activity-card">
-          <img className="activity-img" src={gundam.image1} />
-          <div className="activity-card-text">
-            <p className="activity-title">{gundam.name}</p>
-            <p className="activity-description">{gundam.grade}</p>
-          </div>
+      <div onClick={opener} className="activity-card">
+        <img className="activity-img" src={gundam.image1} />
+        <div className="activity-card-text">
+          <p className="activity-title">{gundam.name}</p>
+          <p className="activity-description">{gundam.grade}</p>
         </div>
         <button
           type="button"

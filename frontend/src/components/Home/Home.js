@@ -69,8 +69,30 @@ const Home = () => {
           <div className="side-container">
             <p className="title-text">Upcoming Products</p>
             <div className="upcoming-container">
-              <div className="side-card">Product#1</div>
-              <div className="side-card">Product#2</div>
+              <a href="https://p-bandai.com/us/item/N2613234001001" target="_blank" className="side-card">
+                <img
+                  className="upcoming-img"
+                  src="https://sneakerbardetroit.com/wp-content/uploads/2021/07/Gundam-Unicorn-Nike-SB.jpg"
+                />
+                <div className="upcoming-details">
+                  <p className="upcoming-text">
+                    RX-0 Unicorn Gundam Ver. Nike SB
+                  </p>
+                  <p className="upcoming-grade">Super Deformed (SD)</p>
+                </div>
+              </a>
+              <a href="https://p-bandai.com/us/item/N2613235001001" target="_blank" className="side-card">
+                <img
+                  className="upcoming-img"
+                  src="https://p-bandai.com/img/us/p/m/N2613235001001_001.jpg"
+                />
+                <div className="upcoming-details">
+                  <p className="upcoming-text">
+                    RX-0 Unicorn Gundam 02 Banshee Ver. Nike SB
+                  </p>
+                  <p className="upcoming-grade">Super Deformed (SD)</p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
