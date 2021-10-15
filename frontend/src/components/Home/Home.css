@@ -26,6 +26,10 @@
   float: right;
 }
 
+.sort:hover {
+  cursor: pointer;
+}
+
 .head-card {
   background-color: rgba(38, 39, 38, 0.6);
   border-radius: 5px;
@@ -62,4 +66,8 @@
   height: 5rem;
   margin: 1rem;
   border-bottom: 0.5px solid white;
+}
+
+.underline {
+  text-decoration: underline;
 }

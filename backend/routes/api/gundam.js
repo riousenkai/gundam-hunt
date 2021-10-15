@@ -23,6 +23,14 @@ router.get('/', asyncHandler(async(req, res) => {
     return res.json({ gundam })
 }))
 
+router.get('/popular', asyncHandler(async(req, res) => {
+  const gundam = await Gundam.findAll({
+    order: [["upvotes", "DESC"]],
+  })
+
+  return res.json({ gundam })
+}))
+
 router.get('/newest', asyncHandler(async(req, res) => {
   const gundam = await Gundam.findAll({
     order: [["createdAt", "DESC"]],

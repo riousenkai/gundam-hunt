@@ -72,6 +72,18 @@ export const getGundams = () => async (dispatch) => {
   dispatch(getAllGundams(data));
 };
 
+export const getPopularGundams = () => async (dispatch) => {
+  const res = await csrfFetch(`/api/gundam/popular`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json();
+  dispatch(getAllGundams(data));
+};
+
+
 export const getUserGundams = (id) => async (dispatch) => {
   const res = await fetch(`/api/gundam/user/${id}`);
   const data = await res.json();

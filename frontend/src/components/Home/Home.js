@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getGundams } from "../../store/gundam";
+import { getGundams, getPopularGundams } from "../../store/gundam";
 import GundamModal from "../GundamModal";
 import Loading from "../Loading/Loading";
 import "./Home.css";
@@ -15,8 +15,20 @@ const Home = () => {
   }, []);
 
   const popular = () => {
-    
-  }
+    const popular = document.querySelector(".sort.pop");
+    const newest = document.querySelector(".sort.newest");
+    popular.classList.add("underline");
+    newest.classList.remove("underline");
+    dispatch(getPopularGundams());
+  };
+
+  const newest = () => {
+    const popular = document.querySelector(".sort.pop");
+    const newest = document.querySelector(".sort.newest");
+    newest.classList.add("underline");
+    popular.classList.remove("underline");
+    dispatch(getGundams());
+  };
 
   if (loaded) {
     return (
@@ -25,12 +37,16 @@ const Home = () => {
           <div className="card-container">
             <div>
               <p className="title-text">Gundam Models</p>
-              <p className="sort pop">Popular</p>
-              <p className="sort">Newest</p>
+              <p className="sort pop" onClick={popular}>
+                Popular
+              </p>
+              <p className="sort newest underline" onClick={newest}>
+                Newest
+              </p>
             </div>
             <div className="head-card">
               {gundams &&
-                gundams.map((gundam) => (
+                gundams.slice(0, 10).map((gundam) => (
                   <GundamModal key={gundam.id} gundam={gundam} />
                   // <NavLink to="/" className="activity-card">
                   //   <img className="activity-img" src={gundam.image1} />
