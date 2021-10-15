@@ -13,7 +13,7 @@ import image2 from "../Images/header2.png";
 
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const gundamResult = useSelector((state) => state.search.gundams);
   const userResult = useSelector((state) => state.search.users);
@@ -40,12 +40,18 @@ function Navigation({ isLoaded }) {
   }, [results, dispatch]);
 
   useEffect(() => {
-    if (window.location.href.includes('search')) {
-      document.querySelector(".search").disabled = true;
-    } else {
-      document.querySelector(".search").disabled = false;
-    }
-  }, [history.location])
+    const searchBar = document.querySelector(".search")
+    history.listen((location) => {
+      if (location.pathname.includes("search")) {
+        searchBar.disabled = true;
+        searchBar.classList.add('disabled')
+      } else {
+        searchBar.disabled = false;
+        searchBar.classList.remove('disabled')
+      }
+      console.log(`Location: ${location.pathname}`);
+    });
+  }, [history]);
 
   const hide = () => {
     searchInput = document.querySelector(".search");
@@ -95,7 +101,7 @@ function Navigation({ isLoaded }) {
   };
 
   const moveSearch = () => {
-    setResults(results)
+    setResults(results);
     searchDiv = document.querySelector(".search-container");
     searchInput = document.querySelector(".search");
     searchInput.classList.remove("search-focus");
@@ -104,7 +110,7 @@ function Navigation({ isLoaded }) {
       e.classList.remove("hidden");
     });
     searchDiv.classList.remove("search-container-focus");
-  }
+  };
 
   const imgChange = () => {
     img = document.getElementById("img-top");

@@ -198,3 +198,7 @@ a {
   max-height: 20px;
   margin-right: 5px;
 }
+
+.disabled {
+  display: none;
+}
