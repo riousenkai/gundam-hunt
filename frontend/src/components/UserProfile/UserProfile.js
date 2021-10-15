@@ -209,7 +209,7 @@ const UserProfile = () => {
               )}
               {view && (
                 <>
-                  {comments.slice(6).map((comment) => (
+                  {comments.slice(5).map((comment) => (
                     <div className="profile-comment-card">
                       <NavLink
                         to={`/gundams/${comment.gundam_id}`}

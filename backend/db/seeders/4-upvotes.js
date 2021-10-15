@@ -65,6 +65,59 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          user_id: 2,
+          gundam_id: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 3,
+          gundam_id: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 4,
+          gundam_id: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 5,
+          gundam_id: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 6,
+          gundam_id: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 7,
+          gundam_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },        {
+          user_id: 8,
+          gundam_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 9,
+          gundam_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 10,
+          gundam_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
