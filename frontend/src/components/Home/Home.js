@@ -1,13 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getGundams, getPopularGundams } from "../../store/gundam";
+import { useShowModal } from "../../context/ShowModal";
 import GundamModal from "../GundamModal";
 import Loading from "../Loading/Loading";
 import "./Home.css";
+import { ShowModalContext } from "../../context/ShowModal";
 
 const Home = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
+  const { setPop } = useShowModal()
   const gundams = useSelector((state) => state.gundam.gundams);
 
   useEffect(() => {
@@ -19,6 +22,7 @@ const Home = () => {
     const newest = document.querySelector(".sort.newest");
     popular.classList.add("underline");
     newest.classList.remove("underline");
+    setPop(true)
     dispatch(getPopularGundams());
   };
 
@@ -27,6 +31,7 @@ const Home = () => {
     const newest = document.querySelector(".sort.newest");
     newest.classList.add("underline");
     popular.classList.remove("underline");
+    setPop(false)
     dispatch(getGundams());
   };
 
@@ -46,30 +51,22 @@ const Home = () => {
             </div>
             <div className="head-card">
               {gundams &&
-                gundams.slice(0, 10).map((gundam) => (
-                  <GundamModal key={gundam.id} gundam={gundam} />
-                  // <NavLink to="/" className="activity-card">
-                  //   <img className="activity-img" src={gundam.image1} />
-                  //   <div className="activity-card-text">
-                  //     <p className="activity-title">{gundam.name}</p>
-                  //     <p className="activity-description">{gundam.grade}</p>
-                  //   </div>
-                  //   <button
-                  //     type="button"
-                  //     className="activity-upvote"
-                  //     onClick={(e) => e.preventDefault()}
-                  //   >
-                  //     {gundam.upvotes}
-                  //   </button>
-                  // </NavLink>
-                ))}
+                gundams
+                  .slice(0, 10)
+                  .map((gundam) => (
+                    <GundamModal key={gundam.id} gundam={gundam} />
+                  ))}
               <div className="last-card">Show more...</div>
             </div>
           </div>
           <div className="side-container">
             <p className="title-text">Upcoming Products</p>
             <div className="upcoming-container">
-              <a href="https://p-bandai.com/us/item/N2613234001001" target="_blank" className="side-card">
+              <a
+                href="https://p-bandai.com/us/item/N2613234001001"
+                target="_blank"
+                className="side-card"
+              >
                 <img
                   className="upcoming-img"
                   src="https://sneakerbardetroit.com/wp-content/uploads/2021/07/Gundam-Unicorn-Nike-SB.jpg"
@@ -81,7 +78,11 @@ const Home = () => {
                   <p className="upcoming-grade">Super Deformed (SD)</p>
                 </div>
               </a>
-              <a href="https://p-bandai.com/us/item/N2613235001001" target="_blank" className="side-card">
+              <a
+                href="https://p-bandai.com/us/item/N2613235001001"
+                target="_blank"
+                className="side-card"
+              >
                 <img
                   className="upcoming-img"
                   src="https://p-bandai.com/img/us/p/m/N2613235001001_001.jpg"
@@ -104,3 +105,18 @@ const Home = () => {
 };
 
 export default Home;
+
+// <NavLink to="/" className="activity-card">
+//   <img className="activity-img" src={gundam.image1} />
+//   <div className="activity-card-text">
+//     <p className="activity-title">{gundam.name}</p>
+//     <p className="activity-description">{gundam.grade}</p>
+//   </div>
+//   <button
+//     type="button"
+//     className="activity-upvote"
+//     onClick={(e) => e.preventDefault()}
+//   >
+//     {gundam.upvotes}
+//   </button>
+// </NavLink>

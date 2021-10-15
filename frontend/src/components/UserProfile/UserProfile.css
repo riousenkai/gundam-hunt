@@ -92,6 +92,7 @@
   height: 105px;
   padding: 20px 20px 20px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  z-index: 0;
 }
 
 .activity-card-text {
@@ -126,7 +127,7 @@
 
 .activity-upvote {
   text-align: center;
-  z-index: 2;
+  z-index: 25;
   color: black;
   height: 50px;
   width: 70px;
