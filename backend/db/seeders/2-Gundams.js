@@ -16,7 +16,7 @@ module.exports = {
           image1: "https://p-bandai.com/img/sg/p/m/N2569532001001_001.jpg",
           image2: "https://p-bandai.com/img/sg/p/m/N2569532001001_002.jpg",
           image3: "https://p-bandai.com/img/sg/p/m/N2569532001001_003.jpg",
-          createdAt: new Date(),
+          createdAt: "2021-10-15T02:37:47.749Z",
           updatedAt: new Date(),
         },
         {
@@ -32,7 +32,7 @@ module.exports = {
             "https://cdn.shopify.com/s/files/1/0727/8355/products/RGwgoc_03_LRG_900x900.jpg",
           image3:
             "https://cdn.shopify.com/s/files/1/0727/8355/products/RGwgoc_05_LRG_900x900.jpg",
-          createdAt: new Date(),
+          createdAt: "2021-10-13T02:30:47.749Z",
           updatedAt: new Date(),
         },
         {
@@ -73,7 +73,7 @@ module.exports = {
           image1: "https://p-bandai.com/img/us/p/m/N2390099001001_003.jpg",
           image2: "https://p-bandai.com/img/us/p/m/N2390099001001_001.jpg",
           image3: "https://p-bandai.com/img/us/p/m/N2390099001001_002.jpg",
-          createdAt: new Date(),
+          createdAt: "2021-10-14T02:30:47.749Z",
           updatedAt: new Date(),
         },
         {
@@ -87,7 +87,7 @@ module.exports = {
           image1: "https://www.gundamplanet.com/media/catalog/product/cache/89806700f2f2fe9ae1d5c7ebaf942715/p/g/pg-unleashed-rx-78-2-gundam-10th.jpg",
           image2: "https://www.gundamplanet.com/media/catalog/product/cache/89806700f2f2fe9ae1d5c7ebaf942715/p/g/pg-unleashed-rx-78-2-gundam-09th.jpg",
           image3: "https://www.gundamplanet.com/media/catalog/product/cache/89806700f2f2fe9ae1d5c7ebaf942715/p/g/pg-unleashed-rx-78-2-gundam-02th.jpg",
-          createdAt: new Date(),
+          createdAt: "2021-10-15T02:30:47.749Z",
           updatedAt: new Date(),
         },
         {
@@ -101,7 +101,7 @@ module.exports = {
           image1: "https://www.gundamplanet.com/media/catalog/product/cache/89806700f2f2fe9ae1d5c7ebaf942715/m/g/mg-gat-x105e-strike-e-i-w-s-p-lucas-o-donnell-custom-01.jpg",
           image2: "https://www.gundamplanet.com/media/catalog/product/cache/89806700f2f2fe9ae1d5c7ebaf942715/m/g/mg-gat-x105e-strike-e-i-w-s-p-lucas-o-donnell-custom-05.jpg",
           image3: "https://www.gundamplanet.com/media/catalog/product/cache/89806700f2f2fe9ae1d5c7ebaf942715/m/g/mg-gat-x105e-strike-e-i-w-s-p-lucas-o-donnell-custom-02.jpg",
-          createdAt: new Date(),
+          createdAt: "2021-10-15T03:30:47.749Z",
           updatedAt: new Date(),
         },
       ],

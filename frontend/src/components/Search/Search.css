@@ -1,0 +1,23 @@
+.search-checkbox {
+    margin-right: 20px;
+}
+
+.users-joined {
+    display: flex;
+    flex-direction: row;
+    font-weight: 400;
+    align-items: center;
+}
+
+.search-filter {
+    height: 80px;
+    background-color: rgba(38, 39, 38, 0.6);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 20px 20px 20px 20px;
+    margin-top: 3rem;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
