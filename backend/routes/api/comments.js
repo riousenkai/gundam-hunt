@@ -6,6 +6,18 @@ const { Op } = require("sequelize");
 const router = express.Router();
 
 router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const comments = await Comment.findAll({
+      order: [["createdAt", "DESC"]],
+      include: [User],
+    });
+
+    return res.json(comments);
+  })
+);
+
+router.get(
   "/:id",
   asyncHandler(async (req, res) => {
     const comments = await Comment.findAll({
@@ -74,16 +86,19 @@ router.post(
   })
 );
 
-router.get('/user/:userId/limit', asyncHandler(async (req, res) => {
-  const comments = await Comment.findAll({
-    where: {
-      user_id: req.params.userId
-    },
-    order: [["createdAt", "DESC"]],
-    include: [Gundam],
-  })
+router.get(
+  "/user/:userId/limit",
+  asyncHandler(async (req, res) => {
+    const comments = await Comment.findAll({
+      where: {
+        user_id: req.params.userId,
+      },
+      order: [["createdAt", "DESC"]],
+      include: [Gundam],
+    });
 
-  return res.json(comments)
-}))
+    return res.json(comments);
+  })
+);
 
 module.exports = router;

@@ -2,12 +2,20 @@ import { csrfFetch } from "./csrf";
 
 const GET_COMMENTS = "comments/getGundamComments";
 const GET_USER_COMMENTS = "comments/getUserComments"
+const GET_THE_COMMENTS = "comments/getTheGundamComments"
 
 const getGundamComments = (comments, gundamId) => {
   return {
     type: GET_COMMENTS,
     comments,
     gundamId,
+  };
+};
+
+const getTheGundamComments = (comments) => {
+  return {
+    type: GET_THE_COMMENTS,
+    comments,
   };
 };
 
@@ -23,6 +31,12 @@ export const getComments = (id) => async (dispatch) => {
   const data = await res.json();
   dispatch(getGundamComments(data, id));
 };
+
+export const getAllComments = () => async (dispatch) => {
+  const res = await fetch(`/api/comments/`);
+  const data = await res.json();
+  dispatch(getTheGundamComments(data));
+}
 
 export const editComment = (comment, id, commentId) => async(dispatch) => {
   const res = await csrfFetch(`/api/comments/${id}/${commentId}`, {
@@ -73,6 +87,8 @@ const commentReducer = (state = initialState, action) => {
       return { ...state, [action.gundamId]: action.comments};
     case GET_USER_COMMENTS:
       return { ...state, user: action.comments}
+    case GET_THE_COMMENTS:
+      return { ...state, comments: action.comments }
     default:
       return state;
   }
