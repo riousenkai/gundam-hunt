@@ -10,7 +10,12 @@ router.get(
   asyncHandler(async (req, res) => {
     const comments = await Comment.findAll({
       order: [["createdAt", "DESC"]],
-      include: [User],
+      include: [
+        {
+          model: Gundam,
+          include: [User]
+        }
+      ],
     });
 
     return res.json(comments);

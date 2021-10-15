@@ -178,7 +178,7 @@ const UserProfile = () => {
               </p>
             </div>
             <p className="profile-comments-title">
-              Comments ({comments.length})
+              Comments ({comments?.length})
             </p>
             <div className="profile-comment-container">
               {!comments && (

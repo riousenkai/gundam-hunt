@@ -3,19 +3,24 @@ import { useEffect, useState } from "react";
 import { getGundams, getPopularGundams } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
 import { useHistory } from "react-router";
+import { getAllComments } from "../../store/comments";
 import GundamModal from "../GundamModal";
 import Loading from "../Loading/Loading";
 import "./Home.css";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   const [loaded, setLoaded] = useState(false);
   const { setPop } = useShowModal();
   const gundams = useSelector((state) => state.gundam.gundams);
+  const comments = useSelector((state) => state.comments.comments);
 
   useEffect(() => {
-    dispatch(getGundams()).then(setLoaded(true));
+    dispatch(getGundams())
+      .then(() => dispatch(getAllComments()))
+      .then(setLoaded(true));
   }, [dispatch]);
 
   const popular = () => {
@@ -57,10 +62,15 @@ const Home = () => {
                   .map((gundam) => (
                     <GundamModal key={gundam.id} gundam={gundam} />
                   ))}
-              <div className="last-card" onClick={() => history.push("/gundams")}>Show {gundams?.length - 10} More</div>
+              <div
+                className="last-card"
+                onClick={() => history.push("/gundams")}
+              >
+                Show {gundams?.length - 10} More
+              </div>
             </div>
           </div>
-          <div className="side-container">
+          <div className="side-container home">
             <p className="title-text">Upcoming Products</p>
             <div className="upcoming-container">
               <a
@@ -99,6 +109,34 @@ const Home = () => {
                   <p className="upcoming-grade">Super Deformed (SD)</p>
                 </div>
               </a>
+            </div>
+            <p className="profile-comments-title text">Recent Comments</p>
+            <div className="profile-comment-container">
+              {comments?.slice(0, 5).map((comment) => (
+                <div className="profile-comment-card text">
+                  <NavLink
+                    to={`/gundams/${comment.gundam_id}`}
+                    className="profile-comment-nav"
+                  >
+                    <p className="profile-comment home-text">
+                      {comment.comment.slice(0, 42)}
+                      {comment.comment.length > 42 && "..."}
+                    </p>
+                    <p className="profile-comment-source home-text">
+                      <img
+                        className="profile-img-home"
+                        src={comment.Gundam.User.image_url}
+                      />
+                      {comment.Gundam.User.username.slice(0, 40)}
+                      {comment.Gundam.User.username.length > 40 && "..."}
+                    </p>
+                    <p className="profile-comment-source home-text">
+                      on {comment.Gundam.name.slice(0, 40)}
+                      {comment.Gundam.name.length > 40 && "..."}
+                    </p>
+                  </NavLink>
+                </div>
+              ))}
             </div>
           </div>
         </div>
