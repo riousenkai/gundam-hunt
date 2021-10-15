@@ -233,6 +233,7 @@
   border-bottom: none;
   word-wrap: break-word;
   overflow: hidden;
+  margin-bottom: 60px;
 }
 
 .profile-comment-card {
@@ -262,7 +263,7 @@
 .see-more {
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   padding: 20px 20px 20px 20px;
-  height: 15px
+  height: 15px;
 }
 
 .profile-comment-source {

@@ -22,7 +22,6 @@
 
 .search-focus {
   background-color: rgb(49, 53, 50);
-  transition: all 1s;
   width: 100%;
   z-index: 1;
   border: none;
