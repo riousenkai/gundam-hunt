@@ -15,7 +15,7 @@ module.exports = {
       {
         email: faker.internet.email(),
         username: "Revan",
-        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+        hashedPassword: bcrypt.hashSync('revan123'),
         image_url: "https://www.pcgamesn.com/wp-content/uploads/2021/09/knights-of-the-old-republic-remake-pc-580x334.jpg",
         description: faker.name.jobTitle(),
       },

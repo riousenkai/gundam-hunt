@@ -104,6 +104,165 @@ module.exports = {
           createdAt: "2021-10-15T03:30:47.749Z",
           updatedAt: new Date(),
         },
+        {
+          name: "High Mobility Type Zaku II",
+          user_id: 2,
+          description:
+            `Weapons: Zaku Bazooka / Zaku Machine Gun / Heat Hawk
+
+            －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+            1/144 scale assembly plastic model
+            ･No adhesives required for assembly
+            －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+
+            *The product in the image is a prototype still in its developmental stage. The product is also painted. The actual product may appear differently from the image.
+            *Please note that in some cases bubbles may enter the clear parts during manufacturing process.
+
+            (Notes)
+            ･This product cannot be found in model kits shops.
+            ･This product may be on sale in events or other projects held by our company.
+            ･Only a limited number of this product is available at 'PREMIUM BANDAI'. We apologize if we are out of stock on this product.
+            ・Please note that for this product, due to the number of produced units, we are limiting the quantity available in each order.
+            ・For this product, the shipping date is subject to change in some cases depending on application status and production circumstances,
+            Thank you for your understanding.
+            ･Product images are in development stage. They may differ from the actual products.
+            ･Product specifications will be current during the pre-order period.We ask for your understanding as they may be subject to change.
+            ･The product packaging of Hobby shop item is for delivery purpose only. As long as the item itself is having no defection or damage, there will be no return or refund provided for situations that were related to cosmetic issues including wear, dent, or similar issues found on original packaging.`,
+          link: "https://p-bandai.com/us/item/N2584056001001",
+          upvotes: 1,
+          grade: "Real Grade 1/144",
+          image1: "https://p-bandai.com/img/us/p/m/N2584056001001_001.jpg",
+          image2: "https://p-bandai.com/img/us/p/m/N2584056001001_002.jpg",
+          image3: "https://p-bandai.com/img/us/p/m/N2584056001001_003.jpg",
+          createdAt: "2020-10-30T03:30:47.749Z",
+          updatedAt: new Date(),
+        },
+        {
+          name: "Core Gundam & Marsfour Unit",
+          user_id: 2,
+          description: `EVENT LIMITED PRODUCT
+
+
+          ----------------------------------------------------
+          1/144 scale assembly plastic model
+          ・No adhensives required for assembly.
+          ----------------------------------------------------
+          (Notes)
+          ・This product cannot be found in model kits shops.
+          ・This product may be on sale in events or other projects held by our company.
+          ・Only a limited number of this product is available at ""PREMIUM BANDAI"". We apologize if we are out of stock on this product.
+          ・Please note that for this product, due to the number of produced units, we are limiting the quantity available in each order.
+          ・For this product, this shipping date is subject to change in somen cases depending on application status and production circumstances,
+          Thank you for your understanding.
+          ・Product images are in development stage. They may differ from the actual products.
+          `,
+          link: "https://p-bandai.com/us/item/N2519697001001",
+          upvotes: 1,
+          grade: "High Grade 1/144",
+          image1: "https://i.imgur.com/3U1tqI3.jpg",
+          image2: "https://p-bandai.com/img/us/p/m/N2519697001001_001.jpg",
+          image3: "https://p-bandai.com/img/us/p/m/N2519697001001_002.jpg",
+          createdAt: "2021-10-15T03:30:47.749Z",
+          updatedAt: new Date(),
+        },
+        {
+          name: "Crossbone Gundam X1 [Titanium Finish]",
+          user_id: 2,
+          description: ` EVENT LIMITED PRODUCT
+
+          *Action base is sold separately.
+          ----------------------------------------------------
+          1/144 scale assembly plastic model
+          ・No adhensives required for assembly.
+          ----------------------------------------------------
+          (Notes)
+          ・This product cannot be found in model kits shops.
+          ・This product may be on sale in events or other projects held by our company.
+          ・Only a limited number of this product is available at ""PREMIUM BANDAI"". We apologize if we are out of stock on this product.
+          ・Please note that for this product, due to the number of produced units, we are limiting the quantity available in each order.
+          ・For this product, this shipping date is subject to change in somen cases depending on application status and production circumstances,
+          Thank you for your understanding.
+          ・Product images are in development stage. They may differ from the actual products.
+          ・Product specifictions will be current during the pre-order perioud. We ask for your understanding as they may be subject to change.`,
+          link: "https://p-bandai.com/us/item/N2475065001001",
+          upvotes: 1,
+          grade: "Real Grade 1/144",
+          image1: "https://p-bandai.com/img/us/p/m/N2475065001001_001.jpg",
+          image2: "https://p-bandai.com/img/us/p/m/N2475065001001_002.jpg",
+          image3: "https://p-bandai.com/img/us/p/m/N2475065001001_003.jpg",
+          createdAt: "2021-10-15T03:31:47.749Z",
+          updatedAt: new Date(),
+        },
+        {
+          name: "Penelope [Clear Color] Limited Package",
+          user_id: 2,
+          description: ` EVENT LIMITED PRODUCT
+
+
+          ----------------------------------------------------
+          1/144 scale assembly plastic model
+          ・No adhensives required for assembly.
+          ----------------------------------------------------
+          (Notes)
+          ・This product cannot be found in model kits shops.
+          ・This product may be on sale in events or other projects held by our company.
+          ・Only a limited number of this product is available at ""PREMIUM BANDAI"". We apologize if we are out of stock on this product.
+          ・Please note that for this product, due to the number of produced units, we are limiting the quantity available in each order.
+          ・For this product, this shipping date is subject to change in somen cases depending on application status and production circumstances,
+          Thank you for your understanding.
+          ・Product images are in development stage. They may differ from the actual products.
+          ・Product specifictions will be current during the pre-order perioud. We ask for your understanding as they may be subject to change.`,
+          link: "https://p-bandai.com/us/item/N2515190001001",
+          upvotes: 1,
+          grade: "High Grade 1/144",
+          image1: "https://p-bandai.com/img/us/p/m/N2515190001001_001.jpg",
+          image2: "https://p-bandai.com/img/us/p/m/N2515190001001_002.jpg",
+          image3: "https://p-bandai.com/img/us/p/m/N2515190001001_003.jpg",
+          createdAt: "2021-10-15T03:20:47.749Z",
+          updatedAt: new Date(),
+        },
+        {
+          name: "Zaku II Type C-6/R6",
+          user_id: 2,
+          description: ` THE GUNDAM BASE LIMITED PRODUCT
+
+          *Action base is sold separately.
+          ----------------------------------------------------
+          1/144 scale assembly plastic model
+          ・No adhensives required for assembly.
+          ----------------------------------------------------
+          (Notes)
+          ・This product cannot be found in model kits shops.
+          ・This product may be on sale in events or other projects held by our company.
+          ・Only a limited number of this product is available at ""PREMIUM BANDAI"". We apologize if we are out of stock on this product.
+          ・Please note that for this product, due to the number of produced units, we are limiting the quantity available in each order.
+          ・For this product, this shipping date is subject to change in somen cases depending on application status and production circumstances,
+          Thank you for your understanding.
+          ・Product images are in development stage. They may differ from the actual products.
+          ・Product specifictions will be current during the pre-order perioud. We ask for your understanding as they may be subject to change.`,
+          link: "",
+          upvotes: 1,
+          grade: "High Grade 1/144",
+          image1: "https://p-bandai.com/img/us/p/m/N2531905001001_001.jpg",
+          image2: "https://p-bandai.com/img/us/p/m/N2531905001001_003.jpg",
+          image3: "https://p-bandai.com/img/us/p/m/N2531905001001_002.jpg",
+          createdAt: "2021-10-10T03:30:47.749Z",
+          updatedAt: new Date(),
+        },
+        // {
+        //   name: "11th seeder rn",
+        //   user_id: 2,
+        //   description: ``,
+        //   link: "",
+        //   upvotes: 1,
+        //   grade: " Grade 1/100",
+        //   image1: "",
+        //   image2: "",
+        //   image3: "",
+        //   createdAt: "2021-10-10T03:30:47.749Z",
+        //   updatedAt: new Date(),
+        // },
       ],
       {}
     );

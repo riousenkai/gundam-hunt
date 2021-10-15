@@ -35,6 +35,36 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          user_id: 2,
+          gundam_id: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 2,
+          gundam_id: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 2,
+          gundam_id: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 2,
+          gundam_id: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 2,
+          gundam_id: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

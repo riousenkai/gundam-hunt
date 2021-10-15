@@ -96,7 +96,7 @@ const UserProfile = () => {
         <div className="profile-bottom">
           <div className="profile-bottom-left">
             <div className="profile-upvotes">
-              Upvotes ({upvotedGundams.length})
+              Upvoted ({upvotedGundams.length})
             </div>
             <div className="profile-activity">
               {upvotedGundams &&
