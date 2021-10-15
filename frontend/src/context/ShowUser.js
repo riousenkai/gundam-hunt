@@ -6,7 +6,7 @@ export const ShowUserProvider = (props) => {
   const [loggedUser, setLoggedUser] = useState('')
 
   return (
-    <ShowUserContext.Provider value={{ loggedUser, setLoggedUser }}>
+    <ShowUserContext.Provider value={{ loggedUser, setLoggedUser}}>
       {props.children}
     </ShowUserContext.Provider>
   );

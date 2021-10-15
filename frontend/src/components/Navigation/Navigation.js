@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useHistory } from "react-router";
 import { searchFiveGundams, searchFiveUsers } from "../../store/search";
+import { useShowModal } from "../../context/ShowModal";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormPage";
@@ -11,10 +13,12 @@ import image2 from "../Images/header2.png";
 
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
+  const history = useHistory()
   const sessionUser = useSelector((state) => state.session.user);
   const gundamResult = useSelector((state) => state.search.gundams);
   const userResult = useSelector((state) => state.search.users);
-  const [results, setResults] = useState("");
+  const { results, setResults } = useShowModal();
+
   let searchDiv;
   let img;
   let searchRes;
@@ -34,6 +38,14 @@ function Navigation({ isLoaded }) {
       dispatch(searchFiveUsers(results));
     }
   }, [results, dispatch]);
+
+  useEffect(() => {
+    if (window.location.href.includes('search')) {
+      document.querySelector(".search").disabled = true;
+    } else {
+      document.querySelector(".search").disabled = false;
+    }
+  }, [history.location])
 
   const hide = () => {
     searchInput = document.querySelector(".search");
@@ -81,6 +93,18 @@ function Navigation({ isLoaded }) {
     });
     searchDiv.classList.remove("search-container-focus");
   };
+
+  const moveSearch = () => {
+    setResults(results)
+    searchDiv = document.querySelector(".search-container");
+    searchInput = document.querySelector(".search");
+    searchInput.classList.remove("search-focus");
+    const dropdown = document.querySelectorAll(".gundam-dropdown");
+    dropdown.forEach((e) => {
+      e.classList.remove("hidden");
+    });
+    searchDiv.classList.remove("search-container-focus");
+  }
 
   const imgChange = () => {
     img = document.getElementById("img-top");
@@ -156,9 +180,13 @@ function Navigation({ isLoaded }) {
                 </NavLink>
               ))}
           </div>
-              <NavLink to="/search" className="pointer results" onClick={() => setResults('')} query={results}>
-                View more results...
-              </NavLink>
+          <NavLink
+            to="/search"
+            className="pointer results"
+            onMouseDown={moveSearch}
+          >
+            View more results...
+          </NavLink>
         </div>
       </div>
       <div className="gundam-dropdown">
