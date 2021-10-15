@@ -77,6 +77,7 @@ router.get('/user/:userId/limit', asyncHandler(async (req, res) => {
       user_id: req.params.userId
     },
     order: [["createdAt", "DESC"]],
+    include: [Gundam],
   })
 
   return res.json(comments)

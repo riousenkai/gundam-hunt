@@ -12,6 +12,7 @@ import { getLimitedComment } from "../../store/comments";
 import { useShowModal } from "../../context/ShowModal";
 import Loading from "../Loading/Loading";
 import "./UserProfile.css";
+import { cp } from "fs";
 
 const UserProfile = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const UserProfile = () => {
   const upvotedGundams = useSelector((state) => state.gundam.upvoted);
   const comments = useSelector((state) => state.comments.user);
   const [loaded, setLoaded] = useState(false);
+  const [view, setView] = useState(false);
   const { setNum } = useShowModal();
 
   useEffect(() => {
@@ -74,6 +76,16 @@ const UserProfile = () => {
       () => dispatch(getUpvotedGundams(id))
     );
   };
+
+  useEffect(() => {
+    const bottom = document.querySelector(".see-more");
+
+    if (view) {
+      bottom?.classList.add("hidden");
+    } else {
+      bottom?.classList.remove("hidden");
+    }
+  }, [view]);
 
   if (loaded === true) {
     if (allUsers.users.length < +id) return <Redirect to="/" />;
@@ -183,18 +195,42 @@ const UserProfile = () => {
                       {comment.comment.length > 30 && "..."}
                     </p>
                     <p className="profile-comment-source">
-                      on {dateChange(comment.updatedAt)}
+                      on {dateChange(comment.updatedAt).split("/202")[0]} for{" "}
+                      {comment.Gundam.name.slice(0, 26)}
+                      {comment.Gundam.name.length > 26 && "..."}
                     </p>
                   </NavLink>
                 </div>
               ))}
               {comments.length > 5 && (
-                <div className="see-more">
-                  {" "}
-                  <NavLink to={`/comments/${mainUser.id}`}>
-                    View all...
-                  </NavLink>{" "}
+                <div className="see-more" onClick={() => setView(true)}>
+                  View all...
                 </div>
+              )}
+              {view && (
+                <>
+                  {comments.slice(6).map((comment) => (
+                    <div className="profile-comment-card">
+                      <NavLink
+                        to={`/gundams/${comment.gundam_id}`}
+                        className="profile-comment-nav"
+                      >
+                        <p className="profile-comment">
+                          {comment.comment.slice(0, 30)}
+                          {comment.comment.length > 30 && "..."}
+                        </p>
+                        <p className="profile-comment-source">
+                          on {dateChange(comment.updatedAt).split("/202")[0]}{" "}
+                          for {comment.Gundam.name.slice(0, 26)}
+                          {comment.Gundam.name.length > 26 && "..."}
+                        </p>
+                      </NavLink>
+                    </div>
+                  ))}
+                  <div className="see-more" onClick={() => setView(false)}>
+                    View less...
+                  </div>
+                </>
               )}
             </div>
           </div>

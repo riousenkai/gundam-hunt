@@ -9,7 +9,6 @@
   align-items: center;
   padding-left: 20px !important;
   padding-right: 20px !important;
-  /* justify-content: space-between; */
   padding-top: 20px !important;
   padding-bottom: 20px !important;
   background-color: rgba(38, 39, 38, 0.9);
@@ -23,9 +22,11 @@
 
 .search-focus {
   background-color: rgb(49, 53, 50);
-  transition: all 2s;
+  transition: all 1s;
   width: 100%;
   z-index: 1;
+  border: none;
+  outline: none;
 }
 
 .search {
@@ -47,6 +48,8 @@
   background-color: rgba(237, 243, 238, 0.24);
   color: rgba(225, 217, 209, 1);
   font-family: inherit;
+  border: none;
+  outline: none;
 }
 
 .search::-webkit-input-placeholder {
