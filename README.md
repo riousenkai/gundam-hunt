@@ -10,4 +10,9 @@ Gundam models are model ktis that depict the robotic vehicles (called "Mobile Su
 * Express
 * CSS
 
+### Features
+* Log in / Sign Up / Demo User
+* View Gundams Page
+  * Sort Gundams
+
 ### A project by [Revan Fajardo](https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3)
