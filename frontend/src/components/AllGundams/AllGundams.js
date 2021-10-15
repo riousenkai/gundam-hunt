@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useShowModal } from "../../context/ShowModal";
 import { getGundams, getPopularGundams } from "../../store/gundam";
 import Loading from "../Loading/Loading";
+import "./AllGundams.css";
 
 const AllGundams = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,11 @@ const AllGundams = () => {
   const { setPop } = useShowModal();
 
   const [loaded, setLoaded] = useState(false);
+  const [high, setHigh] = useState(true);
+  const [real, setReal] = useState(true);
+  const [master, setMaster] = useState(true);
+  const [perfect, setPerfect] = useState(true);
+  const [deformed, setDeformed] = useState(true);
 
   useEffect(() => {
     dispatch(getGundams()).then(() => setLoaded(true));
@@ -35,13 +41,65 @@ const AllGundams = () => {
     dispatch(getPopularGundams());
   };
 
+  useEffect(() => {
+    if (!high) {
+      document.querySelectorAll(".High")?.forEach((gun) => {
+        gun.classList.add("hidden");
+      });
+    } else if (high) {
+      document.querySelectorAll(".High")?.forEach((gun) => {
+        gun.classList.remove("hidden");
+      });
+    }
+
+    if (!real) {
+      document.querySelectorAll(".Real")?.forEach((gun) => {
+        gun.classList.add("hidden");
+      });
+    } else if (real) {
+      document.querySelectorAll(".Real")?.forEach((gun) => {
+        gun.classList.remove("hidden");
+      });
+    }
+
+    if (!master) {
+      document.querySelectorAll(".Master")?.forEach((gun) => {
+        gun.classList.add("hidden");
+      });
+    } else if (master) {
+      document.querySelectorAll(".Master")?.forEach((gun) => {
+        gun.classList.remove("hidden");
+      });
+    }
+
+    if (!perfect) {
+      document.querySelectorAll(".Perfect")?.forEach((gun) => {
+        gun.classList.add("hidden");
+      });
+    } else if (perfect) {
+      document.querySelectorAll(".Perfect")?.forEach((gun) => {
+        gun.classList.remove("hidden");
+      });
+    }
+
+    if (!deformed) {
+      document.querySelectorAll(".Super")?.forEach((gun) => {
+        gun.classList.add("hidden");
+      });
+    } else if (deformed) {
+      document.querySelectorAll(".Super")?.forEach((gun) => {
+        gun.classList.remove("hidden");
+      });
+    }
+  }, [high, perfect, real, master, deformed, gundams]);
+
   if (loaded) {
     return (
       <div className="body">
         <div className="body-container">
           <div className="card-container">
             <div>
-              <p className="title-text">All Gundams Model</p>
+              <p className="title-text">All Gundam Models</p>
               <p className="sort pop" onClick={popular}>
                 Popular
               </p>
@@ -54,7 +112,7 @@ const AllGundams = () => {
                 gundams.map((gundam) => (
                   <NavLink
                     to={`/gundams/${gundam.id}`}
-                    className="activity-card"
+                    className={`activity-card ${gundam.grade.split(" ")[0]}`}
                   >
                     <img className="activity-img" src={gundam.image1} />
                     <div className="activity-card-text">
@@ -72,45 +130,54 @@ const AllGundams = () => {
                 ))}
             </div>
           </div>
-          <div className="side-container">
-            <p className="title-text">Sort by Grade</p>
-            <div className="upcoming-container">
-              <a
-                href="https://p-bandai.com/us/item/N2613234001001"
-                target="_blank"
-                className="side-card"
-                rel="noreferrer"
-              >
-                <img
-                  alt="Missing Image"
-                  className="upcoming-img"
-                  src="https://sneakerbardetroit.com/wp-content/uploads/2021/07/Gundam-Unicorn-Nike-SB.jpg"
+          <div className="profile-bottom-right">
+            <div className="search-filter all">
+                    <div className="gundams-sort">Sort by Grade</div>
+              <div className="users-joined">
+                <input
+                  checked={high}
+                  onChange={() => setHigh(!high)}
+                  type="checkbox"
+                  className="search-checkbox"
                 />
-                <div className="upcoming-details">
-                  <p className="upcoming-text">
-                    RX-0 Unicorn Gundam Ver. Nike SB
-                  </p>
-                  <p className="upcoming-grade">Super Deformed (SD)</p>
-                </div>
-              </a>
-              <a
-                href="https://p-bandai.com/us/item/N2613235001001"
-                target="_blank"
-                className="side-card"
-                rel="noreferrer"
-              >
-                <img
-                  alt="Missing Image"
-                  className="upcoming-img"
-                  src="https://p-bandai.com/img/us/p/m/N2613235001001_001.jpg"
+                High Grade
+              </div>
+              <div className="users-joined">
+                <input
+                  checked={real}
+                  onChange={() => setReal(!real)}
+                  type="checkbox"
+                  className="search-checkbox"
                 />
-                <div className="upcoming-details">
-                  <p className="upcoming-text">
-                    RX-0 Unicorn Gundam 02 Banshee Ver. Nike SB
-                  </p>
-                  <p className="upcoming-grade">Super Deformed (SD)</p>
-                </div>
-              </a>
+                Real Grade
+              </div>
+              <div className="users-joined">
+                <input
+                  checked={master}
+                  onChange={() => setMaster(!master)}
+                  type="checkbox"
+                  className="search-checkbox"
+                />
+                Master Grade
+              </div>
+              <div className="users-joined">
+                <input
+                  checked={perfect}
+                  onChange={() => setPerfect(!perfect)}
+                  type="checkbox"
+                  className="search-checkbox"
+                />
+                Perfect Grade
+              </div>
+              <div className="users-joined">
+                <input
+                  checked={deformed}
+                  onChange={() => setDeformed(!deformed)}
+                  type="checkbox"
+                  className="search-checkbox"
+                />
+                Super Deformed
+              </div>
             </div>
           </div>
         </div>

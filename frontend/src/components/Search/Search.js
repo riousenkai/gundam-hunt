@@ -35,7 +35,7 @@ const Search = () => {
     e.preventDefault();
 
     if (search.length < 1) {
-      return window.alert("Please enter one or more characters!");
+      return window.alert("Please enter one or more character(s)!");
     }
 
     dispatch(searchAllGundams(search));

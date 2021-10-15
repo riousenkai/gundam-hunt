@@ -48,6 +48,11 @@
 
 .last-card {
   padding: 10px 20px 10px 20px;
+  text-align: center;
+}
+
+.last-card:hover {
+  cursor: pointer;
 }
 
 .card-container {

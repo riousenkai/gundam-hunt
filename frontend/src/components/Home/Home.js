@@ -2,12 +2,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getGundams, getPopularGundams } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
+import { useHistory } from "react-router";
 import GundamModal from "../GundamModal";
 import Loading from "../Loading/Loading";
 import "./Home.css";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const [loaded, setLoaded] = useState(false);
   const { setPop } = useShowModal();
   const gundams = useSelector((state) => state.gundam.gundams);
@@ -55,7 +57,7 @@ const Home = () => {
                   .map((gundam) => (
                     <GundamModal key={gundam.id} gundam={gundam} />
                   ))}
-              <div className="last-card">Show more...</div>
+              <div className="last-card" onClick={() => history.push("/gundams")}>Show {gundams.length - 10} More</div>
             </div>
           </div>
           <div className="side-container">

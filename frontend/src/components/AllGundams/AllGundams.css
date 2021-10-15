@@ -1,0 +1,14 @@
+.activity-card.hidden {
+    display:none;
+}
+
+.search-filter.all {
+    height: 170px;
+}
+
+.gundams-sort {
+    border-bottom: 1px solid whitesmoke;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    font-weight: 500;
+}
