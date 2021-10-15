@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getGundams } from "../../store/gundam";
-import { useShowModal } from "../../context/ShowModal";
 import GundamModal from "../GundamModal";
 import Loading from "../Loading/Loading";
 import "./Home.css";
@@ -14,6 +13,10 @@ const Home = () => {
   useEffect(() => {
     dispatch(getGundams()).then(setLoaded(true));
   }, []);
+
+  const popular = () => {
+    
+  }
 
   if (loaded) {
     return (

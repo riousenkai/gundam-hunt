@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useShowModal } from "../../context/ShowModal";
 import { createGundamUpvote } from "../../store/gundam";
-import "./Search.css"
+import "./Search.css";
 import Loading from "../Loading/Loading";
 
 const Search = () => {
@@ -24,9 +24,11 @@ const Search = () => {
       dispatch(searchAllGundams(results));
       dispatch(searchAllUsers(results)).then(() => setLoaded(true));
     } else {
-      setLoaded(true);
+     dispatch(searchAllGundams("@__@#!!!*(xc!"));
+     dispatch(searchAllUsers("@__@#!!!*(!!")).then(() => setLoaded(true));
     }
     setResults("");
+    setSearch("");
   }, []);
 
   const submitSearch = (e) => {
