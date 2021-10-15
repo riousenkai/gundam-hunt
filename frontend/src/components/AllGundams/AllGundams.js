@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
-import { getGundams,getPopularGundams } from "../../store/gundam";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { useShowModal } from "../../context/ShowModal";
+import { getGundams, getPopularGundams } from "../../store/gundam";
 import Loading from "../Loading/Loading";
 
 const AllGundams = () => {
   const dispatch = useDispatch();
 
   const gundams = useSelector((state) => state.gundam.gundams);
+  const { setPop } = useShowModal();
 
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     dispatch(getGundams()).then(() => setLoaded(true));
-  }, [gundams, dispatch]);
+  }, [dispatch]);
 
   const newest = () => {
     const popular = document.querySelector(".sort.pop");
@@ -34,11 +37,11 @@ const AllGundams = () => {
 
   if (loaded) {
     return (
-      <>
-        <div className="body">
-          <div className="body-container">
+      <div className="body">
+        <div className="body-container">
+          <div className="card-container">
             <div>
-              <p className="title-text">Gundam Models</p>
+              <p className="title-text">All Gundams Model</p>
               <p className="sort pop" onClick={popular}>
                 Popular
               </p>
@@ -46,9 +49,72 @@ const AllGundams = () => {
                 Newest
               </p>
             </div>
+            <div className="head-card">
+              {gundams &&
+                gundams.map((gundam) => (
+                  <NavLink
+                    to={`/gundams/${gundam.id}`}
+                    className="activity-card"
+                  >
+                    <img className="activity-img" src={gundam.image1} />
+                    <div className="activity-card-text">
+                      <p className="activity-title">{gundam.name}</p>
+                      <p className="activity-description">{gundam.grade}</p>
+                    </div>
+                    <button
+                      type="button"
+                      className="activity-upvote"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      {gundam.upvotes}
+                    </button>
+                  </NavLink>
+                ))}
+            </div>
+          </div>
+          <div className="side-container">
+            <p className="title-text">Sort by Grade</p>
+            <div className="upcoming-container">
+              <a
+                href="https://p-bandai.com/us/item/N2613234001001"
+                target="_blank"
+                className="side-card"
+                rel="noreferrer"
+              >
+                <img
+                  alt="Missing Image"
+                  className="upcoming-img"
+                  src="https://sneakerbardetroit.com/wp-content/uploads/2021/07/Gundam-Unicorn-Nike-SB.jpg"
+                />
+                <div className="upcoming-details">
+                  <p className="upcoming-text">
+                    RX-0 Unicorn Gundam Ver. Nike SB
+                  </p>
+                  <p className="upcoming-grade">Super Deformed (SD)</p>
+                </div>
+              </a>
+              <a
+                href="https://p-bandai.com/us/item/N2613235001001"
+                target="_blank"
+                className="side-card"
+                rel="noreferrer"
+              >
+                <img
+                  alt="Missing Image"
+                  className="upcoming-img"
+                  src="https://p-bandai.com/img/us/p/m/N2613235001001_001.jpg"
+                />
+                <div className="upcoming-details">
+                  <p className="upcoming-text">
+                    RX-0 Unicorn Gundam 02 Banshee Ver. Nike SB
+                  </p>
+                  <p className="upcoming-grade">Super Deformed (SD)</p>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
-      </>
+      </div>
     );
   } else {
     return <Loading />;
