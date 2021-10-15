@@ -5,7 +5,6 @@ import { useShowModal } from "../../context/ShowModal";
 import GundamModal from "../GundamModal";
 import Loading from "../Loading/Loading";
 import "./Home.css";
-import { ShowModalContext } from "../../context/ShowModal";
 
 const Home = () => {
   const dispatch = useDispatch();
