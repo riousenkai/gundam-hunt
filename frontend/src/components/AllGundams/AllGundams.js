@@ -2,15 +2,20 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useShowModal } from "../../context/ShowModal";
-import { getGundams, getPopularGundams } from "../../store/gundam";
+import {
+  getGundams,
+  getPopularGundams,
+  createGundamUpvote,
+} from "../../store/gundam";
 import Loading from "../Loading/Loading";
 import "./AllGundams.css";
 
 const AllGundams = () => {
   const dispatch = useDispatch();
 
+  const user = useSelector((state) => state.session.user);
   const gundams = useSelector((state) => state.gundam.gundams);
-  const { setPop } = useShowModal();
+  const { setPop, setNum, pop } = useShowModal();
 
   const [loaded, setLoaded] = useState(false);
   const [high, setHigh] = useState(true);
@@ -93,6 +98,24 @@ const AllGundams = () => {
     }
   }, [high, perfect, real, master, deformed, gundams]);
 
+  const upvote = (e, gundamId) => {
+    e.preventDefault();
+
+    if (!user) {
+      return setNum(2);
+    }
+
+    dispatch(createGundamUpvote(user.id, gundamId, { gundam: "test" })).then(
+      () => {
+        if (!pop) {
+          dispatch(getGundams());
+        } else {
+          dispatch(getPopularGundams());
+        }
+      }
+    );
+  };
+
   if (loaded) {
     return (
       <div className="body">
@@ -122,7 +145,7 @@ const AllGundams = () => {
                     <button
                       type="button"
                       className="activity-upvote"
-                      onClick={(e) => e.preventDefault()}
+                      onClick={(e) => upvote(e, gundam.id)}
                     >
                       {gundam.upvotes}
                     </button>
@@ -132,7 +155,7 @@ const AllGundams = () => {
           </div>
           <div className="profile-bottom-right">
             <div className="search-filter all">
-                    <div className="gundams-sort">Sort by Grade</div>
+              <div className="gundams-sort">Sort by Grade</div>
               <div className="users-joined">
                 <input
                   checked={high}
