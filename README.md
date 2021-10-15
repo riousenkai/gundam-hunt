@@ -24,6 +24,7 @@ Gundam models are model ktis that depict the robotic vehicles (called "Mobile Su
   * Sort all Gundams by grade
 * Submit Gundam Page
   * Create a new Gundam product post
+  * Only accessible if logged in
 * [Search](https://gundam-hunt.herokuapp.com/search)
   * Live search in navigation bar (5 results for users/gundams)
   * Search page can be sorted to only show user or gundam results
