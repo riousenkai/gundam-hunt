@@ -198,17 +198,17 @@ function Navigation({ isLoaded }) {
         </div>
       </div>
       <div className="gundam-dropdown">
-        <button className="gundam-dropbtn">Community</button>
+        <button className="gundam-dropbtn">Tools</button>
         <div className="gundam-dropdown-content">
-          <NavLink to="/">Link 1</NavLink>
+          <NavLink to="/search">Search</NavLink>
           <NavLink to="/">Link 2</NavLink>
           <NavLink to="/">Link 3</NavLink>
         </div>
       </div>
       <div className="gundam-dropdown">
-        <button className="gundam-dropbtn">Tools</button>
+        <button className="gundam-dropbtn">About</button>
         <div className="gundam-dropdown-content">
-          <NavLink to="/search">Search</NavLink>
+          <NavLink to="/">Link 1</NavLink>
           <NavLink to="/">Link 2</NavLink>
           <NavLink to="/">Link 3</NavLink>
         </div>
