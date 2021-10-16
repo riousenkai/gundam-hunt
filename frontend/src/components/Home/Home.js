@@ -129,12 +129,14 @@ const Home = () => {
                     </p>
                     </div>
                     <div className="profile-comment-source home-text">
+                      <NavLink className="profile-hover" to={`/profile/${comment.User?.id}`}>
                       <img
                         className="profile-img-home"
                         src={comment.User?.image_url}
                       />
                       {comment.User?.username.slice(0, 40)}
                       {comment.User?.username.length > 40 && "..."}
+                      </NavLink>
                     </div>
                   </NavLink>
                 </div>

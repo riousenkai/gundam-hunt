@@ -175,3 +175,11 @@
   cursor: pointer;
   background-color: rgba(38, 39, 38, 0.9);
 }
+
+.profile-hover {
+  z-index: 10;
+}
+
+.profile-hover:hover {
+  text-decoration: underline;
+}
