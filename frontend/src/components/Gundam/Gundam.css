@@ -16,6 +16,7 @@
   font-size: 26px;
   font-weight: 500;
   word-wrap: break-word;
+  max-width: 840px;
 }
 
 .gundam-title-grade {
@@ -235,6 +236,7 @@
   font-size: 18px;
   word-wrap: break-word;
   height: auto;
+  max-width: 71.3px;
 }
 
 .comment-comment {
