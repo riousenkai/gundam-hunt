@@ -124,8 +124,8 @@ const Home = () => {
                       {comment.comment.length > 24 && "..."}
                     </p>
                     <p className="profile-comment-source-home-text">
-                      on {comment.Gundam?.name.slice(0, 24)}
-                      {comment.Gundam?.name.length > 24 && "..."}
+                      on {comment.Gundam?.name.slice(0, 25)}
+                      {comment.Gundam?.name.length > 25 && "..."}
                     </p>
                     </div>
                     <div className="profile-comment-source home-text">
@@ -134,8 +134,8 @@ const Home = () => {
                         className="profile-img-home"
                         src={comment.User?.image_url}
                       />
-                      {comment.User?.username.slice(0, 40)}
-                      {comment.User?.username.length > 40 && "..."}
+                      {comment.User?.username.slice(0, 7)}
+                      {comment.User?.username.length > 7 && "..."}
                       </NavLink>
                     </div>
                   </NavLink>

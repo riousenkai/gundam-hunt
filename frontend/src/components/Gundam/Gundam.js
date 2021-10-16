@@ -221,7 +221,8 @@ const Gundam = () => {
                       to={`/profile/${comment.User.id}`}
                       className="comment-user"
                     >
-                      {comment.User.username}
+                      {comment.User.username.slice(0, 8)}
+                      {comment.User?.username.length > 8 && "..."}
                     </NavLink>
                     <div className="comment-date">
                       {dateChange(comment.updatedAt)}

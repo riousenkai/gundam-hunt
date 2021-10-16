@@ -216,6 +216,8 @@
   justify-content: left;
   padding: 20px 20px 20px 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
+  word-wrap: break-word;
+  height: auto;
 }
 
 .comment-user-date {
@@ -225,10 +227,14 @@
   width: 71.3px;
   align-items: center;
   margin-right: 20px;
+  word-wrap: break-word;
+  height: auto;
 }
 
 .comment-user {
   font-size: 18px;
+  word-wrap: break-word;
+  height: auto;
 }
 
 .comment-comment {
