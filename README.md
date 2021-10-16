@@ -33,7 +33,7 @@ Gundam models are model ktis that depict the robotic vehicles (called "Mobile Su
   * Shows a specific page for upvoted and submitted Gundam products if submitted/upvoted products are greater than five.
 * [Settings Page](https://gundam-hunt.herokuapp.com/settings) (Only accessible if logged in)
   * Update user's description and profile image
-* [About Page](http://localhost:3000/about)
+* [About Page](https://gundam-hunt.herokuapp.com/about)
   * Page about the creator of the project.
 
 
