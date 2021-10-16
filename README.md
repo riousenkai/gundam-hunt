@@ -30,8 +30,11 @@ Gundam models are model ktis that depict the robotic vehicles (called "Mobile Su
   * Search page can be sorted to only show user or gundam results
 * [User Profile Page](https://gundam-hunt.herokuapp.com/profile/1)
   * Shows user's upvoted Gundam products, submitted Gundam products and recent comments
+  * Shows a specific page for upvoted and submitted Gundam products if submitted/upvoted products are greater than five.
 * [Settings Page](https://gundam-hunt.herokuapp.com/settings) (Only accessible if logged in)
   * Update user's description and profile image
+* [About Page](http://localhost:3000/about)
+  * Page about the creator of the project.
 
 
 ### A project by [Revan Fajardo](https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3)
