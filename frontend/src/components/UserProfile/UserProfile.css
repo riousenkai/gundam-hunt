@@ -109,6 +109,7 @@
   flex-direction: column;
   height: 100%;
   width: 502px;
+  max-width: 520px;
 }
 
 .activity-card:hover {

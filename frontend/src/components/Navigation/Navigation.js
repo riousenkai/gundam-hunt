@@ -248,8 +248,7 @@ function Navigation({ isLoaded }) {
       <div className="gundam-dropdown">
         <button className="gundam-dropbtn">About</button>
         <div className="gundam-dropdown-content">
-          <NavLink to="/about">About Me</NavLink>
-          <NavLink to="/guide">Gundam Guide</NavLink>
+          <NavLink to="/about">About the Site Creator</NavLink>
         </div>
       </div>
       <div className="nav-right">{isLoaded && sessionLinks}</div>

@@ -70,6 +70,7 @@
   background-color: rgba(38, 39, 38, 1);
   min-width: 20rem;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .gundam-dropdown-content a {
