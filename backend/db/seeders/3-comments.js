@@ -14,6 +14,13 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
+          user_id: 8,
+          gundam_id: 1,
+          comment: faker.commerce.productDescription(),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
           user_id: 2,
           gundam_id: 1,
           comment: faker.commerce.productDescription(),

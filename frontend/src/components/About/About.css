@@ -25,3 +25,53 @@
   max-height: 85px;
   max-width: 100px;
 }
+
+.activity-card.about:hover {
+  cursor: default;
+}
+
+.activity-title.about {
+  width: 70px;
+}
+
+.profile-comments-about {
+  justify-content: center;
+  height: 30px;
+  background-color: rgba(38, 39, 38, 0.6);
+  border-radius: 5px;
+  border: 1px solid hsla(0, 0%, 100%, 0.5);
+  padding: 20px;
+  margin-top: 2.6rem;
+  font-size: 20px;
+  display: flex;
+}
+
+.profile-comments-links {
+  justify-content: center;
+  height: 159px;
+  background-color: rgba(38, 39, 38, 0.6);
+  border-radius: 5px;
+  border: 1px solid hsla(0, 0%, 100%, 0.5);
+  padding: 20px;
+  margin-top: 20px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-link {
+    height: 80px;
+    width: 80px;
+}
+
+.profile-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-joined.about {
+    font-size: 20px;
+    margin-left: 20px
+}
