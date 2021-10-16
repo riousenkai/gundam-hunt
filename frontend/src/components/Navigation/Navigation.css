@@ -22,7 +22,7 @@
 
 .search-focus {
   background-color: rgb(49, 53, 50);
-  width: 100%;
+  width: 100% !important;
   z-index: 1;
   border: none;
   outline: none;
@@ -49,6 +49,7 @@
   font-family: inherit;
   border: none;
   outline: none;
+  width: 220px
 }
 
 .search::-webkit-input-placeholder {

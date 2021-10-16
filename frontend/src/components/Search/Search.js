@@ -16,8 +16,8 @@ const Search = () => {
   const user = useSelector((state) => state.session.user);
   const [loaded, setLoaded] = useState(false);
   const [search, setSearch] = useState("");
-  const [userCheck, setUserCheck] = useState(false);
-  const [gundamCheck, setGundamCheck] = useState(false);
+  const [userCheck, setUserCheck] = useState(true);
+  const [gundamCheck, setGundamCheck] = useState(true);
 
   useEffect(() => {
     if (results.length >= 1) {
@@ -55,18 +55,16 @@ const Search = () => {
   };
 
   useEffect(() => {
-    if (userCheck) {
-      setGundamCheck(false);
-      document.querySelector(".search-gundams")?.classList.add("hidden");
-    } else if (!userCheck) {
-      document.querySelector(".search-gundams")?.classList.remove("hidden");
+    if (!userCheck) {
+      document.querySelector(".search-users")?.classList.add("hidden");
+    } else if (userCheck) {
+      document.querySelector(".search-users")?.classList.remove("hidden");
     }
 
-    if (gundamCheck) {
-      setUserCheck(false);
-      document.querySelector(".search-users")?.classList.add("hidden");
-    } else if (!gundamCheck) {
-      document.querySelector(".search-users")?.classList.remove("hidden");
+    if (!gundamCheck) {
+      document.querySelector(".search-gundams")?.classList.add("hidden");
+    } else if (gundamCheck) {
+      document.querySelector(".search-gundams")?.classList.remove("hidden");
     }
   }, [userCheck, gundamCheck]);
 
@@ -145,7 +143,7 @@ const Search = () => {
                 type="checkbox"
                 className="search-checkbox"
               />
-              Users Only
+              Users
             </div>
             <div className="users-joined">
               <input
@@ -154,7 +152,7 @@ const Search = () => {
                 type="checkbox"
                 className="search-checkbox"
               />
-              Gundams Only
+              Gundams
             </div>
           </div>
         </div>
