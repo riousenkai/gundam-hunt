@@ -4,6 +4,8 @@
 
 .search-filter.all {
     height: 170px;
+    position: sticky !important;
+    top: 120px !important;
 }
 
 .gundams-sort {

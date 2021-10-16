@@ -130,7 +130,6 @@
   z-index: 1;
   word-wrap: break-word;
   overflow: hidden;
-
 }
 
 .activity-upvote {
@@ -238,7 +237,7 @@
   width: 502px;
 }
 
-.profile-comment-container{
+.profile-comment-container {
   background-color: rgba(38, 39, 38, 0.6);
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -260,7 +259,8 @@
   word-wrap: break-word;
 }
 
-.profile-comment-card:hover, .see-more:hover {
+.profile-comment-card:hover,
+.see-more:hover {
   background-color: rgba(38, 39, 38, 0.9);
   cursor: pointer;
 }
@@ -281,4 +281,13 @@
 
 .profile-comment-source {
   font-size: 14px;
+}
+
+.last-card.profile {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.last-card:hover {
+  background-color: rgba(38, 39, 38, 0.9);
+  cursor: pointer;
 }

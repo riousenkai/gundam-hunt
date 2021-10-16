@@ -200,7 +200,7 @@ function Navigation({ isLoaded }) {
             className="pointer results"
             onClick={moveSearch}
           >
-            View more results...
+            View More Results
           </NavLink>
         </div>
       </div>

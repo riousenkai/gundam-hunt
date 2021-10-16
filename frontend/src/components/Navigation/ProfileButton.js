@@ -40,7 +40,7 @@ function ProfileButton({ user }) {
           </button>
           <div className="gundam-dropdown-content-right">
             <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
-            <NavLink to="/">My Gundams</NavLink>
+            <NavLink to={`/profile/${user.id}/gundams`}>My Gundams</NavLink>
             <NavLink to="/settings">Settings</NavLink>
             <div onClick={logout}>Log Out</div>
           </div>

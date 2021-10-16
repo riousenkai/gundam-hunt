@@ -12,6 +12,7 @@ import SubmitGundam from "./components/SubmitGundam";
 import Search from "./components/Search";
 import AllGundams from "./components/AllGundams";
 import About from "./components/About/About";
+import UserGundams from "./components/UserGundams";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,34 +28,43 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+            <Footer />
           </Route>
-          <Route path="/profile/:id">
+          <Route exact path="/profile/:id">
             <UserProfile />
+            <Footer />
           </Route>
           <Route path="/settings">
             <Settings />
+            <Footer />
           </Route>
           <Route path="/gundams/:id">
             <Gundam />
+            <Footer />
           </Route>
           <Route path="/submit">
             <SubmitGundam />
+            <Footer />
           </Route>
           <Route path="/search">
             <Search />
+            <Footer />
           </Route>
           <Route exact path="/gundams">
             <AllGundams />
+            <Footer />
           </Route>
           <Route path="/about">
             <About />
            </Route>
+          <Route path="/profile/:id/gundams">
+            <UserGundams />
+          </Route>
           <Route>
             <h2>Page Not Found</h2>
           </Route>
         </Switch>
       )}
-      <Footer />
     </>
   );
 }

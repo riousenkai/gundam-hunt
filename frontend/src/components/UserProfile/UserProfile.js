@@ -12,7 +12,6 @@ import { getLimitedComment } from "../../store/comments";
 import { useShowModal } from "../../context/ShowModal";
 import Loading from "../Loading/Loading";
 import "./UserProfile.css";
-import { cp } from "fs";
 
 const UserProfile = () => {
   const { id } = useParams();
@@ -145,7 +144,7 @@ const UserProfile = () => {
             </div>
             <div className="profile-activity">
               {userGundams &&
-                userGundams.map((gundam) => (
+                userGundams.slice(0,5).map((gundam) => (
                   <NavLink
                     to={`/gundams/${gundam.id}`}
                     className="activity-card"
@@ -168,6 +167,12 @@ const UserProfile = () => {
                     </button>
                   </NavLink>
                 ))}
+              <div
+                className="last-card profile"
+                onClick={() => history.push(`/profile/${mainUser.id}/gundams`)}
+              >
+                View All Submissions
+              </div>
             </div>
           </div>
           <div className="profile-bottom-right">
