@@ -80,7 +80,11 @@ router.get(
       where: {
         user_id: req.params.userId,
       },
-      include: [Gundam],
+      include: [
+        {
+          model: Gundam,
+        },
+      ],
     });
 
     const gundams = await Gundam.findAll({
@@ -104,7 +108,7 @@ router.get(
       }
     });
 
-    finalArr.sort((a,b) => a.upvotes > b.upvotes)
+    finalArr.sort((a, b) => (a.upvotes < b.upvotes ? 1 : -1));
 
     return res.json(finalArr);
   })
