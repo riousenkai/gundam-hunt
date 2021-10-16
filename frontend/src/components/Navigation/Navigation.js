@@ -197,7 +197,7 @@ function Navigation({ isLoaded }) {
           </div>
           <NavLink
             to="/search"
-            className="pointer results"
+            className="pointer results-last"
             onClick={moveSearch}
           >
             View More Results

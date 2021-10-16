@@ -101,6 +101,8 @@ a {
   width: 100%;
   padding: 20px 0;
   overflow: hidden;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .search-container {
@@ -122,6 +124,12 @@ a {
 #img-top {
   height: 4rem;
   width: 5rem;
+}
+
+.results-last {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 .nav-right {
