@@ -18,9 +18,9 @@ const SubmitGundam = () => {
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-      if(!user) {
-        history.push("/")
-      }
+    if (!user) {
+      history.push("/");
+    }
   }, []);
 
   const submit = async (e) => {
@@ -40,14 +40,12 @@ const SubmitGundam = () => {
 
     const payload = {
       user_id: user.id,
-      gundam_id: 1
-    }
+      gundam_id: 1,
+    };
 
     await dispatch(makeGundam(gundam))
-    .then((newId) => dispatch(createGundamUpvote(user.id, newId, gundam)))
-    .then((newId) =>
-      history.push(`/gundams/${newId}`)
-    );
+      .then((newId) => dispatch(createGundamUpvote(user.id, newId, gundam)))
+      .then((newId) => history.push(`/gundams/${newId}`));
   };
 
   return (
@@ -126,7 +124,7 @@ const SubmitGundam = () => {
           />
           <input
             type="url"
-            className="submit-input-img"
+            className="submit-input-img 3"
             value={image3}
             onChange={(e) => setImage3(e.target.value)}
             placeholder="Third Image"

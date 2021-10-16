@@ -1,7 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { User, Gundam, Comment } = require("../../db/models");
-const { Op } = require("sequelize");
 
 const router = express.Router();
 

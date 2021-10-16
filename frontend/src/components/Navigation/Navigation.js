@@ -60,7 +60,6 @@ function Navigation({ isLoaded }) {
     searchDiv = document.querySelector(".search-container");
     searchRes = document.querySelector(".search-results");
     const dropdown = document.querySelectorAll(".gundam-dropdown");
-    console.log(e.currentTarget);
     if (!e.currentTarget.contains(e.relatedTarget)) {
       dropdown.forEach((e) => {
         e.classList.remove("hidden");
@@ -206,27 +205,17 @@ function Navigation({ isLoaded }) {
         </div>
       </div>
       <div className="gundam-dropdown">
-        <button className="gundam-dropbtn">Gundam Kits</button>
+        <button className="gundam-dropbtn">Gundam Tools</button>
         <div className="gundam-dropdown-content">
           <NavLink to="/gundams">All Gundams</NavLink>
-          <NavLink to="/">Link 2</NavLink>
-          <NavLink to="/">Link 3</NavLink>
-        </div>
-      </div>
-      <div className="gundam-dropdown">
-        <button className="gundam-dropbtn">Tools</button>
-        <div className="gundam-dropdown-content">
-          <NavLink to="/search">Search</NavLink>
-          <NavLink to="/">Link 2</NavLink>
-          <NavLink to="/">Link 3</NavLink>
+          <NavLink to="/search">Full Search</NavLink>
         </div>
       </div>
       <div className="gundam-dropdown">
         <button className="gundam-dropbtn">About</button>
         <div className="gundam-dropdown-content">
-          <NavLink to="/">Link 1</NavLink>
-          <NavLink to="/">Link 2</NavLink>
-          <NavLink to="/">Link 3</NavLink>
+          <NavLink to="/about">About Me</NavLink>
+          <NavLink to="/guide">Gundam Guide</NavLink>
         </div>
       </div>
       <div className="nav-right">{isLoaded && sessionLinks}</div>

@@ -11,6 +11,7 @@ import Gundam from "./components/Gundam";
 import SubmitGundam from "./components/SubmitGundam";
 import Search from "./components/Search";
 import AllGundams from "./components/AllGundams";
+import About from "./components/About/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ function App() {
           <Route exact path="/gundams">
             <AllGundams />
           </Route>
+          <Route path="/about">
+            <About />
+           </Route>
           <Route>
             <h2>Page Not Found</h2>
           </Route>
