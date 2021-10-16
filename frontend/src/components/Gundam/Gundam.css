@@ -36,7 +36,7 @@
 .gundam-left-info {
   width: 798px;
   background-color: rgba(38, 39, 38, 0.9);
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 20px 20px 20px 20px;
   z-index: 5;
@@ -62,7 +62,7 @@
   width: 190px;
   height: 190px;
   margin-bottom: 14.5px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .gundam-mini-img:hover {
@@ -73,7 +73,7 @@
   margin-top: 20px;
   width: 798px;
   background-color: rgba(38, 39, 38, 0.9);
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 20px 20px 20px 20px;
   z-index: 5;
@@ -94,7 +94,7 @@
   width: 260px;
   margin-left: 160px;
   z-index: 1;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: rgba(38, 39, 38, 0.9);
   padding: 20px 20px 20px 20px;
   display: flex;
@@ -124,7 +124,7 @@
 .gundam-user-img {
   height: 70px;
   width: 70px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .gundam-link {
@@ -135,7 +135,7 @@
   text-align: center;
   font-size: 16px;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: 500;
 }
 
@@ -151,7 +151,7 @@
   text-align: center;
   font-size: 16px;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: 500;
   border: none;
 }
@@ -168,7 +168,7 @@
   text-align: center;
   font-size: 16px;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: 500;
   border: none;
 }
@@ -185,7 +185,7 @@
   text-align: center;
   font-size: 16px;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: 500;
   border: none;
   margin-top: 100px;
@@ -238,7 +238,7 @@
   max-width: 50px;
   max-height: 50px;
   margin-bottom: 2px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .button:hover {
@@ -324,7 +324,7 @@
   background-color: rgba(49, 197, 23, 0.795);
   text-align: center;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 8px;
   width: 75px;
   border: none;
   height: 30px;
@@ -343,7 +343,7 @@
   background-color: rgb(216, 24, 24);
   text-align: center;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 8px;
   width: 75px;
   border: none;
   height: 30px;
@@ -369,7 +369,7 @@
   background-color: rgb(7, 145, 122);
   text-align: center;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 8px;
   width: 80px;
   border: none;
   height: 30px;
@@ -382,7 +382,7 @@
   background-color: rgb(216, 24, 24);
   text-align: center;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 8px;
   width: 80px;
   border: none;
   height: 30px;

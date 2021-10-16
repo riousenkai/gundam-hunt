@@ -20,7 +20,7 @@
   background-color: rgba(38, 39, 38, 0.6);
   border: 1px solid #ffffff80;
   padding: 20px 20px 20px 20px;
-  border-radius: 5px;
+  border-radius: 8px;
   flex-direction: column;
 }
 
@@ -154,7 +154,7 @@
     background-color: rgba(38, 39, 38, 0.6);
     border: 1px solid #ffffff80;
     padding: 20px 20px 20px 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     flex-direction: column;
   }
   .submit-input-img {

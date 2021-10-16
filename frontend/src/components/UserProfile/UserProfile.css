@@ -14,7 +14,7 @@
   width: 1070px;
   background-color: rgba(81, 85, 81, 0.9);
   height: 250px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .profile-img-card {
@@ -85,9 +85,10 @@
 .profile-activity {
   width: 716px;
   background-color: rgba(38, 39, 38, 0.6);
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-bottom: none;
+  overflow: hidden;
 }
 
 .activity-card {
@@ -99,6 +100,7 @@
   padding: 20px 20px 20px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   z-index: 0;
+  overflow: hidden;
 }
 
 .activity-card-text {
@@ -143,7 +145,7 @@
   background-color: rgb(4, 9, 22);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
 }
 
@@ -159,7 +161,7 @@
 .profile-comments {
   height: 30px;
   background-color: rgba(38, 39, 38, 0.6);
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 20px 20px 20px 20px;
   margin-top: 3rem;
@@ -193,7 +195,7 @@
   width: 1070px;
   background-color: rgba(81, 85, 81, 0.9);
   height: 250px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 5rem;
 }
 
@@ -208,7 +210,7 @@
   display: flex;
   flex-direction: column;
   background-color: rgba(38, 39, 38, 0.6);
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 20px 20px 20px 20px;
   font-size: 16px;
@@ -239,7 +241,7 @@
 
 .profile-comment-container {
   background-color: rgba(38, 39, 38, 0.6);
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-bottom: none;
   word-wrap: break-word;
@@ -274,9 +276,9 @@
 
 .see-more {
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 20px 20px 20px 20px;
-  height: 15px;
+  height: 31px;
   text-align: center;
+  padding-top: 10px;
 }
 
 .profile-comment-source {

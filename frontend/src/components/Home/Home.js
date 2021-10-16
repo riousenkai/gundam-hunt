@@ -76,7 +76,7 @@ const Home = () => {
               <a
                 href="https://p-bandai.com/us/item/N2613234001001"
                 target="_blank"
-                className="side-card"
+                className="side-card top"
                 rel="noreferrer"
               >
                 <img

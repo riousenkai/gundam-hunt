@@ -34,7 +34,9 @@
   background-color: rgba(38, 39, 38, 0.6);
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: none;
   width: 45rem;
+  overflow: hidden;
 }
 
 .card {
@@ -49,6 +51,7 @@
 .last-card {
   padding: 10px 20px 10px 20px;
   text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .last-card:hover {
@@ -64,8 +67,8 @@
 .upcoming-container {
   background-color: rgba(38, 39, 38, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-bottom: none;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .side-card {
@@ -73,7 +76,11 @@
   width: 20rem;
   height: 5rem;
   padding: 20px 20px 20px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+
+.side-card.top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .underline {
