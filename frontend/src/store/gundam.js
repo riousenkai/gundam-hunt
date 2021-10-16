@@ -96,6 +96,12 @@ export const getUpvotedGundams = (userId) => async (dispatch) => {
   dispatch(upvotedGundams(data));
 };
 
+export const getMostUpvotedGundams = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/upvotes/users/${userId}/highest`);
+  const data = await res.json();
+  dispatch(upvotedGundams(data));
+};
+
 export const makeGundam = (gundam) => async (dispatch) => {
   const res = await csrfFetch(`/api/gundam`, {
     method: "POST",

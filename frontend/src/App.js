@@ -13,6 +13,7 @@ import Search from "./components/Search";
 import AllGundams from "./components/AllGundams";
 import About from "./components/About/About";
 import UserGundams from "./components/UserGundams";
+import UpvotedGundams from "./components/UpvotedGundams";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +60,9 @@ function App() {
            </Route>
           <Route path="/profile/:id/gundams">
             <UserGundams />
+          </Route>
+          <Route exact path="/profile/:id/upvoted">
+            <UpvotedGundams />
           </Route>
           <Route>
             <h2>Page Not Found</h2>

@@ -1,7 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { User, Gundam, Comment, Upvote } = require("../../db/models");
-const { Op } = require("sequelize");
 
 const router = express.Router();
 
@@ -56,7 +55,7 @@ router.get(
       },
     });
 
-    const initArr = []
+    const initArr = [];
 
     gundams.map((gundam) => {
       return initArr.push(gundam.id);
@@ -64,20 +63,52 @@ router.get(
 
     const finalArr = [];
 
-    upvotes.forEach(upvote => {
-      if(!initArr.includes(upvote.Gundam.id)) {
-        finalArr.push(upvote.Gundam)
+    upvotes.forEach((upvote) => {
+      if (!initArr.includes(upvote.Gundam.id)) {
+        finalArr.push(upvote.Gundam);
       }
-    })
+    });
 
     return res.json(finalArr);
   })
 );
 
+router.get(
+  "/users/:userId/highest",
+  asyncHandler(async (req, res) => {
+    const upvotes = await Upvote.findAll({
+      where: {
+        user_id: req.params.userId,
+      },
+      include: [Gundam],
+    });
 
-router.get("/", asyncHandler(async (req,res) => {
-  
-}))
+    const gundams = await Gundam.findAll({
+      where: {
+        user_id: req.params.userId,
+      },
+      order: [["upvotes", "DESC"]],
+    });
+
+    const initArr = [];
+
+    gundams.map((gundam) => {
+      return initArr.push(gundam.id);
+    });
+
+    const finalArr = [];
+
+    upvotes.forEach((upvote) => {
+      if (!initArr.includes(upvote.Gundam.id)) {
+        finalArr.push(upvote.Gundam);
+      }
+    });
+
+    finalArr.sort((a,b) => a.upvotes > b.upvotes)
+
+    return res.json(finalArr);
+  })
+);
 
 module.exports = router;
 
