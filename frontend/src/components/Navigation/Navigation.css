@@ -49,7 +49,7 @@
   font-family: inherit;
   border: none;
   outline: none;
-  width: 220px
+  width: 220px;
 }
 
 .search::-webkit-input-placeholder {
@@ -247,4 +247,10 @@ a {
 
 .search:disabled:hover {
   cursor: default;
+}
+
+@media only screen and (max-width: 1280px) {
+  .search-focus {
+    max-width: 88vw;
+  }
 }
