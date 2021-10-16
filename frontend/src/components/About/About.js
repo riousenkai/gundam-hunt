@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Loading from "../Loading/Loading";
 import "./About.css";
+import image from "../Images/header.png";
+
 
 const About = () => {
   const [loaded, setLoaded] = useState();
@@ -36,10 +38,10 @@ const About = () => {
               >
                 <img
                   alt="Missing Image"
-                  className="activity-img "
+                  className="activity-img about"
                   src="https://cdn.discordapp.com/attachments/887079736923287582/888559916263026718/newLogo.png"
                 />
-                <div className="activity-card-text">
+                <div className="activity-card-text about">
                   <p className="activity-title">Awesome Anime</p>
                   <p className="activity-description">
                     First App Academy group project.
@@ -68,10 +70,10 @@ const About = () => {
               >
                 <img
                   alt="Missing Image"
-                  className="activity-img "
-                  src="https://cdn.discordapp.com/attachments/887079736923287582/888559916263026718/newLogo.png"
+                  className="activity-img about gundam"
+                  src={image}
                 />
-                <div className="activity-card-text">
+                <div className="activity-card-text about">
                   <p className="activity-title">Gundam Hunt</p>
                   <p className="activity-description">
                     First App Academy solo project.
@@ -83,7 +85,7 @@ const About = () => {
                 </div>
                 <a
                   className="main-squeeze"
-                  href="https://github.com/riousenkai/awesome-anime"
+                  href="https://github.com/riousenkai/gundam-hunt"
                   target="_blank"
                 >
                   <img

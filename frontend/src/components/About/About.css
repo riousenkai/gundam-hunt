@@ -1,22 +1,27 @@
 .image {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .main-squeeze {
-    z-index: 100;
-    margin-top: 0px;
+  z-index: 100;
+  margin-top: 0px;
 }
 
 .about-description {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .activity-img.about {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .activity-card-text.about {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.activity-img.gundam {
+  max-height: 85px;
+  max-width: 100px;
 }
