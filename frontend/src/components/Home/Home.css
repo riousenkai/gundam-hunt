@@ -116,22 +116,62 @@
 }
 
 .profile-comment.home-text {
-  margin-bottom: -20px;
+  margin-bottom: 0px;
 }
 
-.profile-comment-source.home-text {
+.profile-comment-source-home-text {
   margin-bottom: 5px;
   display: flex;
-  align-items: center;
+  flex-direction: row;
 }
 
 .profile-comment-card.text {
   height: 78px;
+  display: flex;
+  flex-direction: row;
 }
 
 .profile-img-home {
-  max-width: 30px;
-  max-height: 30px;
-  margin-right: 5px;
-  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+.profile-comment-container.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-comment-card-text {
+  display: flex;
+  height: 78px;
+  padding: 20px 20px 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.profile-comment-nav-home {
+  display: flex;
+  width: 502px;
+}
+
+.profile-comment-source-home-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 260px;
+}
+
+.profile-comment-card-text:hover {
+  cursor: pointer;
+  background-color: rgba(38, 39, 38, 0.9);
 }

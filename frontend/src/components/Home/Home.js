@@ -111,29 +111,31 @@ const Home = () => {
               </a>
             </div>
             <p className="profile-comments-title text">Recent Comments</p>
-            <div className="profile-comment-container">
+            <div className="profile-comment-container home">
               {comments?.slice(0, 5).map((comment) => (
-                <div className="profile-comment-card text">
+                <div className="profile-comment-card-text">
                   <NavLink
                     to={`/gundams/${comment.gundam_id}`}
-                    className="profile-comment-nav"
+                    className="profile-comment-nav-home"
                   >
-                    <p className="profile-comment home-text">
-                      {comment.comment.slice(0, 30)}
-                      {comment.comment.length > 30 && "..."}
+                  <div className="home-comments">
+                    <p className="profile-comment-source-home-text">
+                      {comment.comment.slice(0, 24)}
+                      {comment.comment.length > 24 && "..."}
                     </p>
-                    <p className="profile-comment-source home-text">
+                    <p className="profile-comment-source-home-text">
+                      on {comment.Gundam?.name.slice(0, 24)}
+                      {comment.Gundam?.name.length > 24 && "..."}
+                    </p>
+                    </div>
+                    <div className="profile-comment-source home-text">
                       <img
                         className="profile-img-home"
                         src={comment.User?.image_url}
                       />
                       {comment.User?.username.slice(0, 40)}
                       {comment.User?.username.length > 40 && "..."}
-                    </p>
-                    <p className="profile-comment-source home-text">
-                      on {comment.Gundam?.name.slice(0, 40)}
-                      {comment.Gundam?.name.length > 40 && "..."}
-                    </p>
+                    </div>
                   </NavLink>
                 </div>
               ))}
