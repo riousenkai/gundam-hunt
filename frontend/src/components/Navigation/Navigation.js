@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { searchFiveGundams, searchFiveUsers } from "../../store/search";
 import { useShowModal } from "../../context/ShowModal";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormPage";
@@ -13,7 +13,8 @@ import image2 from "../Images/header2.png";
 
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
+  const location = useLocation();
   const sessionUser = useSelector((state) => state.session.user);
   const gundamResult = useSelector((state) => state.search.gundams);
   const userResult = useSelector((state) => state.search.users);
@@ -33,11 +34,22 @@ function Navigation({ isLoaded }) {
     } else {
       searchRes.classList.add("hidden");
     }
-    if (results.length > 1) {
+    if (results.length > 2) {
       dispatch(searchFiveGundams(results));
       dispatch(searchFiveUsers(results));
     }
   }, [results, dispatch]);
+
+  useEffect(() => {
+    if (location.pathname === "/search") {
+      setResults("");
+      document.querySelector(".search").disabled = true;
+      document.querySelector(".search").placeholder = "Use search input below.";
+    } else {
+      document.querySelector(".search").disabled = false;
+      document.querySelector(".search").placeholder = "Search...";
+    }
+  }, [location]);
 
   const hide = () => {
     searchInput = document.querySelector(".search");
@@ -99,17 +111,19 @@ function Navigation({ isLoaded }) {
   };
 
   const searcher = () => {
-    setResults(results);
     searchDiv = document.querySelector(".search-container");
     searchInput = document.querySelector(".search");
     searchInput.classList.remove("search-focus");
+
+    setResults(results);
     const dropdown = document.querySelectorAll(".gundam-dropdown");
     dropdown.forEach((e) => {
       e.classList.remove("hidden");
     });
     searchDiv.classList.remove("search-container-focus");
-    history.push("/search")
-  }
+    history.push("/search");
+    console.log(location.pathname);
+  };
 
   const imgChange = () => {
     img = document.getElementById("img-top");
@@ -151,12 +165,18 @@ function Navigation({ isLoaded }) {
           type="search"
           placeholder="Search..."
           onFocus={hide}
-          onKeyPress={(e) => e.key === 'Enter' && searcher()}
+          onKeyPress={(e) => e.key === "Enter" && searcher()}
         />
         <div className="search-results hidden">
           <div className="inner-results">
             {gundamResult?.gundams?.length > 0 ? (
-              <div className="nopointer results">Gundams</div>
+              <NavLink
+                to="/search"
+                className="nopointer results"
+                onClick={searcher}
+              >
+                Gundams
+              </NavLink>
             ) : null}
             {gundamResult.gundams &&
               gundamResult.gundams.slice(0, 5).map((gundam) => (
@@ -176,7 +196,13 @@ function Navigation({ isLoaded }) {
                 </NavLink>
               ))}
             {userResult?.users?.length > 0 ? (
-              <div className="nopointer results">Users</div>
+              <NavLink
+                to="/search"
+                className="nopointer results"
+                onClick={searcher}
+              >
+                Users
+              </NavLink>
             ) : null}
             {userResult.users &&
               userResult.users.slice(0, 5).map((user) => (
@@ -195,13 +221,21 @@ function Navigation({ isLoaded }) {
                 </NavLink>
               ))}
           </div>
-          <NavLink
-            to="/search"
-            className="pointer results-last"
-            onClick={moveSearch}
-          >
-            View More Results
-          </NavLink>
+          {userResult.users?.length > 0 || gundamResult.gundams?.length > 0 ? (
+            <NavLink
+              to="/search"
+              className="pointer results-last"
+              onClick={moveSearch}
+            >
+              View all results
+            </NavLink>
+          ) : (
+            <div
+              className="results-last-none"
+            >
+              No results found! Try searching for a different phrase!
+            </div>
+          )}
         </div>
       </div>
       <div className="gundam-dropdown">

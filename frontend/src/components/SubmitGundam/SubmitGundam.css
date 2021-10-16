@@ -120,12 +120,12 @@
   margin-top: 10px;
 }
 
-@media only screen and (max-height: 800px) {
+@media only screen and (max-height: 900px) {
   .submit-main.edit {
     height: auto;
   }
   .submit-title {
-    font-size: 16px;
+    font-size: 30px;
     font-weight: 500;
   }
   .submit-label-img {

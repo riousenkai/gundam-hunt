@@ -130,6 +130,23 @@ a {
   margin-left: 20px;
   display: flex;
   flex-direction: row;
+  font-size: 15px;
+}
+
+.results-last-none {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+}
+
+.results-last:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.results-last-none:hover {
+  text-decoration: none;
 }
 
 .nav-right {
@@ -201,6 +218,12 @@ a {
 .inner-results {
   display: flex;
   flex-direction: column;
+  font-size: 18px;
+}
+
+.nopointer.results:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .search-img {
@@ -214,5 +237,13 @@ a {
 }
 
 .nopointer:hover {
+  cursor: default;
+}
+
+.search-name:hover {
+  color: rgb(41, 207, 171);
+}
+
+.search:disabled:hover {
   cursor: default;
 }
