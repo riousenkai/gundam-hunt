@@ -29,6 +29,10 @@ const Settings = () => {
   const updateProfile = (e) => {
     e.preventDefault();
 
+    if(description.length > 500) {
+      return window.alert("Description must be less than 500 total characters!")
+    }
+
     const update = {
       description,
       image_url: image,

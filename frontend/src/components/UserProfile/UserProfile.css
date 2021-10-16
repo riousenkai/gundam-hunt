@@ -41,6 +41,12 @@
 
 .profile-description {
   margin-bottom: 15px;
+  word-wrap: break-word;
+  max-width: 780px;
+}
+
+.profile-info {
+  word-wrap: break-word;
 }
 
 .edit-profile {
@@ -123,6 +129,8 @@
   font-weight: 500;
   z-index: 1;
   word-wrap: break-word;
+  overflow: hidden;
+
 }
 
 .activity-upvote {
@@ -268,6 +276,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   padding: 20px 20px 20px 20px;
   height: 15px;
+  text-align: center;
 }
 
 .profile-comment-source {

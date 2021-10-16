@@ -204,7 +204,7 @@ const UserProfile = () => {
               ))}
               {comments.length > 5 && (
                 <div className="see-more" onClick={() => setView(true)}>
-                  View all...
+                  View All
                 </div>
               )}
               {view && (
@@ -228,7 +228,7 @@ const UserProfile = () => {
                     </div>
                   ))}
                   <div className="see-more" onClick={() => setView(false)}>
-                    View less...
+                    View Less
                   </div>
                 </>
               )}
