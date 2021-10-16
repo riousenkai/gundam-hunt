@@ -69,7 +69,7 @@
 }
 
 .settings-cancel {
-  border-radius: 2px;
+  border-radius: 8px;
   padding: 5px 5px 5px 5px;
   background-color: rgb(216, 24, 24);
   width: 4rem;
@@ -82,7 +82,7 @@
 }
 
 .settings-submit {
-  border-radius: 2px;
+  border-radius: 8px;
   padding: 5px 10px 5px 10px;
   margin-right: 10px;
   cursor: pointer;

@@ -4,11 +4,11 @@
   display: flex;
   flex-direction: column;
   padding: 30px 30px 30px 30px;
-  margin-bottom: 70px;
 }
 
 .gundam-title {
   margin-top: 1px;
+  margin-bottom: 10px;
 }
 
 .gundam-title-text {
@@ -20,6 +20,7 @@
 .gundam-title-grade {
   font-size: 20px;
   font-weight: 400;
+  border-bottom: 10px;
 }
 
 .gundam-info-main {
@@ -360,7 +361,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-top: -10px
+  margin-top: -10px;
 }
 
 .comment-edit {
@@ -389,6 +390,7 @@
   margin-top: 10px;
 }
 
-.comment-edit:active, .comment-delete:active {
+.comment-edit:active,
+.comment-delete:active {
   transform: translateY(4px);
 }
