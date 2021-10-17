@@ -241,6 +241,13 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          user_id: 1,
+          gundam_id: 10,
+          comment: faker.commerce.productDescription(),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
