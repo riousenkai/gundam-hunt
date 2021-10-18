@@ -44,7 +44,8 @@ function Navigation({ isLoaded }) {
     if (location.pathname === "/search") {
       setResults("");
       document.querySelector(".search").disabled = true;
-      document.querySelector(".search").placeholder = "Please use search bar below.";
+      document.querySelector(".search").placeholder =
+        "Please use search bar below.";
     } else {
       document.querySelector(".search").disabled = false;
       document.querySelector(".search").placeholder = "Search...";
@@ -227,12 +228,12 @@ function Navigation({ isLoaded }) {
               className="pointer results-last"
               onClick={moveSearch}
             >
-              View all results
+              {userResult.users?.length > 5 || gundamResult.gundams?.length > 5
+                ? "View all results"
+                : null}
             </NavLink>
           ) : (
-            <div
-              className="results-last-none"
-            >
+            <div className="results-last-none">
               No results found! Try searching for a different phrase!
             </div>
           )}

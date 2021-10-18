@@ -1,44 +1,47 @@
 .search-checkbox {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .users-joined {
-    display: flex;
-    flex-direction: row;
-    font-weight: 400;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-weight: 400;
+  align-items: center;
 }
 
 .search-filter {
-    height: 80px;
-    background-color: rgba(38, 39, 38, 0.6);
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    padding: 20px 20px 20px 20px;
-    margin-top: 3rem;
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+  height: 80px;
+  background-color: rgba(38, 39, 38, 0.6);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 20px 20px 20px 20px;
+  margin-top: 3rem;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: sticky !important;
+  top: 120px !important;
+}
 
 .search-title {
-    font-size: 30px;
-    font-weight: 500;
+  font-size: 30px;
+  font-weight: 500;
 }
 
 .submit-input.search {
-    width: 676px;
-    background-color: rgba(38, 39, 38, 0.9);
-    padding: 20px 20px 20px 20px;
-    margin-top: 10px;
-    margin-bottom: 20px
+  width: 676px;
+  background-color: rgba(38, 39, 38, 0.9);
+  padding: 20px 20px 20px 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .profile-bottom.searches {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 
+
 .search-users {
-    margin-top: 20px;
+  margin-top: 20px;
 }

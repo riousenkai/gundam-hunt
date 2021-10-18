@@ -78,7 +78,7 @@ const Search = () => {
               className="submit-input search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search Here..."
+              placeholder="Search here..."
             />
           </form>
           <div className="search-gundams">
@@ -89,7 +89,7 @@ const Search = () => {
               {gundams &&
                 gundams.map((gundam) => (
                   <NavLink
-                    to={`/profile/${gundam.id}`}
+                    to={`/gundams/${gundam.id}`}
                     className="activity-card"
                   >
                     <img
@@ -138,21 +138,21 @@ const Search = () => {
           <div className="search-filter">
             <div className="users-joined">
               <input
-                checked={userCheck}
-                onChange={() => setUserCheck(!userCheck)}
-                type="checkbox"
-                className="search-checkbox"
-              />
-              Users
-            </div>
-            <div className="users-joined">
-              <input
                 checked={gundamCheck}
                 onChange={() => setGundamCheck(!gundamCheck)}
                 type="checkbox"
                 className="search-checkbox"
               />
               Gundams
+            </div>
+            <div className="users-joined">
+              <input
+                checked={userCheck}
+                onChange={() => setUserCheck(!userCheck)}
+                type="checkbox"
+                className="search-checkbox"
+              />
+              Users
             </div>
           </div>
         </div>
