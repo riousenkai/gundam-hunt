@@ -124,8 +124,8 @@ const Home = () => {
                       {comment.comment.length > 24 && "..."}
                     </p>
                     <p className="profile-comment-source-home-text">
-                      on {comment.Gundam?.name.slice(0, 25)}
-                      {comment.Gundam?.name.length > 25 && "..."}
+                      on {comment.Gundam?.name.slice(0, 21)}
+                      {comment.Gundam?.name.length > 21 && "..."}
                     </p>
                     </div>
                     <div className="profile-comment-source home-text">

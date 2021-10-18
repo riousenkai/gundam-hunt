@@ -54,11 +54,13 @@
   height: 600px;
   width: 600px;
   margin-right: 10px;
+  object-fit: cover;
 }
 
 .gundam-mini-img-card {
   display: flex;
   flex-direction: column;
+  object-fit: cover;
 }
 
 .gundam-mini-img {
@@ -237,6 +239,7 @@
   word-wrap: break-word;
   height: auto;
   max-width: 71.3px;
+  text-align: center;
 }
 
 .comment-comment {
