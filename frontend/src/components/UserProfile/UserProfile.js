@@ -115,7 +115,7 @@ const UserProfile = () => {
             </div>
             <div className="profile-activity">
               {upvotedGundams &&
-                upvotedGundams.slice(0,5).map((gundam) => (
+                upvotedGundams.slice(0, 5).map((gundam) => (
                   <NavLink
                     to={`/gundams/${gundam.id}`}
                     className="activity-card"
@@ -138,17 +138,16 @@ const UserProfile = () => {
                     </button>
                   </NavLink>
                 ))}
-                 {upvotedGundams?.length > 5 &&
-                 (
-                  <div
-                    className="last-card profile"
-                    onClick={() =>
-                      history.push(`/profile/${mainUser.id}/upvoted`)
-                    }
-                  >
-                    View All Submissions
-                  </div>
-                )}
+              {upvotedGundams?.length > 5 && (
+                <div
+                  className="last-card profile"
+                  onClick={() =>
+                    history.push(`/profile/${mainUser.id}/upvoted`)
+                  }
+                >
+                  View All Upvoted Kits
+                </div>
+              )}
             </div>
             <div className="profile-submitted">
               Submissions ({userGundams?.length})
@@ -178,17 +177,16 @@ const UserProfile = () => {
                     </button>
                   </NavLink>
                 ))}
-              {userGundams?.length > 5 &&
-                 (
-                  <div
-                    className="last-card profile"
-                    onClick={() =>
-                      history.push(`/profile/${mainUser.id}/gundams`)
-                    }
-                  >
-                    View All Upvoted Kits
-                  </div>
-                )}
+              {userGundams?.length > 5 && (
+                <div
+                  className="last-card profile"
+                  onClick={() =>
+                    history.push(`/profile/${mainUser.id}/gundams`)
+                  }
+                >
+                  View All Submissions
+                </div>
+              )}
             </div>
           </div>
           <div className="profile-bottom-right">
