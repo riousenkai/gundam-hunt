@@ -44,7 +44,7 @@ function Navigation({ isLoaded }) {
     if (location.pathname === "/search") {
       setResults("");
       document.querySelector(".search").disabled = true;
-      document.querySelector(".search").placeholder = "Use search input below.";
+      document.querySelector(".search").placeholder = "Please use search bar below.";
     } else {
       document.querySelector(".search").disabled = false;
       document.querySelector(".search").placeholder = "Search...";
