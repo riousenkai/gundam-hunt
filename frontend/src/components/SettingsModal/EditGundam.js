@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
 import { fixGundam } from "../../store/gundam";
 import { useShowModal } from "../../context/ShowModal";
+import "../SubmitGundam/SubmitGundam.css";
+import "./EditGundam.css"
 
 const EditGundam = ({ gundam }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const [name, setName] = useState(gundam.name);
   const [grade, setGrade] = useState(gundam.grade);
@@ -55,7 +55,7 @@ const EditGundam = ({ gundam }) => {
         <label className="submit-label">
           Grade
           <select
-            className="submit-input"
+            className="submit-select"
             value={grade}
             onChange={(e) => setGrade(e.target.value)}
           >
@@ -123,10 +123,12 @@ const EditGundam = ({ gundam }) => {
           />
         </label>
         <div className="submit-btns">
-        <button className="submit-gundam-btn" disabled={false}>
-          Submit
-        </button>
-        <button onClick={() => setNum(0)} className="submit-cancel-btn">Cancel</button>
+          <button className="submit-gundam-btn-settings" disabled={false}>
+            Submit
+          </button>
+          <button onClick={() => setNum(0)} className="submit-cancel-btn">
+            Cancel
+          </button>
         </div>
       </form>
     </div>

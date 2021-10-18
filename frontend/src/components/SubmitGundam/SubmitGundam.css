@@ -173,6 +173,7 @@
     border: none;
     margin-right: 20px;
   }
+
   .submit-cancel-btn {
     cursor: pointer;
     color: rgba(225, 217, 209, 1);
@@ -182,6 +183,7 @@
     width: 150px;
     border: none;
   }
+
   .submit-label-img {
     display: flex;
     flex-direction: column;
