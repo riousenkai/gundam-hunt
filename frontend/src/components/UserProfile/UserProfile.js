@@ -186,7 +186,7 @@ const UserProfile = () => {
                       history.push(`/profile/${mainUser.id}/gundams`)
                     }
                   >
-                    View All Submissions
+                    View All Upvoted Kits
                   </div>
                 )}
             </div>
