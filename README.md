@@ -9,6 +9,7 @@ Gundam models are model ktis that depict the robotic vehicles (called "Mobile Su
 * Javascript
 * Express
 * CSS
+* Sequelize
 
 ### Features
 * Log in / Sign Up / Demo User
