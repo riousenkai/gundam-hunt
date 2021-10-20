@@ -39,14 +39,6 @@ router.get('/newest', asyncHandler(async(req, res) => {
   return res.json({ gundam })
 }))
 
-router.get('/popular', asyncHandler(async(req, res) => {
-  const gundam = await Gundam.findAll({
-    order: [["Upvotes", "DESC"]],
-  })
-
-  return res.json({ gundam })
-}))
-
 router.get('/:id', asyncHandler(async(req, res) => {
   const gundam = await Gundam.findByPk(req.params.id)
   return res.json(gundam)
