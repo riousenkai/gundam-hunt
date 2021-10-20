@@ -47,6 +47,9 @@ router.get(
         user_id: req.params.userId,
       },
       include: [Gundam],
+      order: [
+        [Gundam, 'createdAt', 'DESC']
+      ]
     });
 
     const gundams = await Gundam.findAll({
