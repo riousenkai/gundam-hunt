@@ -215,7 +215,7 @@ function Navigation({ isLoaded }) {
                 >
                   <img
                     alt="Missing Image"
-                    className="search-img"
+                    className="search-img user-img"
                     src={user.image_url}
                   />
                   <p className="search-name">{user.username}</p>

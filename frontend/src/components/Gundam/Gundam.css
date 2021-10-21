@@ -129,7 +129,9 @@
 .gundam-user-img {
   height: 70px;
   width: 70px;
-  border-radius: 8px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 .gundam-link {
