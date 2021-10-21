@@ -4,7 +4,7 @@
 
 Gundam models are model ktis that depict the robotic vehicles (called "Mobile Suits") from the Gundam Anime franchise. Gundam Hunt is a Product Hunt clone that allows users to view, post and review Gundam model kits found in the world wide web.
 
-### Technologies Used
+### Languages/Libraries Used
 * React
 * Javascript
 * Express
