@@ -41,10 +41,6 @@ const UserProfile = () => {
       .then(() => setLoaded(true));
   }, [id]);
 
-  const prevent = (e) => {
-    e.preventDefault();
-  };
-
   // date change
   const dateChange = (date) => {
     const dateSplit = date.split("T");
