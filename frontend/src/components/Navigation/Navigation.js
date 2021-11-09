@@ -123,7 +123,6 @@ function Navigation({ isLoaded }) {
     });
     searchDiv.classList.remove("search-container-focus");
     history.push("/search");
-    console.log(location.pathname);
   };
 
   const imgChange = () => {
