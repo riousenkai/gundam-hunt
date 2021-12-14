@@ -31,7 +31,7 @@ const About = () => {
             <div className="profile-upvotes">Projects</div>
             <div className="profile-activity">
               <a
-                href="https://awesome-anime.herokuapp.com/"
+                href="http://coinffflip.herokuapp.com/"
                 target="_blank"
                 className="activity-card"
               >
@@ -52,7 +52,7 @@ const About = () => {
                 </div>
                 <a
                   className="main-squeeze"
-                  href="https://github.com/riousenkai/awesome-anime"
+                  href="https://github.com/9ziggy9/Coin_Flip"
                   target="_blank"
                 >
                   <img
@@ -111,7 +111,8 @@ const About = () => {
                     <br />
                     <span className="about-description">Solo Project</span>
                     <br />
-                    Technologies used: React, Redux, JavaScript, Express, Sequelize
+                    Technologies used: React, Redux, JavaScript, Express,
+                    Sequelize
                   </p>
                 </div>
                 <a
@@ -134,7 +135,7 @@ const About = () => {
                 className="image"
                 src="https://assets-global.website-files.com/5dcc7f8c449e597ed83356b8/603820afd31232aab368ea6f_New%20Red-logo-emblem.png"
               />
-              <p className="user-joined">App Academy Student</p>
+              <p className="user-joined">App Academy Graduate</p>
             </div>
             <div className="profile-comments-links">
               <div className="profile-links">
