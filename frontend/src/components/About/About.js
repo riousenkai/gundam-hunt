@@ -38,7 +38,7 @@ const About = () => {
                 <img
                   alt="Missing Image"
                   className="activity-img about"
-                  src="https://cdn.discordapp.com/attachments/887079736923287582/888559916263026718/newLogo.png"
+                  src="https://i.imgur.com/LWVvsFG.jpg"
                 />
                 <div className="activity-card-text about">
                   <p className="activity-title">Coin Flip</p>
@@ -47,7 +47,7 @@ const About = () => {
                     <br />
                     <span className="about-description">Group Project</span>
                     <br />
-                    Technologies used: PUG / Javascript / Express
+                    Technologies used: React, Redux, JavaScript, Python, Flask
                   </p>
                 </div>
                 <a
@@ -75,11 +75,11 @@ const About = () => {
                 <div className="activity-card-text about">
                   <p className="activity-title">Awesome Anime</p>
                   <p className="activity-description">
-                    First App Academy group project.
+                    Anime themed Goodreads clone.
                     <br />
-                    <span className="about-description">Goodreads clone.</span>
+                    <span className="about-description">Group project</span>
                     <br />
-                    Technologies used: PUG / Javascript / Express
+                    Technologies used: PUG, JavaScript, Express, Sequelize
                   </p>
                 </div>
                 <a
@@ -107,13 +107,11 @@ const About = () => {
                 <div className="activity-card-text about">
                   <p className="activity-title">Gundam Hunt</p>
                   <p className="activity-description">
-                    First App Academy solo project.
+                    Product Hunt clone focused on Gundam models kits.
                     <br />
-                    <span className="about-description">
-                      Product Hunt clone.
-                    </span>
+                    <span className="about-description">Solo Project</span>
                     <br />
-                    Technologies used: React / Javascript / Express
+                    Technologies used: React, Redux, JavaScript, Express, Sequelize
                   </p>
                 </div>
                 <a
